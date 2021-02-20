@@ -4,10 +4,10 @@
   
   body {
     min-height: 100vh;
-    display: flex;
+    
     font-weight: 400;
     font-family: sans-serif;
-  
+    
     
   }
   
@@ -68,18 +68,20 @@
   }
 
   .out{
-      position:relative;
+      position:absolute;
       background-color: white;
+      
     height:500px;
     width:500px;
-    right:300px;
-    left:400px;
+    right:33%;
+    left:33%;
     top:50px;
     padding-left: 20px;
     padding-right:20px;
     padding-top: 20px;
     padding-bottom:20px;
     border-color: black;
+    
     
   }
 
