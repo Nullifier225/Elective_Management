@@ -1,6 +1,35 @@
 import React, { Component } from "react";
 import logo from './index.png';
 export default class Login extends Component {
+    constructor(){
+        super();
+   
+        this.state = {
+            email: "",
+            password: "",
+    }
+     }
+
+     handleChange = (name) => (event) => {
+        this.setState({ [name]: event.target.value });
+      };
+    
+  clickBtn = (event) => {
+    event.preventDefault();
+    const { email, password } = this.state;
+    let par=/^[abclm][abclm]+.[en][en]+.[up][3-5][a-z][a-z][a-z][1-9][0-9][0-5][0-9][0-9]+@[abclm][abclm]+.students.amrita.edu+$/g; 
+    if (!email.match(par)) {
+      alert("Please enter a valid email-id");
+    }
+    else{ 
+    const user = {
+      email,
+      password,
+    };
+    alert("It is a valid email-id");
+    console.log(user);
+  }
+  };
     render() {
 
         return (
@@ -20,17 +49,17 @@ export default class Login extends Component {
 
                 <div className="form-group">
                     <label>Roll Number</label>
-                    <input type="email" className="form-control" placeholder="Enter Roll No" />
+                    <input type="email" name="email" onChange={this.handleChange("email")} className="form-control" placeholder="Enter Roll No" value={this.state.email}/>
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
+                    <input type="password" name="password" onChange={this.handleChange("password")}className="form-control" placeholder="Enter password" value={this.state.password}/>
                 </div>
 
                 
 
-                <button type="submit" className="btn btn-info btn-lg btn-block">Sign in</button>
+                <button type="submit" onClick={this.clickBtn} className="btn btn-info btn-lg btn-block">Sign in</button>
               
                   
               
