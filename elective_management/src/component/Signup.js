@@ -1,32 +1,24 @@
 import React from 'react';
-
-
+import Card from "react-bootstrap/Card";
+// import ReactDOM from "react-dom";
+// import Col from 'react-bootstrap/Col'
+// import Row from 'react-bootstrap/Row'
 
 
 function LoginForm() {
     return (
-        <form>
-        <div className="form-inner">
-            <h2>Login</h2>
+    <div class="Dashboard_Card" className = "d-flex justify-content-center align-items-center">
+    <Card style={{ width: '18rem' }}>
+         <Card.Body>
+        <Card.Text>
+        <header> Hi User @username!!! </header>
+                <button class ="button" type="submit" className="btn btn-info btn-lg btn-block">Apply</button>
+                <button class="button" type="button" className="btn btn-info btn-lg btn-block">Change</button>
+        </Card.Text>
+    </Card.Body>
+    </Card>
+    </div>
 
-            <div classname="form-group">
-                <label htmlfor="name">Name:</label>
-                <input type="text" name="name" id="name"/>
-
-                
-            </div>
-            <div classname="form-group">
-                <label htmlfor="email">Roll-no:</label>
-                <input type="text" name="email" id="email"/>
-
-                
-            </div>
-            <div classname="form-group">
-                <label htmlfor="password">Password</label>
-                <input type="text" name="password" id="password"/>
-            </div>
-            </div>
-    </form>
     )
 }
 export default LoginForm;
