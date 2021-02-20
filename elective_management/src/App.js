@@ -7,9 +7,9 @@ import { BrowserRouter, Route,Switch } from 'react-router-dom';
 import './App.css';
 //import React,{useState} from 'react';
 import Login from './component/signuptry1';
-/*import LoginForm from './component/Signup';
+import LoginForm from './component/Signup';
 
-function App() {
+/*function App() {
   const adminUser={
     email:"admin@admin.com",
     password:"admin123"
@@ -42,8 +42,8 @@ function App() {
 
 
   )
-}
-*/
+}*/
+
 class App extends Component {
   render() {
     return (
@@ -51,7 +51,9 @@ class App extends Component {
         
             <Switch>
             <Route path="/" component={Login} exact/>
+            <Route path="/loginform" component={LoginForm} exact/>
             </Switch>
+            
 </BrowserRouter>
     )}}
 export default App;

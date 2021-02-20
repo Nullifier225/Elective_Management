@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import logo from './index.png';
+import LoginForm from './Signup.js'
 export default class Login extends Component {
     constructor(){
         super();
@@ -22,6 +23,9 @@ export default class Login extends Component {
       alert("Please enter a valid email-id");
     }
     else{ 
+        if(password=="login"){
+            window.location.replace('/loginform');
+        }
     const user = {
       email,
       password,
