@@ -1,8 +1,13 @@
 import logo from './logo.svg';
-
+import React, { Component } from 'react';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import React,{useState} from 'react';
-import LoginForm from './component/Signup';
+
+import { BrowserRouter, Route,Switch } from 'react-router-dom';    
+import './App.css';
+//import React,{useState} from 'react';
+import Login from './component/signuptry1';
+/*import LoginForm from './component/Signup';
 
 function App() {
   const adminUser={
@@ -38,5 +43,15 @@ function App() {
 
   )
 }
-
+*/
+class App extends Component {
+  render() {
+    return (
+<BrowserRouter>
+        
+            <Switch>
+            <Route path="/" component={Login} exact/>
+            </Switch>
+</BrowserRouter>
+    )}}
 export default App;
