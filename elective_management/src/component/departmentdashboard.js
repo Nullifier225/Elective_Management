@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 // import Row from 'react-bootstrap/Row'
 
 
-function LoginForm() {
+function TD() {
     return (
     <div>
         <div class="col-md-11 offset-md-11">
@@ -21,11 +21,11 @@ function LoginForm() {
    <div class="contents">
     <form>
         
-    <button type="submit"  className="btn btn-info btn-lg btn-block ">Apply</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block ">View Elective List</button>
     <br></br>
-    <button type="submit"  className="btn btn-info btn-lg btn-block">Change</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block">View Faculty List</button>
         <br></br>      
-    <button type="submit"  className="btn btn-info btn-lg btn-block">Feedback</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block">Course Prerequisites</button>
               
                  
                   
@@ -37,4 +37,4 @@ function LoginForm() {
     </div>
     )
 }
-export default LoginForm;
+export default TD;

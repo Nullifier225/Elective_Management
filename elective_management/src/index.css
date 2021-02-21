@@ -135,3 +135,20 @@
       font-weight: bold;
       text-align: center;
   }
+
+  .contents
+  {
+    position: relative;
+    
+    left:350px;
+    top:70px;
+    height:300px;
+    width:600px;
+  }
+
+  .header2{
+    position: relative;
+    left:120px;
+    width:900px;
+    top:20px;
+  }

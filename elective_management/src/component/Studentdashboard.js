@@ -26,7 +26,8 @@ function LoginForm() {
     <button type="submit"  className="btn btn-info btn-lg btn-block">Change</button>
         <br></br>      
     <button type="submit"  className="btn btn-info btn-lg btn-block">Feedback</button>
-              
+    <br></br>      
+    <button type="submit"  className="btn btn-info btn-lg btn-block">View My Elective</button>
                  
                   
     

@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 // import Row from 'react-bootstrap/Row'
 
 
-function LoginForm() {
+function TD() {
     return (
     <div>
         <div class="col-md-11 offset-md-11">
@@ -37,4 +37,4 @@ function LoginForm() {
     </div>
     )
 }
-export default LoginForm;
+export default TD;

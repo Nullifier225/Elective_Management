@@ -7,7 +7,7 @@ import { BrowserRouter, Route,Switch } from 'react-router-dom';
 import './App.css';
 //import React,{useState} from 'react';
 import Login from './component/signuptry1';
-import LoginForm from './component/Signup';
+import LoginForm from './component/Studentdashboard';
 
 /*function App() {
   const adminUser={
