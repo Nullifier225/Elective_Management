@@ -1,15 +1,25 @@
-import React from 'react';
+import React,{ Component }  from 'react';
 import Card from "react-bootstrap/Card";
 // import ReactDOM from "react-dom";
 // import Col from 'react-bootstrap/Col'
 // import Row from 'react-bootstrap/Row'
 
 
-function LoginForm() {
+export default class LoginForm extends Component {
+    clickBtn = (event) => {
+        event.preventDefault();
+        window.location.replace('/');
+    };
+    render(){
+
+    
+
     return (
+        
     <div>
         <div class="col-md-11 offset-md-11">
-        <button type="button" class="btn btn-danger">LOGOUT</button>
+        <button type="submit" class="btn btn-danger" onClick={this.clickBtn} >LOGOUT</button>
+         
         </div>
     <div class="header2">
         <h1 className="text-center" class="header2" >Amrita University Elective Management Portal</h1>
@@ -38,4 +48,4 @@ function LoginForm() {
     </div>
     )
 }
-export default LoginForm;
+}
