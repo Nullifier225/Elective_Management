@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card";
 
 function LoginForm() {
     return (
+    <div class="out">
     <div>
         <div class="col-md-11 offset-md-11">
         <button type="button" class="btn btn-danger">LOGOUT</button>
@@ -33,6 +34,7 @@ function LoginForm() {
     </form>
     
      
+    </div>
     </div>
     </div>
     )

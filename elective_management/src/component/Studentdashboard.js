@@ -17,7 +17,7 @@ export default class LoginForm extends Component {
     return (
         
     <div>
-        <div class="col-md-11 offset-md-11">
+        <div class="float-right">
         <button type="submit" class="btn btn-danger" onClick={this.clickBtn} >LOGOUT</button>
          
         </div>
