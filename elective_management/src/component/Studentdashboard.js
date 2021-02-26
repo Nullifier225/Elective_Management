@@ -1,5 +1,6 @@
 import React,{ Component }  from 'react';
 import Card from "react-bootstrap/Card";
+//import DeptForm from './component/departmentform.js';
 // import ReactDOM from "react-dom";
 // import Col from 'react-bootstrap/Col'
 // import Row from 'react-bootstrap/Row'
@@ -10,7 +11,14 @@ export default class LoginForm extends Component {
         event.preventDefault();
         window.location.replace('/');
     };
+    clickBtn1 = (event) => {
+        event.preventDefault();
+        window.location.replace('/departmentform');
+    };
     render(){
+
+        
+        
 
     
 
@@ -31,7 +39,7 @@ export default class LoginForm extends Component {
    <div class="contents">
     <form>
         
-    <button type="submit"  className="btn btn-info btn-lg btn-block ">Apply</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block "onClick={this.clickBtn1}>Apply</button>
     <br></br>
     <button type="submit"  className="btn btn-info btn-lg btn-block">Change</button>
         <br></br>      

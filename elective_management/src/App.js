@@ -8,6 +8,7 @@ import './App.css';
 //import React,{useState} from 'react';
 import Login from './component/signuptry1';
 import LoginForm from './component/Studentdashboard';
+import DeptForm from './component/departmentform';
 
 /*function App() {
   const adminUser={
@@ -52,6 +53,7 @@ class App extends Component {
             <Switch>
             <Route path="/" component={Login} exact/>
             <Route path="/loginform" component={LoginForm} exact/>
+            <Route path="/departmentform" component={DeptForm} exact/>
             </Switch>
             
 </BrowserRouter>

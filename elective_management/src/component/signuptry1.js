@@ -52,7 +52,7 @@ export default class Login extends Component {
                <h3 className="text-center font-weight-bold font-size:1.5em" class="heading1">Login</h3> 
 
                 <div className="form-group">
-                    <label>Roll Number</label>
+                    <label>Email ID</label>
                     <input type="email" name="email" onChange={this.handleChange("email")} className="form-control" placeholder="Enter Email ID" value={this.state.email}/>
                 </div>
 
