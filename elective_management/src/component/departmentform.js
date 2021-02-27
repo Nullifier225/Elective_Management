@@ -1,3 +1,4 @@
+//import { red } from "@material-ui/core/colors";
 import React, { Component } from "react";
 import logo from './index.png';
 //import LoginForm from './Signup.js'
@@ -41,20 +42,22 @@ export default class DeptForm extends Component {
 
             
 
-
-            <div class="out">
-                <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
+            <div id="root" style={{backgroundImage:"url("+"http://images.edexlive.com/uploads/user/imagelibrary/2021/2/10/original/01DEC2013NIE03_04-02-2014_19_0_1.jpg"+")",backgroundPosition: 'center',
+            backgroundSize: 'cover',backgroundRepeat: 'no-repeat'}}>
+            <div class="out" >
+                
+                
+            <form class>
+            <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
-
-            <form>
-
                <h3 className="text-center font-weight-bold font-size:1.5em" class="heading1">Department Elective List</h3>
 
                <div className="form-group">
                     <label>Department</label>
+                    <br/>
                     <select name="department" value="department"><option value="CSE">CSE</option>
-    <option value="ECE"></option></select>
+    <option value="ECE">ECE</option></select>
                 </div>
 
                 <div className="form-group">
@@ -63,12 +66,12 @@ export default class DeptForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>Maximum no.of students</label>
+                    <label>Maximum no.of students </label>
                     <input type="number" id="max" name="max" step="10"></input>
                 </div>
 
                 <div className="form-group">
-                    <label>Minimum no.of students</label>
+                    <label>Minimum no.of students </label>
                     <input type="number" id="min" name="min" step="5"></input>
                 </div>
                 <div className="form-group">
@@ -79,15 +82,17 @@ export default class DeptForm extends Component {
                 <div className="form-group">
                     <label>Course mentor</label>
                     <input type="text" name="cm"/>
+                    <br/>
+                    <button type="submit" onClick={this.clickBtn} className="btn btn-info mr-0 ml-0 pl-0 pr-0 btn-block">Submit</button>
                 </div>
                 
-
-                <button type="submit" onClick={this.clickBtn} className="btn btn-info btn-lg btn-block">Submit</button>
-              
+                
                   
               
             </form>
             </div>
+            </div>
+            
         );
     }
 }
