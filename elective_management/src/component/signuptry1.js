@@ -43,13 +43,13 @@ export default class Login extends Component {
 
             
 
-
+            
             <div class="out">
                 <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
-
             <form id="myForm" onSubmit={(e)=>submit_signup(e)}>
+            
 
                <h3 className="text-center font-weight-bold font-size:1.5em" class="heading1">Login</h3> 
 
