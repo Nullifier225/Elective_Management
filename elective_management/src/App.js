@@ -10,6 +10,7 @@ import Login from './component/signuptry1';
 import LoginForm from './component/Studentdashboard';
 import DeptForm from './component/departmentform';
 import ChangeForm from './component/changeform';
+import StudentForm from'./component/studentsform';
 
 /*function App() {
   const adminUser={
@@ -54,6 +55,7 @@ class App extends Component {
             <Switch>
             <Route path="/" component={Login} exact/>
             <Route path="/loginform" component={LoginForm} exact/>
+            <Route path="/studentsform" component={StudentForm} exact/>
             <Route path="/departmentform" component={DeptForm} exact/>
             <Route path="/changeform" component={ChangeForm} exact/>
             </Switch>

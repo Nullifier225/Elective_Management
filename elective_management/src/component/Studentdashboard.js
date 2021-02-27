@@ -13,7 +13,8 @@ export default class LoginForm extends Component {
     };
     clickBtn1 = (event) => {
         event.preventDefault();
-        window.location.replace('/departmentform');
+        window.location.replace('/studentsform');
+
     };
     clickBtn2 = (event) => {
         event.preventDefault();
