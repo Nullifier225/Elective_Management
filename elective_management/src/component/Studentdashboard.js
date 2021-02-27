@@ -15,6 +15,10 @@ export default class LoginForm extends Component {
         event.preventDefault();
         window.location.replace('/departmentform');
     };
+    clickBtn2 = (event) => {
+        event.preventDefault();
+        window.location.replace('/changeform');
+    }
     render(){
 
         
@@ -41,7 +45,7 @@ export default class LoginForm extends Component {
         
     <button type="submit"  className="btn btn-info btn-lg btn-block "onClick={this.clickBtn1}>Apply</button>
     <br></br>
-    <button type="submit"  className="btn btn-info btn-lg btn-block">Change</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block"onClick={this.clickBtn2}>Change</button>
         <br></br>      
     <button type="submit"  className="btn btn-info btn-lg btn-block">Feedback</button>
     <br></br>      
