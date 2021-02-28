@@ -3,10 +3,13 @@ const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
+process.on('uncaughtException', function (error) {
+    console.log(error.stack);
+ });
 var router = express.Router()
 
 var url = require('url');
+const { nextTick } = require('process');
 
 const db = mysql.createPool({
     host:"localhost",
@@ -21,21 +24,14 @@ app.post("/api/signin",(req,res)=>{
     //console.log("1")
     const emailid = req.body.email;
     const password=req.body.password;
-    console.log(emailid);
-    console.log(password);    
+     
 
     db.getConnection(function(err) {
-        console.log("B")
-        console.log(emailid);
-        console.log(password); 
+        
         
         //console.log("connected")
         db.query("SELECT ls_pass FROM student_login_details where ls_usern=? AND ls_pass=?",[emailid,password], function (err,result) {
-            console.log("A")
-            console.log(emailid);
-            console.log(password); 
-            console.log(err);
-            console.log(result);
+           
            if(result.length>0)
             {
                 //console.log("match")
@@ -51,9 +47,40 @@ app.post("/api/signin",(req,res)=>{
             
        });
       });
+      app.post("/api/changeform",(req,res)=>{
+        //console.log("1")
+        const cename = req.body.cename;
+        const cecoursecode=req.body.cecoursecode;
+        const dename=req.body.dename;
+        const decoursecode=req.body.decoursecode;
+        
+        db.getConnection(function(err) {
+            
+            
+            //console.log("connected")
+            db.query("insert into electivechange values(?,?,?,?,?)",[emailid,cename,cecoursecode,dename,decoursecode], function (err,result) {
+               
+                if(err) 
+                {
+                    res.send('invalid')
+                   
+                    res.end()
+                    return next(err)
+                }
+                res.send('valid')
+                    res.end()
+               
+                  
+               
+           });
+          });
+         
+        
+    })
      
     
 })
+
 
 app.listen(3001,()=>{
     console.log('running on port 3001');
