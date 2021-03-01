@@ -42,8 +42,7 @@ export default class DeptForm extends Component {
 
             
 
-            <div id="root" style={{backgroundImage:"url("+"http://images.edexlive.com/uploads/user/imagelibrary/2021/2/10/original/01DEC2013NIE03_04-02-2014_19_0_1.jpg"+")",backgroundPosition: 'center',
-            backgroundSize: 'cover',backgroundRepeat: 'no-repeat'}}>
+           
             <div class="out" >
                 
                 
@@ -91,7 +90,7 @@ export default class DeptForm extends Component {
               
             </form>
             </div>
-            </div>
+            
             
         );
     }

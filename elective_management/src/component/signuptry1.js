@@ -19,11 +19,7 @@ export default class Login extends Component {
     
   clickBtn = (event) => {
     event.preventDefault();
-    const { email, password } = this.state;
-    let par=/^[abclm][abclm]+.[en][en]+.[up][3-5][a-z][a-z][a-z][1-9][0-9][0-5][0-9][0-9]+@[abclm][abclm]+.students.amrita.edu+$/g; 
-    if (!email.match(par)) {
-      alert("Please enter a valid email-id");
-    }/*
+    /*
     else{ 
         if(password=="login"){
             window.location.replace('/loginform');
@@ -89,10 +85,23 @@ export default class Login extends Component {
               
               if(details=='valid')
               {
+                const email=document.getElementById('email').value;
+                let par1=/^[abclm][abclm].[en][en].[up][3-5][a-z][a-z][a-z][1-9][0-9][0-5][0-9][0-9]@[abclm][abclm].students.amrita.edu$/g;
+                let par2=/^[a-zA-Z0-9_.][a-zA-Z0-9_.]+@[abclm][abclm].amrita.edu$/g;
+                let par3=/^[a-zA-Z0-9_.][a-zA-Z0-9_.]+@[abclm][abclm].admin.amrita.edu$/g;    
+                if (email.match(par1)) {
+                  window.location.replace('/loginform');
+                }
+                if (email.match(par2)) {
+                  window.location.replace('/deptdashboard');
+                }
+                if (email.match(par3)) {
+                  window.location.replace('/admindashboard');
+                }
                 
                
                //alert("correct")
-                window.location.replace('/loginform');
+                
               }
              
               if(details!='valid')
