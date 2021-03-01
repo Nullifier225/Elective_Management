@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from './index.png';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
+import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
 //import LoginForm from './Signup.js'
 export default class ChangeForm extends Component {
     constructor(){
@@ -28,13 +29,13 @@ export default class ChangeForm extends Component {
              
 
             
-
-
+            <div class ="out0">
+                                <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+ 
             <div class="out">
                 <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
-                <button type="" onClick={this.clickBtn1} className="btn btn-info btn-lg btn-block">Back</button>
 
             <form onSubmit={(e)=>submit_signup(e)}>
 
@@ -68,6 +69,8 @@ export default class ChangeForm extends Component {
               
             </form>
             </div>
+            </div>
+
         );
         function submit_signup(e){
             e.preventDefault();
