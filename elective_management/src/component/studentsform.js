@@ -21,18 +21,23 @@ export default class StudentForm extends Component {
     event.preventDefault();
    console.log(this.state);
   }
+  clickBtn1 = (event) => {
+    event.preventDefault();
+    window.location.replace('/loginform');
+  }
     render() {
 
         return (
              
 
-            
+
 
 
             <div class="out">
                 <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
+                <button type="" onClick={this.clickBtn1} className="btn btn-info btn-lg btn-block">Back</button>
 
             <form>
 

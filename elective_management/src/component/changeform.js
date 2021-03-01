@@ -16,7 +16,11 @@ export default class ChangeForm extends Component {
      handleChange = (name) => (event) => {
         this.setState({ [name]: event.target.value });
       };
-    
+      
+      clickBtn1 = (event) => {
+        event.preventDefault();
+        window.location.replace('/loginform');
+      }
   
     render() {
 
@@ -30,6 +34,7 @@ export default class ChangeForm extends Component {
                 <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
+                <button type="" onClick={this.clickBtn1} className="btn btn-info btn-lg btn-block">Back</button>
 
             <form onSubmit={(e)=>submit_signup(e)}>
 
