@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import logo from './index.png';
+import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
 //import LoginForm from './Signup.js'
 export default class StudentForm extends Component {
     constructor(){
@@ -34,10 +35,11 @@ export default class StudentForm extends Component {
 
 
             <div class="out">
+                
                 <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
-                <button type="" onClick={this.clickBtn1} className="btn btn-info btn-lg btn-block">Back</button>
+                <button type="" onClick={this.clickBtn1} className="btn   btn-block"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
 
             <form>
 
