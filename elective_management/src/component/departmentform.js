@@ -1,6 +1,7 @@
 //import { red } from "@material-ui/core/colors";
 import React, { Component } from "react";
 import logo from './index.png';
+import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
 //import LoginForm from './Signup.js'
 export default class DeptForm extends Component {
     constructor(){
@@ -11,6 +12,10 @@ export default class DeptForm extends Component {
             password: "",
     }
      }
+     clickBtn1 = (event) => {
+        event.preventDefault();
+        window.location.replace('/deptdashboard');
+      }
 
      handleChange = (name) => (event) => {
         this.setState({ [name]: event.target.value });
@@ -42,7 +47,8 @@ export default class DeptForm extends Component {
 
             
 
-           
+            <div class ="out0">
+            <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
             <div class="out" >
                 
                 
@@ -90,7 +96,7 @@ export default class DeptForm extends Component {
               
             </form>
             </div>
-            
+            </div>
             
         );
     }
