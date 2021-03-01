@@ -33,13 +33,15 @@ export default class StudentForm extends Component {
 
 
 
+            <div class ="out0">
+                                <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
 
+           
             <div class="out">
-                
+
                 <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
-                <button type="" onClick={this.clickBtn1} className="btn   btn-block"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
 
             <form>
 
@@ -116,6 +118,7 @@ export default class StudentForm extends Component {
                   
               
             </form>
+            </div>
             </div>
         );
     }
