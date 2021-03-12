@@ -8,7 +8,7 @@ import './App.css';
 //import React,{useState} from 'react';
 import Login from './component/signuptry1';
 import LoginForm from './component/Studentdashboard';
-import DeptForm from './component/departmentform';
+import App1 from './component/departmentform';
 import ChangeForm from './component/changeform';
 import StudentForm from'./component/studentsform';
 import TD from'./component/departmentdashboard';
@@ -58,7 +58,7 @@ class App extends Component {
             <Route path="/" component={Login} exact/>
             <Route path="/loginform" component={LoginForm} exact/>
             <Route path="/studentsform" component={StudentForm} exact/>
-            <Route path="/departmentform" component={DeptForm} exact/>
+            <Route path="/departmentform" component={App1} exact/>
             <Route path="/changeform" component={ChangeForm} exact/>
             <Route path="/deptdashboard" component={TD} exact/>
             <Route path="/admindashboard" component={AD} exact/>

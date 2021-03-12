@@ -153,3 +153,7 @@
     width:900px;
     top:20px;
   }
+
+  .App1{
+    height: fit-content;
+  }
