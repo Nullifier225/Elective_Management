@@ -46,7 +46,7 @@ app.post("/api/signin",(req,res)=>{
             }
             
        });
-      });
+      
       app.post("/api/changeform",(req,res)=>{
         //console.log("1")
         const cename = req.body.cename;
@@ -74,6 +74,47 @@ app.post("/api/signin",(req,res)=>{
                
            });
           });
+         
+        
+    })
+    app.get("/api/getele",(req,res)=>{
+        
+        db.getConnection(function(err) {
+        
+        
+            
+            
+            
+            
+            db.query("SELECT electivename FROM dept_elective ", function (err,result) {
+               
+                if(err) 
+                {
+                    res.send("error")
+                   
+                    res.end()
+                    return next(err)
+                }
+                let x=[]
+                let n=result.length
+                for(let i=0;i<n;i++){
+                let vals=JSON.parse(JSON.stringify(result))[i]
+                let xn=Object.values(vals)
+                let state={
+                    id:i+1,
+                    content:xn[0]                
+                }
+                x.push(state)
+                }
+                
+                res.send(x)
+                    res.end()
+               
+                  
+               
+           });
+        }  
+          );
          
         
     })
@@ -117,6 +158,8 @@ app.post("/api/deptformcol",(req,res)=>{
      
     
 })
+});
+
 
 app.listen(3001,()=>{
     console.log('running on port 3001');
