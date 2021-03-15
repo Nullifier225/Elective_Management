@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import logo from './index.png';
 import { ArrowLeftCircleFill } from 'react-bootstrap-icons'; 
+import axios from 'axios';
+import ReactDOM from 'react-dom';
 function App1() {
     const clickBtn = (event) => {
         event.preventDefault();
@@ -39,7 +41,7 @@ function App1() {
         return (
           <div class="out">
         <button type="" onClick={clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
-        <form class>
+        <form onSubmit={(e)=>submit_deptform(e)} >
         <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
             <br/>
             <br/>
@@ -48,32 +50,32 @@ function App1() {
            <div className="form-group">
                 <label>Department</label>
                 <br/>
-                <select name="department" value={x.department} onChange={e => handleInputChange(e, i)}><option value="CSE">CSE</option>
+                <select required name="department" value={x.department}  onChange={e => handleInputChange(e, i)}><option value=""> -- select an option -- </option><option value="CSE">CSE</option>
 <option value="ECE">ECE</option></select>
             </div>
              
             <div className="form-group">
                 <label>Elective name</label>
-                <input type="text" name="electivename" value={x.electivename} onChange={e => handleInputChange(e, i)} className="form-control" placeholder="Enter elective name" />
+                <input type="text" name="electivename"  required id="elective_name" value={x.electivename} onChange={e => handleInputChange(e, i)} className="form-control" placeholder="Enter elective name" />
             </div>
 
             <div className="form-group">
                 <label>Maximum no.of students </label>
-                <input type="number" id="max" name="max"  value={x.max} onChange={e => handleInputChange(e, i)}step="10"></input>
+                <input type="number"  required id="max" name="max"  value={x.max} onChange={e => handleInputChange(e, i)}step="10"></input>
             </div>
 
             <div className="form-group">
                 <label>Minimum no.of students </label>
-                <input type="number" id="min" name="min"  value={x.min} onChange={e => handleInputChange(e, i)} step="5"></input>
+                <input type="number"   required id="min" name="min"  value={x.min} onChange={e => handleInputChange(e, i)} step="5"></input>
             </div>
             <div className="form-group">
                 <label>Description</label>
-                <textarea id="desc" name="desc"  value={x.desc} onChange={e => handleInputChange(e, i)}rows="4" cols="50"></textarea>
+                <textarea id="desc"   required name="desc"  value={x.desc} onChange={e => handleInputChange(e, i)}rows="4" cols="50"></textarea>
             </div>
 
             <div className="form-group">
                 <label>Course mentor</label>
-                <input type="text" name="cm"  value={x.cm} onChange={e => handleInputChange(e, i)}/>
+                <input type="text" name="cm"  required value={x.cm} onChange={e => handleInputChange(e, i)}/>
                 <br/>
                 <br/>
                 <div className="btn-box">
@@ -83,7 +85,7 @@ function App1() {
         {inputList.length - 1 === i && <button className="btn btn-success ml-1 flex " onClick={handleAddClick}>Add</button>}
       </div>
       <br/>
-                <button type="submit" onClick={clickBtn} className="btn btn-info mr-0 ml-0 pl-0 pr-0 btn-block">Submit</button>
+                <button type="submit"  className="btn btn-info mr-0 ml-0 pl-0 pr-0 btn-block">Submit</button>
             </div>
             
             
@@ -99,6 +101,47 @@ function App1() {
       <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
     </div>
   );
+
+  
+  function submit_deptform(e){
+    e.preventDefault();
+    let a=inputList;
+    let request =  {
+      //elective:document.getElementById('elective_name').value
+      array1:a
+       
+       
+        
+    }
+    console.log("request");
+    axios.post('http://localhost:3001/api/deptformcol',request)
+    
+    .then(resp=>{
+      var details = resp.data;
+      
+      if(details=='valid')
+      {
+        
+         // window.location.replace('/admindashboard');
+        alert("response saved")
+        window.location.replace('/deptdashboard');
+       
+       //alert("correct")
+        
+      }
+     
+      if(details!='valid')
+      {
+       // alert("not valid")
+        console.log("error");
+      }
+    })
+     
+    .catch(err=>{
+      console.log(err);
+    })
+   
+}
 }
  
 export default App1;

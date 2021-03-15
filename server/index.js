@@ -77,10 +77,46 @@ app.post("/api/signin",(req,res)=>{
          
         
     })
+    
      
     
 })
-
+app.post("/api/deptformcol",(req,res)=>{
+    console.log("1")
+    //const  array= req.body.array1;
+    const elective=req.body.array1;
+    console.log("array element",elective);
+    let n=elective.length;
+    
+       // console.log(vals);}
+    db.getConnection(function(err) {
+    
+    
+        console.log("connected")
+        
+        
+        for(let i =0;i<n;i++){
+            let vals=Object.values(elective[i]);
+        db.query("insert into dept_elective values(?,?,?,?,?,?)",vals, function (err,result) {
+           
+            if(err) 
+            {
+                res.send('invalid')
+               
+                res.end()
+                return next(err)
+            }
+            res.send('valid')
+                res.end()
+           
+              
+           
+       });
+    }  
+      });
+     
+    
+})
 
 app.listen(3001,()=>{
     console.log('running on port 3001');
