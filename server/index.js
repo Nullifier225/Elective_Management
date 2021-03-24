@@ -123,10 +123,10 @@ app.post("/api/signin",(req,res)=>{
     
 })
 app.post("/api/deptformcol",(req,res)=>{
-    console.log("1")
+    //console.log("1")
     //const  array= req.body.array1;
     const elective=req.body.array1;
-    console.log("array element",elective);
+    //console.log("array element",elective);
     let n=elective.length;
     
        // console.log(vals);}
@@ -157,10 +157,54 @@ app.post("/api/deptformcol",(req,res)=>{
       });
      
     
+
+
+
+
+
 })
+
 });
 
 
+app.post("/api/studentformcol",(req,res)=>{
+    //console.log("1")
+    //const  array= req.body.array1;
+    const name=req.body.name;
+    const rno=req.body.rno;
+    const sec=req.body.sec;
+    const pref=req.body.pref;
+    console.log("array element",pref);
+    let n=pref.length;
+    
+       // console.log(vals);}
+    db.getConnection(function(err) {
+    
+    
+        console.log("connected")
+        
+        let refs="valid"
+        for(let i =0;i<n;i++){
+            let vals=Object.values(pref[i]);
+            
+            console.log(vals)
+        db.query("insert into student_elective values(?,?,?,?,?)",[name,rno,sec,i+1,vals[1]], function (err,result) {
+           
+            if(err) 
+            {
+            refs="invalid"
+            }
+           
+              
+           
+       });
+    }  
+    res.send(refs)
+    res.end()
+      });
+     
+    
+});
 app.listen(3001,()=>{
     console.log('running on port 3001');
 })

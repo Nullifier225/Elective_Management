@@ -110,23 +110,23 @@ export default class App22 extends Component {
 <br/>
 <br/>
 
-<form>
+<form onSubmit={(e)=>submit_studentform(e,this.state.items)}>
 
 <h3 className="text-center font-weight-bold font-size:1.5em" class="heading1">Students Elective Selection</h3>
 
 <div className="form-group">
   <label>Name</label>
-  <input type="text" name="name" onChange={this.handleChange("name")} className="form-control" placeholder="Enter your name" />
+  <input type="text" id="name" name="name" onChange={this.handleChange("name")} className="form-control" placeholder="Enter your name" />
 </div>
 
 <div className="form-group">
   <label>Roll Number</label>
-  <input type="text" name="rollnumber" onChange={this.handleChange("rollnumber")} className="form-control" placeholder="Enter your roll number" />
+  <input type="text" id="rno" name="rollnumber" onChange={this.handleChange("rollnumber")} className="form-control" placeholder="Enter your roll number" />
 </div>
 
 <div className="form-group">
   <label>Section</label>
-  <input type="text" name="section" onChange={this.handleChange("section")} className="form-control" placeholder="Enter your section" />
+  <input type="text" id="sec" name="section" onChange={this.handleChange("section")} className="form-control" placeholder="Enter your section" />
 </div>
 
 
@@ -166,7 +166,7 @@ export default class App22 extends Component {
 
 
 
-<button type="submit" onClick={this.clickBtn} className="btn btn-info btn-lg btn-block">Submit</button>
+<button type="submit" className="btn btn-info btn-lg btn-block">Submit</button>
 
 
 
@@ -175,9 +175,49 @@ export default class App22 extends Component {
 </div>
 
     );
-  
+    
   }
+  
 
+}
+function submit_studentform(e,items){
+  e.preventDefault();
+  //let a=inputList;
+  let request =  {
+    name:document.getElementById('name').value,
+    rno:document.getElementById('rno').value,
+    sec:document.getElementById('sec').value,
+    pref:items
+      
+  }
+  console.log("request");
+  axios.post('http://localhost:3001/api/studentformcol',request)
+  
+  .then(resp=>{
+    var details = resp.data;
+    
+    if(details=='valid')
+    {
+      
+       // window.location.replace('/admindashboard');
+      alert("response saved")
+      window.location.replace('/loginform');
+     
+     //alert("correct")
+      
+    }
+   
+    if(details!='valid')
+    {
+     // alert("not valid")
+      console.log("error");
+    }
+  })
+   
+  .catch(err=>{
+    console.log(err);
+  })
+ 
 }
 
 
