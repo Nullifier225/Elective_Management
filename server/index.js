@@ -219,44 +219,21 @@ app.get("/api/getlist1",(req,res)=>{
                 res.end()
                 return next(err)
             }
-            let x=[]
-            let xn = []
-            let n=result.length
-            for(let i=0;i<n;i++){
-            let vals=JSON.parse(JSON.stringify(result[i]))
-            xn=Object.values(vals)
-            let state=JSON.parse(JSON.stringify({
-            name:xn[0],
-            rno:xn[1],
-            sec:xn[2],
-            pref:xn[3],
-            elective:xn[4]
-            
-            }))
-            console.log("vals"+ vals)
-            console.log("xn"+ xn)
-            console.log("state"+ state)
-            x.push(state)
-}
-            /*let x=[]
-            let n=result.length
-            for(let i=0;i<n;i++){
-            let vals=JSON.parse(JSON.stringify(result))[i]
-            let xn=Object.values(vals)
-            let state={
-                id:i+1,
-                content:xn[0]                
-            }
-            x.push(state)
-            }
-            
-            res.send(x)
-                res.end()
-           */
-          console.log(x)
-          res.send(x)
-          res.end()
-              
+            let name = JSON.stringify(result[0].name);
+            let rno= JSON.stringify(result[0].rno);
+            let sec= JSON.stringify(result[0].sec);
+            let pref=JSON.stringify(result[0].pref);
+            let elective=JSON.stringify(result[0].elective);
+           
+            const details = res.json(
+                {
+                name:[name.replace(/^"(.*)"$/, '$1')],
+                rno:[rno.replace(/^"(.*)"$/, '$1')],
+                sec:[sec.replace(/^"(.*)"$/, '$1')],
+                pref:[pref.replace(/^"(.*)"$/, '$1')],
+                elective:[elective.replace(/^"(.*)"$/, '$1')],
+                })
+               res.send(`${details}`)
            
        });
     }  

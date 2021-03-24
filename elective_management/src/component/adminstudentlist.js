@@ -7,17 +7,23 @@ export default class adminstudentlist extends Component {
 
         super();
    
-        this.state = {
-            arr:[]
-    }
+        
     axios.get('http://localhost:3001/api/getlist1').then(response=>{
-
-    const xy =response.data
-    alert(xy)
     
     
+    var details = response.data;
+    let element = <ul>
+  <li>name:{details.name}</li>    
+  <li>rno: {details.rno} </li>
+  <li>section: {details.sec} </li>
+  <li>preference: {details.pref} </li>
+  <li>elective: {details.elective} </li>
+  </ul>
+  
+  ReactDOM.render(element, document.getElementById('data'));
+    
 
-    this.setState({arr:xy})
+   
     
     
     })
@@ -37,20 +43,11 @@ export default class adminstudentlist extends Component {
                 <br/>
             
             <br></br>
-            {this.state.arr.map((item,index) => (
-                <table style="width:100%">
-                <tr>
-                <th>{item.name}</th>
-                <th>{item.rno}</th>
-                <th>{item.sec}</th>
-                <th>{item.pref}</th>
-                <th>{item.elective}</th>
-                </tr>
-                </table>
-            ))}
+            
+           
             <div id="data"></div>
             </div>
         );
         
-    }
-}
+    
+}}
