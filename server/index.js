@@ -205,6 +205,66 @@ app.post("/api/studentformcol",(req,res)=>{
      
     
 });
+app.get("/api/getlist1",(req,res)=>{
+        
+    db.getConnection(function(err) {    
+        
+        db.query("SELECT * FROM student_elective ", function (err,result) {
+
+           
+            if(err) 
+            {
+                res.send("error")
+               
+                res.end()
+                return next(err)
+            }
+            let x=[]
+            let xn = []
+            let n=result.length
+            for(let i=0;i<n;i++){
+            let vals=JSON.parse(JSON.stringify(result[i]))
+            xn=Object.values(vals)
+            let state=JSON.parse(JSON.stringify({
+            name:xn[0],
+            rno:xn[1],
+            sec:xn[2],
+            pref:xn[3],
+            elective:xn[4]
+            
+            }))
+            console.log("vals"+ vals)
+            console.log("xn"+ xn)
+            console.log("state"+ state)
+            x.push(state)
+}
+            /*let x=[]
+            let n=result.length
+            for(let i=0;i<n;i++){
+            let vals=JSON.parse(JSON.stringify(result))[i]
+            let xn=Object.values(vals)
+            let state={
+                id:i+1,
+                content:xn[0]                
+            }
+            x.push(state)
+            }
+            
+            res.send(x)
+                res.end()
+           */
+          console.log(x)
+          res.send(x)
+          res.end()
+              
+           
+       });
+    }  
+      );
+     
+    
+})
+
 app.listen(3001,()=>{
     console.log('running on port 3001');
 })

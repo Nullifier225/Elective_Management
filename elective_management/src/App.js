@@ -13,6 +13,7 @@ import ChangeForm from './component/changeform';
 import StudentForm from'./component/studentsform';
 import TD from'./component/departmentdashboard';
 import AD from './component/admindashboard';
+import adminstudentlist from './component/adminstudentlist'
 //import App22 from './component/os'
 /*function App() {
   const adminUser={
@@ -62,6 +63,7 @@ class App extends Component {
             <Route path="/changeform" component={ChangeForm} exact/>
             <Route path="/deptdashboard" component={TD} exact/>
             <Route path="/admindashboard" component={AD} exact/>
+            <Route path="/adminstudentlist" component={adminstudentlist} exact/>
             
 
             </Switch>

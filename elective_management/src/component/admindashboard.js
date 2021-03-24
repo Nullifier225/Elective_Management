@@ -10,11 +10,15 @@ export default class AD  extends Component{
         event.preventDefault();
         window.location.replace('/');
     };
+    clickbtn1 = (event) => {
+        event.preventDefault();
+        window.location.replace('/adminstudentlist');
+    };
     render(){
     
     return (
-    <div>
-        <div class="col-md-11 offset-md-11">
+    <div >
+        <div class="float-right">
         <button type="button" class="btn btn-danger" onClick={this.clickBtn}>LOGOUT</button>
         </div>
     <div class="header2">
@@ -24,10 +28,10 @@ export default class AD  extends Component{
         <br></br>
         </div> 
        
-   <div class="contents">
+   <div class="contents"  > 
     <form>
         
-    <button type="submit"  className="btn btn-info btn-lg btn-block ">View applied students list</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block " onClick={this.clickbtn1} >View applied students list</button>
     <br></br>
     <button type="submit"  className="btn btn-info btn-lg btn-block">View elective change students</button>
         <br></br>      
