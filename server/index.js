@@ -219,21 +219,19 @@ app.get("/api/getlist1",(req,res)=>{
                 res.end()
                 return next(err)
             }
-            let name = JSON.stringify(result[0].name);
-            let rno= JSON.stringify(result[0].rno);
-            let sec= JSON.stringify(result[0].sec);
-            let pref=JSON.stringify(result[0].pref);
-            let elective=JSON.stringify(result[0].elective);
-           
-            const details = res.json(
-                {
-                name:[name.replace(/^"(.*)"$/, '$1')],
-                rno:[rno.replace(/^"(.*)"$/, '$1')],
-                sec:[sec.replace(/^"(.*)"$/, '$1')],
-                pref:[pref.replace(/^"(.*)"$/, '$1')],
-                elective:[elective.replace(/^"(.*)"$/, '$1')],
-                })
-               res.send(`${details}`)
+            let x=[]
+            let n=result.length
+            for(let i=0;i<n;i++){
+            let vals=JSON.parse(JSON.stringify(result))[i]
+            let xn=Object.values(vals)
+            let state={
+                id:i+1,
+                content:xn}
+            x.push(state)
+            }
+        
+            res.send(JSON.stringify(x))
+            res.end()
            
        });
     }  
