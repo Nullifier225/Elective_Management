@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import logo from './index.png';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
+import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
 export default class adminstudentlist extends Component {
+   clickBtn1 = (event) => {
+    event.preventDefault();
+    window.location.replace('/admindashboard');
+    }
     constructor(){
 
         super();
@@ -10,20 +15,12 @@ export default class adminstudentlist extends Component {
         
     axios.get('http://localhost:3001/api/getlist1').then(response=>{
     
-
+    
     var details = response.data;
     var element;
-    alert(details)
-    var i=0
-    let x1=JSON.parse(JSON.stringify(details[i].content[0]))
-    let x2=JSON.parse(JSON.stringify(details[i].content[1]))
-    let x3=JSON.parse(JSON.stringify(details[i].content[2]))
-    let x4=JSON.parse(JSON.stringify(details[i].content[3]))
-    let x5=JSON.parse(JSON.stringify(details[i].content[4]))
-    alert(x1)
-      
-    element=<table>
-    <tr>
+    
+    element=<table class="table table-bordered ">
+    <tr class="table-primary">
     <th>Name</th>
     <th>Roll.no</th>
     <th>section</th>
@@ -42,17 +39,9 @@ export default class adminstudentlist extends Component {
 
     ))}
     </table>
-
-  
-
-
-  /*element=<div class="table-data">
-  
     
-    */
-  //alert(JSON.stringify(element))
   ReactDOM.render(element, document.getElementById('data'));
-
+    
 
    
     
@@ -62,6 +51,7 @@ export default class adminstudentlist extends Component {
 
 
   }
+  
     
     
     render() {
@@ -69,13 +59,15 @@ export default class adminstudentlist extends Component {
         return (
             
             <div class="out">
+              <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+
                 <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
             
             <br></br>
             
-                       
+           
             <div id="data"></div>
             </div>
         );
