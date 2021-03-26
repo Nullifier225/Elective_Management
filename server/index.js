@@ -240,6 +240,41 @@ app.get("/api/getlist1",(req,res)=>{
     
 })
 
+app.get("/api/getlist2",(req,res)=>{
+        
+    db.getConnection(function(err) {    
+        
+        db.query("SELECT * FROM electivechange ", function (err,result) {
+
+           
+            if(err) 
+            {
+                res.send("error")
+               
+                res.end()
+                return next(err)
+            }
+            let x=[]
+            let n=result.length
+            for(let i=0;i<n;i++){
+            let vals=JSON.parse(JSON.stringify(result))[i]
+            let xn=Object.values(vals)
+            let state={
+                id:i+1,
+                content:xn}
+            x.push(state)
+            }
+        
+            res.send(JSON.stringify(x))
+            res.end()
+           
+       });
+    }  
+      );
+     
+    
+})
+
 app.listen(3001,()=>{
     console.log('running on port 3001');
 })

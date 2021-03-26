@@ -14,6 +14,10 @@ export default class AD  extends Component{
         event.preventDefault();
         window.location.replace('/adminstudentlist');
     };
+    clickbtn2 = (event) => {
+        event.preventDefault();
+        window.location.replace('/viewelectivechange');
+    };
     render(){
     
     return (
@@ -33,7 +37,7 @@ export default class AD  extends Component{
         
     <button type="submit"  className="btn btn-info btn-lg btn-block " onClick={this.clickbtn1} >View applied students list</button>
     <br></br>
-    <button type="submit"  className="btn btn-info btn-lg btn-block">View elective change students</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" onClick={this.clickbtn2}>View elective change students</button>
         <br></br>      
     <button type="submit"  className="btn btn-info btn-lg btn-block">View faculties for electives</button>
               
