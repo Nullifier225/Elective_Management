@@ -15,6 +15,8 @@ import TD from'./component/departmentdashboard';
 import AD from './component/admindashboard';
 import adminstudentlist from './component/adminstudentlist';
 import viewelectivechange from './component/viewelectivechange';
+import Feedbackform from './component/feedbackform';
+
 //import App22 from './component/os'
 /*function App() {
   const adminUser={
@@ -66,6 +68,8 @@ class App extends Component {
             <Route path="/admindashboard" component={AD} exact/>
             <Route path="/adminstudentlist" component={adminstudentlist} exact/>
             <Route path="/viewelectivechange" component={viewelectivechange} exact/>
+            <Route path="/feedbackforms" component={Feedbackform} exact/>
+
             
 
             </Switch>

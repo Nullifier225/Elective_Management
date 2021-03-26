@@ -20,6 +20,10 @@ export default class LoginForm extends Component {
         event.preventDefault();
         window.location.replace('/changeform');
     }
+    clickBtn3 = (event) => {
+        event.preventDefault();
+        window.location.replace('/feedbackforms');
+    }
     render(){
 
         
@@ -48,7 +52,7 @@ export default class LoginForm extends Component {
     <br></br>
     <button type="submit"  className="btn btn-info btn-lg btn-block"onClick={this.clickBtn2}>Change</button>
         <br></br>      
-    <button type="submit"  className="btn btn-info btn-lg btn-block">Feedback</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" onClick={this.clickBtn3}>Feedback</button>
     <br></br>      
     <button type="submit"  className="btn btn-info btn-lg btn-block">View My Elective</button>
                  
