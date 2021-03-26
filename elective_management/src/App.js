@@ -6,7 +6,7 @@ import './App.css';
 import { BrowserRouter, Route,Switch } from 'react-router-dom';    
 import './App.css';
 //import React,{useState} from 'react';
-import Login from './component/signuptry1';
+import Login from './component/login';
 import LoginForm from './component/Studentdashboard';
 import App1 from './component/departmentform';
 import ChangeForm from './component/changeform';
