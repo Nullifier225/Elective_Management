@@ -5,7 +5,6 @@ import logo from './index.png';
 import axios from 'axios';
 import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
 
-// a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
@@ -17,15 +16,12 @@ const reorder = (list, startIndex, endIndex) => {
 const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
   userSelect: "none",
   padding: grid * 2,
   margin: `0 0 ${grid}px 0`,
 
-  // change background colour if dragging
   background: isDragging ? "lightgreen" : "grey",
 
-  // styles we need to apply on draggables
   ...draggableStyle
 });
 
@@ -77,7 +73,6 @@ export default class App22 extends Component {
   }
 
   onDragEnd(result) {
-    // dropped outside the list
     if (!result.destination) {
       return;
     }
@@ -93,9 +88,7 @@ export default class App22 extends Component {
       
     });
   }
-  
-  // Normally you would want to split things out into separate components.
-  // But in this example everything is just done in one place for simplicity
+ 
   
   render() {
     
@@ -182,7 +175,6 @@ export default class App22 extends Component {
 }
 function submit_studentform(e,items){
   e.preventDefault();
-  //let a=inputList;
   let request =  {
     name:document.getElementById('name').value,
     rno:document.getElementById('rno').value,
@@ -199,17 +191,14 @@ function submit_studentform(e,items){
     if(details=='valid')
     {
       
-       // window.location.replace('/admindashboard');
       alert("response saved")
       window.location.replace('/loginform');
      
-     //alert("correct")
       
     }
    
     if(details!='valid')
     {
-     // alert("not valid")
       console.log("error");
     }
   })

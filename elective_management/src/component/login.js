@@ -19,18 +19,7 @@ export default class Login extends Component {
     
   clickBtn = (event) => {
     event.preventDefault();
-    /*
-    else{ 
-        if(password=="login"){
-            window.location.replace('/loginform');
-        }
-    const user = {
-      email,
-      password,
-    };
-    alert("It is a valid email-id");
-    console.log(user);
-  }*/
+    
   };
     render() {
 
@@ -100,15 +89,12 @@ export default class Login extends Component {
                 }
                 
                
-               //alert("correct")
                 
               }
              
               if(details!='valid')
               {
-               // alert("not valid")
                 var element
-                //console.log("incorrect pwd")
                 
                 element = <p>Email id or password incorrect</p>
                 ReactDOM.render(element, document.getElementById('data'));

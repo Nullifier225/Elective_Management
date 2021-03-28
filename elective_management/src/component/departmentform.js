@@ -15,7 +15,6 @@ function App1() {
         
     const [inputList, setInputList] = useState([{ department:"",electivename: "", max: "",min: "", desc:"",cm:"" }]); 
 
-  // handle input change
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
@@ -23,14 +22,12 @@ function App1() {
     setInputList(list);
   };
  
-  // handle click event of the Remove button
   const handleRemoveClick = index => {
     const list = [...inputList];
     list.splice(index, 1);
     setInputList(list);
   };
  
-  // handle click event of the Add button
   const handleAddClick = () => {
     setInputList([...inputList, { department:"",electivename: "", max: "",min: "", desc:"",cm:""}]);
   };
@@ -107,7 +104,6 @@ function App1() {
     e.preventDefault();
     let a=inputList;
     let request =  {
-      //elective:document.getElementById('elective_name').value
       array1:a
        
        
@@ -122,17 +118,14 @@ function App1() {
       if(details=='valid')
       {
         
-         // window.location.replace('/admindashboard');
         alert("response saved")
         window.location.replace('/deptdashboard');
        
-       //alert("correct")
         
       }
      
       if(details!='valid')
       {
-       // alert("not valid")
         console.log("error");
       }
     })

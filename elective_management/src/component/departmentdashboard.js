@@ -1,8 +1,5 @@
 import React ,{Component} from 'react';
 import Card from "react-bootstrap/Card";
-// import ReactDOM from "react-dom";
-// import Col from 'react-bootstrap/Col'
-// import Row from 'react-bootstrap/Row'
 
 
 export default class TD  extends Component{

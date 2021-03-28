@@ -3,7 +3,6 @@ import logo from './index.png';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
-//import LoginForm from './Signup.js'
 export default class ChangeForm extends Component {
     constructor(){
         super();
