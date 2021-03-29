@@ -30,7 +30,7 @@ export default class Login extends Component {
 
             
             <div class="out">
-                <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
+                <img src={logo} id="Amrita" className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
             <form id="myForm" onSubmit={(e)=>submit_signup(e)}>
@@ -50,7 +50,7 @@ export default class Login extends Component {
 
                 
 
-                <button type="submit" className="btn btn-info btn-lg btn-block">Sign in</button>
+                <button type="submit" id="Button"className="btn btn-info btn-lg btn-block" value="Sign in">Sign in</button>
               
                   
                   
