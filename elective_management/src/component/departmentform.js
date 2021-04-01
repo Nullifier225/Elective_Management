@@ -13,7 +13,7 @@ function App1() {
           window.location.replace('/deptdashboard');
           }
         
-    const [inputList, setInputList] = useState([{ department:"",electivename: "", max: "",min: "", desc:"",cm:"" }]); 
+    const [inputList, setInputList] = useState([{ department:"",electivename: "",coursecode:"",electiveyear:"", max: "",min: "", desc:"",cm:"" }]); 
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -29,7 +29,7 @@ function App1() {
   };
  
   const handleAddClick = () => {
-    setInputList([...inputList, { department:"",electivename: "", max: "",min: "", desc:"",cm:""}]);
+    setInputList([...inputList, { department:"",electivename: "",coursecode:"",electiveyear:"", max: "",min: "", desc:"",cm:""}]);
   };
  
   return (
@@ -54,6 +54,16 @@ function App1() {
             <div className="form-group">
                 <label>Elective name</label>
                 <input type="text" name="electivename"  required id="elective_name" value={x.electivename} onChange={e => handleInputChange(e, i)} className="form-control" placeholder="Enter elective name" />
+            </div>
+
+            <div className="form-group">
+                <label>Elective course code</label>
+                <input type="text" name="coursecode"  required id="coursecode" value={x.coursecode} onChange={e => handleInputChange(e, i)} className="form-control" placeholder="Enter elective course code" />
+            </div>
+
+            <div className="form-group">
+                <label>Elective year</label>
+                <input type="number" min="1" max="4" name="electiveyear"  required id="electiveyear" value={x.electiveyear} onChange={e => handleInputChange(e, i)} className="form-control" placeholder="Enter elective year" />
             </div>
 
             <div className="form-group">

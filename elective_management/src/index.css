@@ -159,13 +159,13 @@
   }
 
 
-  .starRating:not(old) > input{
+  .starRating:not(.old) > input{
     margin-right : -100%;
     opacity      : 0;
   }
   
  
-  .starRating:not(old){
+  .starRating:not(.old){
     display        : inline-block;
     width          : 7.5em;
     height         : 1.5em;
@@ -173,7 +173,7 @@
     vertical-align : bottom;
   }
   
-  .starRating:not(old) > label{
+  .starRating:not(.old) > label{
     display         : block;
     float           : right;
     position        : relative;
@@ -183,7 +183,7 @@
   
    
   
-  .starRating:not(old) > label:before{
+  .starRating:not(.old) > label:before{
     content         : '';
     display         : block;
     width           : 1.5em;
@@ -195,8 +195,8 @@
   }
   
 
-  .starRating:not(old) > label:hover:before,
-  .starRating:not(old) > label:hover ~ label:before,
+  .starRating:not(.old) > label:hover:before,
+  .starRating:not(.old) > label:hover ~ label:before,
   .starRating:not(:hover) > :checked ~ label:before{
     opacity : 1;
   }

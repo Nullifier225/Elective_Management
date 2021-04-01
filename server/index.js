@@ -138,7 +138,7 @@ app.post("/api/deptformcol",(req,res)=>{
         
         for(let i =0;i<n;i++){
             let vals=Object.values(elective[i]);
-        db.query("insert into dept_elective values(?,?,?,?,?,?)",vals, function (err,result) {
+        db.query("insert into dept_elective(department,electivename,coursecode,courseyear,max,min,descr,cm) values(?,?,?,?,?,?,?,?)",vals, function (err,result) {
            
             if(err) 
             {
