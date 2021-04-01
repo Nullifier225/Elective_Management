@@ -9,6 +9,16 @@
     font-family: sans-serif;
     
   }
+  .out1{
+    height:100%;
+    max-width:100%;
+    overflow: hidden;
+  }
+  .img1{
+    filter:blur(2.5px);
+    height:750px;
+    width:1550px;
+  }
 
   .button {
     display: inline-block;

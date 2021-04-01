@@ -48,7 +48,7 @@ function App1() {
                 <label>Department</label>
                 <br/>
                 <select required name="department" value={x.department}  onChange={e => handleInputChange(e, i)}><option value=""> -- select an option -- </option><option value="CSE">CSE</option>
-<option value="ECE">ECE</option></select>
+<option value="ECE">ECE</option><option value="EEE">EEE</option><option value="MEE">MEE</option><option value="CIE">CIE</option><option value="AEE">AEE</option></select>
             </div>
              
             <div className="form-group">

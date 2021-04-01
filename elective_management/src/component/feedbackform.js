@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Rating } from 'material-ui-rating'
 import { IconButton } from '@material-ui/core';
 import ReactDOM from 'react-dom';
+import { ArrowLeftCircleFill } from 'react-bootstrap-icons'; 
 export default class Feedbackform extends Component {
     
     
@@ -11,14 +12,23 @@ export default class Feedbackform extends Component {
     event.preventDefault();
     
   };
+  clickBtn1 = (event) => {
+    event.preventDefault();
+    window.location.replace('/loginform');
+  }
+ 
   constructor(){
       super()
   }
     render() {
 
         return (
+            <div class="out0">
+                        <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+
             
             <div class="out">
+                
                 <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
@@ -74,6 +84,7 @@ export default class Feedbackform extends Component {
             <br></br>
             
             
+            </div>
             </div>
         );
     }

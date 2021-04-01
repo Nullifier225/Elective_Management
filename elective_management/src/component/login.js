@@ -28,7 +28,9 @@ export default class Login extends Component {
 
             
 
-            
+            <div class="out1">
+              <img class="img1"src="https://image3.mouthshut.com/images/Restaurant/Photo/-73020_62102.jpg"></img>
+
             <div class="out">
                 <img src={logo} id="Amrita" className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
@@ -59,6 +61,7 @@ export default class Login extends Component {
             <br></br>
             
             <div id="data"></div>
+            </div>
             </div>
         );
         function submit_signup(e){
