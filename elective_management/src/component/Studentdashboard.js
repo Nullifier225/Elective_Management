@@ -1,8 +1,10 @@
 import React,{ Component }  from 'react';
+import axios from 'axios';
 
 export default class LoginForm extends Component {
     clickBtn = (event) => {
         event.preventDefault();
+        axios.post('http://localhost:3001/api/logout');
         window.location.replace('/');
     };
     clickBtn1 = (event) => {

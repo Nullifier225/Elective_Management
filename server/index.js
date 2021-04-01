@@ -20,8 +20,10 @@ const db = mysql.createPool({
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
+var tempid = ""
 app.post("/api/signin",(req,res)=>{
     //console.log("1")
+    tempid = req.body.email; 
     const emailid = req.body.email;
     const password=req.body.password;
      
@@ -78,6 +80,12 @@ app.post("/api/signin",(req,res)=>{
         
     })
     app.get("/api/getele",(req,res)=>{
+        const db = mysql.createPool({
+            host:"localhost",
+            user:"root",
+            password:"1234",
+            database:"electivedb"
+        });
         
         db.getConnection(function(err) {
         
@@ -154,6 +162,8 @@ app.post("/api/deptformcol",(req,res)=>{
            
        });
     }  
+
+
       });
      
     
@@ -164,14 +174,14 @@ app.post("/api/deptformcol",(req,res)=>{
 
 })
 
-});
-
-
 app.post("/api/studentformcol",(req,res)=>{
     //console.log("1")
     //const  array= req.body.array1;
     const name=req.body.name;
-    const rno=req.body.rno;
+    var temp = "";
+    temp = tempid;
+    const rno=temp.slice(0,16);
+    console.log(tempid);
     const sec=req.body.sec;
     const pref=req.body.pref;
     console.log("array element",pref);
@@ -205,7 +215,20 @@ app.post("/api/studentformcol",(req,res)=>{
      
     
 });
+
+});
+
+
+
+
+
 app.get("/api/getlist1",(req,res)=>{
+    const db = mysql.createPool({
+        host:"localhost",
+        user:"root",
+        password:"1234",
+        database:"electivedb"
+    });
         
     db.getConnection(function(err) {    
         
@@ -241,6 +264,12 @@ app.get("/api/getlist1",(req,res)=>{
 })
 
 app.get("/api/getlist2",(req,res)=>{
+    const db = mysql.createPool({
+        host:"localhost",
+        user:"root",
+        password:"1234",
+        database:"electivedb"
+    });
         
     db.getConnection(function(err) {    
         
@@ -274,6 +303,10 @@ app.get("/api/getlist2",(req,res)=>{
      
     
 })
+
+app.post('/api/logout',()=>{
+    tempid = ""
+});
 
 app.listen(3001,()=>{
     console.log('running on port 3001');

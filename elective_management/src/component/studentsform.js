@@ -113,11 +113,6 @@ export default class App22 extends Component {
 </div>
 
 <div className="form-group">
-  <label>Roll Number</label>
-  <input type="text" id="rno" name="rollnumber" onChange={this.handleChange("rollnumber")} className="form-control" placeholder="Enter your roll number" />
-</div>
-
-<div className="form-group">
   <label>Section</label>
   <input type="text" id="sec" name="section" onChange={this.handleChange("section")} className="form-control" placeholder="Enter your section" />
 </div>
@@ -177,7 +172,6 @@ function submit_studentform(e,items){
   e.preventDefault();
   let request =  {
     name:document.getElementById('name').value,
-    rno:document.getElementById('rno').value,
     sec:document.getElementById('sec').value,
     pref:items
       

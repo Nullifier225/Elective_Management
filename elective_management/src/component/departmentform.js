@@ -105,7 +105,7 @@ function App1() {
         
         );
       })}
-      <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
+      {/* <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div> */}
     </div>
   );
 
