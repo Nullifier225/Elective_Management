@@ -88,13 +88,11 @@ app.post("/api/signin",(req,res)=>{
         });
         
         db.getConnection(function(err) {
-        
-        
+            var x1=tempid.split("@")[0]
+            var depart=x1.split(".")[2].slice(2,5).toUpperCase()
+            var yr=21-parseInt(x1.split(".")[2].slice(5,7))
             
-            
-            
-            
-            db.query("SELECT electivename FROM dept_elective ", function (err,result) {
+            db.query("SELECT electivename FROM dept_elective WHERE department=? AND courseyear=?", [depart,yr],function (err,result) {
                
                 if(err) 
                 {
@@ -232,7 +230,7 @@ app.get("/api/getlist1",(req,res)=>{
         
     db.getConnection(function(err) {    
         
-        db.query("SELECT * FROM student_elective ", function (err,result) {
+        db.query("SELECT * FROM student_elective ",function (err,result) {
 
            
             if(err) 
