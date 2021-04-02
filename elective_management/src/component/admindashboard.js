@@ -19,7 +19,7 @@ export default class AD  extends Component{
     return (
     <div >
         <div class="float-right">
-        <button type="button" class="btn btn-danger" onClick={this.clickBtn}>LOGOUT</button>
+        <button type="button" class="btn btn-danger" id = "button4" onClick={this.clickBtn}>LOGOUT</button>
         </div>
     <div class="header2">
         <h1 className="text-center" class="header2" >Amrita University Elective Management Portal -Admin</h1>
@@ -31,11 +31,11 @@ export default class AD  extends Component{
    <div class="contents"  > 
     <form>
         
-    <button type="submit"  className="btn btn-info btn-lg btn-block " onClick={this.clickbtn1} >View applied students list</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block " id = "button1"onClick={this.clickbtn1} >View applied students list</button>
     <br></br>
-    <button type="submit"  className="btn btn-info btn-lg btn-block" onClick={this.clickbtn2}>View elective change students</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id = "button2" onClick={this.clickbtn2}>View elective change students</button>
         <br></br>      
-    <button type="submit"  className="btn btn-info btn-lg btn-block">View faculties for electives</button>
+    <button type="submit" id = "button3"  className="btn btn-info btn-lg btn-block">View faculties for electives</button>
               
                  
                   
