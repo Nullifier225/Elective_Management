@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Studentdashboard from './component/Studentdashboard';
-    describe('Student Dashboard component tests', ()=> {
-        const wrapper = shallow(<Studentdashboard />);
+import TD from './component/departmentdashboard';
+    describe('Department Dashboard component tests', ()=> {
+        const wrapper = shallow(<TD />);
 
         it('should have a btn component', ()=> {
 
@@ -11,17 +11,16 @@ import Studentdashboard from './component/Studentdashboard';
 
 
             //Button should have matching text
-            expect(JSON.parse(JSON.stringify(wrapper.find('button').text()))).toEqual("Apply");
+            expect(JSON.parse(JSON.stringify(wrapper.find('button#Button1').text()))).toEqual("Provide list");
         });
 
         it('should have a btn component', ()=> {
-
             //There should be only one button
             expect(wrapper.find('button#Button2')).toHaveLength(1);
 
 
             //Button should have matching text
-            expect(JSON.parse(JSON.stringify(wrapper.find('button').text()))).toEqual("Change");
+            expect(JSON.parse(JSON.stringify(wrapper.find('button#Button2').text()))).toEqual("View final student list");
         });
 
         it('should have a btn component', ()=> {
@@ -31,18 +30,9 @@ import Studentdashboard from './component/Studentdashboard';
 
 
             //Button should have matching text
-            expect(JSON.parse(JSON.stringify(wrapper.find('button').text()))).toEqual("Feedback");
+            expect(JSON.parse(JSON.stringify(wrapper.find('button#Button3').text()))).toEqual("Feedback");
         });
 
-        it('should have a btn component', ()=> {
-
-            //There should be only one button
-            expect(wrapper.find('button#Button4')).toHaveLength(1);
-
-
-            //Button should have matching text
-            expect(JSON.parse(JSON.stringify(wrapper.find('button').text()))).toEqual("View Elective");
-        });
 
         it('should have a btn component', ()=> {
 
@@ -51,7 +41,7 @@ import Studentdashboard from './component/Studentdashboard';
 
 
             //Button should have matching text
-            expect(JSON.parse(JSON.stringify(wrapper.find('button').text()))).toEqual("LOGOUT");
+            expect(JSON.parse(JSON.stringify(wrapper.find('button#Button0').text()))).toEqual("LOGOUT");
         });
 
     });

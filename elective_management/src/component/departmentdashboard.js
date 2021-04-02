@@ -16,7 +16,7 @@ export default class TD  extends Component{
     return (
     <div>
         <div class="col-md-11 offset-md-11">
-        <button type="button" class="btn btn-danger" onClick={this.clickBtn}>LOGOUT</button>
+        <button type="button" class="btn btn-danger" id ="Button0" onClick={this.clickBtn}>LOGOUT</button>
         </div>
     <div class="header2">
         <h1 className="text-center" class="header2" >Amrita University Elective Management Portal -Department</h1>
@@ -28,11 +28,11 @@ export default class TD  extends Component{
    <div class="contents">
     <form>
         
-    <button type="submit"  className="btn btn-info btn-lg btn-block "onClick={this.clickBtn1}>Provide list</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block " id="Button1" onClick={this.clickBtn1}>Provide list</button>
     <br></br>
-    <button type="submit"  className="btn btn-info btn-lg btn-block">View final student list</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id="Button2" >View final student list</button>
         <br></br>      
-    <button type="submit"  className="btn btn-info btn-lg btn-block">Feedback</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id="Button3" >Feedback</button>
               
                  
                   
