@@ -97,7 +97,7 @@ export default class App22 extends Component {
         <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
 
 
-<div class="out">
+<div class="out4">
 
 <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
 <br/>
@@ -119,19 +119,21 @@ export default class App22 extends Component {
 
 
 
-<div className="form-group">
+<div className = 'out3'>
+  <div className= "form-group">
   <label>Choice</label>
+  <div>
   <DragDropContext onDragEnd={this.onDragEnd}>
     <Droppable droppableId="droppable">
     {(provided, snapshot) => (
-    <div
+    <div 
     {...provided.droppableProps}
     ref={provided.innerRef}
     >
     {this.state.items.map((item,index) => (
       <Draggable key={item.id} draggableId={item.content} index={index}>
       {(provided, snapshot) => (
-      <div
+      <div 
       ref={provided.innerRef}
       {...provided.draggableProps}
       {...provided.dragHandleProps}
@@ -150,14 +152,15 @@ export default class App22 extends Component {
   )}
   </Droppable>
   </DragDropContext>
-</div>
 
+</div>
+</div>
 
 
 <button type="submit" className="btn btn-info btn-lg btn-block">Submit</button>
 
 
-
+</div>
 </form>
 </div>
 </div>

@@ -4,9 +4,9 @@
   
   body {
     min-height: 100vh;
-    
     font-weight: 400;
     font-family: sans-serif;
+    background-image: url("https://image3.mouthshut.com/images/Restaurant/Photo/-73020_62102.jpg");
     
   }
   .out1{
@@ -141,6 +141,38 @@
     
   }
 
+  .out3{
+    position:absolute;
+    background-color: white;
+    
+  width:600px;
+  right:30%;
+  left:0%;
+  top:85%;
+  border-color: black;
+  padding-left: 20px;
+  padding-right:20px;
+  padding-top: 20px;
+  padding-bottom:20px;
+  }
+
+  .out4{
+    position:absolute;
+      background-color: white;
+      
+    height:600px;
+    width:600px;
+    right:30%;
+    left:30%;
+    top:10%;
+   
+    padding-left: 60px;
+    padding-right:50px;
+    padding-top: 50px;
+    padding-bottom:50px;
+    border-color: black;
+  } 
+
   .heading1{
       font-size: 40px;
       font-weight: bold;
@@ -160,6 +192,13 @@
   .header2{
     position: relative;
     left:120px;
+    width:900px;
+    top:20px;
+  }
+
+  .header3{
+    position: relative;
+    left:-50px;
     width:900px;
     top:20px;
   }

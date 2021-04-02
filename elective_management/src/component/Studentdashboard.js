@@ -1,4 +1,5 @@
 import React,{ Component }  from 'react';
+import logo from './index.png';
 import axios from 'axios';
 
 export default class LoginForm extends Component {
@@ -34,14 +35,16 @@ export default class LoginForm extends Component {
         <button type="submit" class="btn btn-danger" id = "Button0" onClick={this.clickBtn} >LOGOUT</button>
          
         </div>
-    <div class="header2">
-        <h1 className="text-center" class="header2" >Amrita University Elective Management Portal</h1>
+    <div className="out4">
+    <div >
+        <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
+        <h3 class="header3" >Amrita University Elective Management Portal</h3>
         <br></br>
         <br></br>
         <br></br>
         </div> 
        
-   <div class="contents">
+   <div >
     <form>
         
     <button type="submit"  className="btn btn-info btn-lg btn-block " id ="Button1" onClick={this.clickBtn1}>Apply</button>
@@ -56,7 +59,7 @@ export default class LoginForm extends Component {
     
     </form>
     
-     
+    </div>
     </div>
     </div>
     )
