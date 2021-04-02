@@ -31,7 +31,7 @@ export default class LoginForm extends Component {
         
     <div>
         <div class="float-right">
-        <button type="submit" class="btn btn-danger" onClick={this.clickBtn} >LOGOUT</button>
+        <button type="submit" class="btn btn-danger" id = "Button0" onClick={this.clickBtn} >LOGOUT</button>
          
         </div>
     <div class="header2">
@@ -44,13 +44,13 @@ export default class LoginForm extends Component {
    <div class="contents">
     <form>
         
-    <button type="submit"  className="btn btn-info btn-lg btn-block "onClick={this.clickBtn1}>Apply</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block " id ="Button1" onClick={this.clickBtn1}>Apply</button>
     <br></br>
-    <button type="submit"  className="btn btn-info btn-lg btn-block"onClick={this.clickBtn2}>Change</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button2" onClick={this.clickBtn2}>Change</button>
         <br></br>      
-    <button type="submit"  className="btn btn-info btn-lg btn-block" onClick={this.clickBtn3}>Feedback</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button3" onClick={this.clickBtn3}>Feedback</button>
     <br></br>      
-    <button type="submit"  className="btn btn-info btn-lg btn-block">View My Elective</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button4" >View My Elective</button>
                  
                   
     
