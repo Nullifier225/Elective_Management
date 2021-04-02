@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import AD from './component/admindashboard';
-    describe('Department Dashboard component tests', ()=> {
+    describe('Admin Dashboard component tests', ()=> {
         const wrapper = shallow(<AD/>);
-
+        
         it('should have a btn component', ()=> {
 
             //There should be only one button

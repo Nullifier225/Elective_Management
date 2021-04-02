@@ -37,9 +37,9 @@ function App1() {
       { inputList.map((x, i) => {
         return (
           <div class="out">
-        <button type="" onClick={clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+        <button id = "back1" type="" onClick={clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
         <form onSubmit={(e)=>submit_deptform(e)} >
-        <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
+        <img src={logo} id = "img1" className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
             <br/>
             <br/>
            <h3 className="text-center font-weight-bold font-size:1.5em" class="heading1">Department Elective List</h3>
@@ -47,10 +47,11 @@ function App1() {
            <div className="form-group">
                 <label>Department</label>
                 <br/>
-                <select required name="department" value={x.department}  onChange={e => handleInputChange(e, i)}><option value=""> -- select an option -- </option><option value="CSE">CSE</option>
+                <select required name="department" value={x.department} id = "select1" onChange={e => handleInputChange(e, i)}><option value=""> -- select an option -- </option><option value="CSE">CSE</option>
 <option value="ECE">ECE</option><option value="EEE">EEE</option><option value="MEE">MEE</option><option value="CIE">CIE</option><option value="AEE">AEE</option></select>
             </div>
-             
+
+            
             <div className="form-group">
                 <label>Elective name</label>
                 <input type="text" name="electivename"  required id="elective_name" value={x.electivename} onChange={e => handleInputChange(e, i)} className="form-control" placeholder="Enter elective name" />
@@ -77,22 +78,22 @@ function App1() {
             </div>
             <div className="form-group">
                 <label>Description</label>
-                <textarea id="desc"   required name="desc"  value={x.desc} onChange={e => handleInputChange(e, i)}rows="4" cols="50"></textarea>
+                <textarea id="desc"   required name="desc"  value={x.desc}  id = "input6" onChange={e => handleInputChange(e, i)}rows="4" cols="50"></textarea>
             </div>
 
             <div className="form-group">
                 <label>Course mentor</label>
-                <input type="text" name="cm"  required value={x.cm} onChange={e => handleInputChange(e, i)}/>
+                <input type="text" name="cm"  required value={x.cm} id = "input7" onChange={e => handleInputChange(e, i)}/>
                 <br/>
                 <br/>
                 <div className="btn-box">
         {inputList.length !== 1 && <button
           className="btn btn-danger mr-1"
           onClick={() => handleRemoveClick(i)}>Remove</button>}
-        {inputList.length - 1 === i && <button className="btn btn-success ml-1 flex " onClick={handleAddClick}>Add</button>}
+        {inputList.length - 1 === i && <button id = "submit1" className="btn btn-success ml-1 flex " onClick={handleAddClick}>Add</button>}
       </div>
       <br/>
-                <button type="submit"  className="btn btn-info mr-0 ml-0 pl-0 pr-0 btn-block">Submit</button>
+                <button type="submit" id = "submit2" className="btn btn-info mr-0 ml-0 pl-0 pr-0 btn-block">Submit</button>
             </div>
             
             
