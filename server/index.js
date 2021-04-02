@@ -125,7 +125,39 @@ app.post("/api/signin",(req,res)=>{
         
     })
     
-     
+    app.get("/api/getname",(req,res)=>{
+        const db = mysql.createPool({
+            host:"localhost",
+            user:"root",
+            password:"1234",
+            database:"electivedb"
+        });
+        
+        db.getConnection(function(err) {
+            var x1=tempid.split("@")[0]
+            console.log(x1)
+            db.query("SELECT name FROM student_details WHERE rno=?", [x1], function (err,result) {
+               
+                if(err) 
+                {
+                    res.send("error")
+                   
+                    res.end()
+                    return next(err)
+                }
+                var x1=(JSON.parse(JSON.stringify(result)))
+                console.log(Object.values(x1)[0].name)
+                res.send(Object.values(x1)[0].name)
+                res.end()
+               
+                  
+               
+           });
+        }  
+          );
+         
+        
+    })     
     
 })
 app.post("/api/deptformcol",(req,res)=>{

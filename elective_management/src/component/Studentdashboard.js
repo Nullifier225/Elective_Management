@@ -1,8 +1,25 @@
 import React,{ Component }  from 'react';
 import logo from './index.png';
+import ReactDOM from 'react-dom'
 import axios from 'axios';
 
 export default class LoginForm extends Component {
+
+    constructor(){
+        super()
+        axios.get('http://localhost:3001/api/getname').then(response=>{
+    
+    
+    var details = response.data;
+    var element;
+    
+    element=<h5 class="float-right mr-50">
+        Welcome, {JSON.parse(JSON.stringify(details))}!
+
+    </h5>
+    ReactDOM.render(element, document.getElementById('data'));
+    }
+    )}
     clickBtn = (event) => {
         event.preventDefault();
         axios.post('http://localhost:3001/api/logout');
@@ -21,6 +38,7 @@ export default class LoginForm extends Component {
         event.preventDefault();
         window.location.replace('/feedbackforms');
     }
+
     render(){
 
         
@@ -29,12 +47,12 @@ export default class LoginForm extends Component {
     
 
     return (
-        
     <div>
         <div class="float-right">
         <button type="submit" class="btn btn-danger" id = "Button0" onClick={this.clickBtn} >LOGOUT</button>
          
         </div>
+        <div id="data"></div>
     <div className="out4">
     <div >
         <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
@@ -65,3 +83,4 @@ export default class LoginForm extends Component {
     )
 }
 }
+
