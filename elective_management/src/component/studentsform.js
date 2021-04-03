@@ -94,7 +94,7 @@ export default class App22 extends Component {
     
     return (
         <div class ="out0">
-        <button type="button" onClick={this.clickBtn1} className="btn" id="back1" ><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+        <button type="button" onClick={this.clickBtn1} className="btn" id="back1" ><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
 
 
 <div class="out4">

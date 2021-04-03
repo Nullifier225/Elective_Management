@@ -16,7 +16,7 @@
   }
   .img1{
     filter:blur(2.5px);
-    height:750px;
+    height:fill;
     width:1550px;
   }
 

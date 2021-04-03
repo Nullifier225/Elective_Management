@@ -36,8 +36,10 @@ function App1() {
     <div className="App1">
       { inputList.map((x, i) => {
         return (
-          <div class="out">
-        <button id = "back1" type="" onClick={clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+          <div>
+          <button id = "back1" type="" onClick={clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+         <div class="out" style={{ height:"auto", width:"auto",top:"0%"}}> 
+        
         <form onSubmit={(e)=>submit_deptform(e)} >
         <img src={logo} id = "img1" className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
             <br/>
@@ -69,20 +71,24 @@ function App1() {
 
             <div className="form-group">
                 <label>Maximum no.of students </label>
+                <br/>
                 <input type="number"  required id="max" name="max"  value={x.max} onChange={e => handleInputChange(e, i)}step="10"></input>
             </div>
 
             <div className="form-group">
                 <label>Minimum no.of students </label>
+                <br/>
                 <input type="number"   required id="min" name="min"  value={x.min} onChange={e => handleInputChange(e, i)} step="5"></input>
             </div>
             <div className="form-group">
                 <label>Description</label>
+                <br/>
                 <textarea id="desc"   required name="desc"  value={x.desc}  id = "input6" onChange={e => handleInputChange(e, i)}rows="4" cols="50"></textarea>
             </div>
 
             <div className="form-group">
                 <label>Course mentor</label>
+                <br/>
                 <input type="text" name="cm"  required value={x.cm} id = "input7" onChange={e => handleInputChange(e, i)}/>
                 <br/>
                 <br/>
@@ -100,7 +106,7 @@ function App1() {
               
         
         </form>
-        
+        </div>
         </div>
          
         

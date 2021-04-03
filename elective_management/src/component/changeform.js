@@ -29,9 +29,9 @@ export default class ChangeForm extends Component {
 
             
             <div class ="out0">
-                                <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+                                <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
  
-            <div class="out">
+            <div class="out" style={{height:"700px" ,width:"auto",top:"5%"}}>
                 <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
@@ -39,8 +39,7 @@ export default class ChangeForm extends Component {
             <form onSubmit={(e)=>submit_signup(e)}>
 
                <h3 className="text-center font-weight-bold font-size:1.5em" class="heading1">Elective Change Form</h3>
-
-
+              
                 <div className="form-group">
                     <label>Current Elective Name</label>
                     <input type="text"  id="en1" name="currentelectivename" className="form-control" placeholder="Enter elective name" required/>

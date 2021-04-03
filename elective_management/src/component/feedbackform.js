@@ -24,12 +24,12 @@ export default class Feedbackform extends Component {
 
         return (
             <div class="out0">
-                        <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+                        <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
 
             
-            <div class="out">
+            <div class="out" style={{height:"1050px" ,width:"auto",top:"5%"}}>
                 
-                <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
+                <img src={logo} className="rounded mx-auto d-block" style={{height:'auto',width:'auto'}}/>
                 <br/>
                 <br/>
             <form id="myForm" >
@@ -68,6 +68,7 @@ export default class Feedbackform extends Component {
 
                 <div className="form-group">
                 <label>Course Feedback</label>
+                <br/>
                 <textarea id="desc"   required name="desc"  rows="5" cols="50"></textarea>
                 </div>
 
