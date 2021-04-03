@@ -5,9 +5,10 @@
   body {
     min-height: 100vh;
     font-weight: 400;
-    font-family: sans-serif;
-    background-image: url("https://image3.mouthshut.com/images/Restaurant/Photo/-73020_62102.jpg");
-    
+    font-family: sans-serif;   
+    background-image: url("./backgroundimage.png");
+    background-repeat: no-repeat;
+    background-size:cover;
   }
   .out1{
     height:100%;

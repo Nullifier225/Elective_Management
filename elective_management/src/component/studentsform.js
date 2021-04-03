@@ -93,10 +93,17 @@ export default class App22 extends Component {
   render() {
     
     return (
-        <div class ="out0">
-        <button type="button" onClick={this.clickBtn1} className="btn" id="back1" ><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+      <div>
+<script type = "text/javascript" >
+  {function preventBack() { window.history.forward(); }  }  
+    
+    setTimeout("preventBack()", 0);  
+    window.onunload = function () { null };  
+</script> 
 
-
+        <div class ="out1">
+           <button type="button" onClick={this.clickBtn1} className="btn" id="back1" ><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+       
 <div class="out4">
 
 <img src={logo} className="rounded mx-auto d-block" id="img1" style={{height:'25%',width:'25%'}}/>
@@ -109,12 +116,12 @@ export default class App22 extends Component {
 
 <div className="form-group">
   <label>Name</label>
-  <input type="text" id="name" name="name" onChange={this.handleChange("name")} className="form-control" placeholder="Enter your name" />
+  <input type="text" id="name" required name="name" onChange={this.handleChange("name")} className="form-control" placeholder="Enter your name" />
 </div>
 
 <div className="form-group">
   <label>Section</label>
-  <input type="text" id="sec" name="section" onChange={this.handleChange("section")} className="form-control" placeholder="Enter your section" />
+  <input type="text" id="sec"  required name="section" onChange={this.handleChange("section")} className="form-control" placeholder="Enter your section" />
 </div>
 
 
@@ -162,6 +169,7 @@ export default class App22 extends Component {
 
 </div>
 </form>
+</div>
 </div>
 </div>
 

@@ -58,9 +58,9 @@ export default class viewelectivechange extends Component {
 
         return (
             
-            <div class="out">
-              <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="royalblue" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
-
+            <div>
+              <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+              <div className="out" style={{height:"auto",width:"auto"}}>
                 <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
@@ -70,6 +70,8 @@ export default class viewelectivechange extends Component {
            
             <div id="data"></div>
             </div>
+            </div>
+
         );
         
     
