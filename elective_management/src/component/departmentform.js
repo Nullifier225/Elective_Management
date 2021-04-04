@@ -33,11 +33,13 @@ function App1() {
   };
  
   return (
+  
     <div className="App1">
+      <div>
+          <button id = "back1" type="" onClick={clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
       { inputList.map((x, i) => {
         return (
-          <div>
-          <button id = "back1" type="" onClick={clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+          
          <div class="out" style={{ height:"auto", width:"auto",top:"0%"}}> 
         
         <form onSubmit={(e)=>submit_deptform(e)} >
@@ -107,11 +109,12 @@ function App1() {
         
         </form>
         </div>
-        </div>
+        
          
         
         );
       })}
+      </div>
       {/* <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div> */}
     </div>
   );
