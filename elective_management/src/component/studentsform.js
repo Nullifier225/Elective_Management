@@ -180,6 +180,8 @@ export default class App22 extends Component {
 
 }
 function submit_studentform(e,items){
+ 
+  
   e.preventDefault();
   let request =  {
     name:document.getElementById('name').value,
@@ -204,6 +206,7 @@ function submit_studentform(e,items){
    
     if(details!='valid')
     {
+      alert("multiple responses are not accepted")
       console.log("error");
     }
   })

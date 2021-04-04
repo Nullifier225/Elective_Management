@@ -43,8 +43,10 @@ import {mount} from 'enzyme';
             wrapper.find('input[type="email"]').simulate('change', {target: {name: 'email', value: 'cb.en.u4cse18042@cb.students.amrita.edu'}});
             expect(wrapper.state('password')).toEqual('login');
             expect(wrapper.state('email')).toEqual('cb.en.u4cse18042@cb.students.amrita.edu');
-            console.log((wrapper.find('form#myForm').simulate('submit')));
-            wrapper.find('form#myForm').simulate('submit')
+            expect(wrapper.find("form").simulate("submit", { preventDefault() {} }))
+
+            //console.log((wrapper.find('form#myForm').simulate('submit')));
+            //wrapper.find('form#myForm').simulate('submit')
             //expect(submit_signup).toHaveBeenCalledTimes(1);
                
             

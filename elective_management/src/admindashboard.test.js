@@ -37,11 +37,11 @@ import AD from './component/admindashboard';
         it('should have a btn component', ()=> {
 
             //There should be only one button
-            expect(wrapper.find('button#button4')).toHaveLength(1);
+            expect(wrapper.find('button#Button0')).toHaveLength(1);
 
 
             //Button should have matching text
-            expect(JSON.parse(JSON.stringify(wrapper.find('button#button4').text()))).toEqual("LOGOUT");
+            expect(JSON.parse(JSON.stringify(wrapper.find('button#Button0').text()))).toEqual("LOGOUT");
         });
 
     });

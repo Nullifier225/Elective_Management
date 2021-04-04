@@ -40,6 +40,15 @@ import App22 from './component/studentsform';
             expect(wrapper.state('name')).toEqual('');
             expect(wrapper.state('section')).toEqual('');
         });
+
+        test('submitting elective application form is sucessful on mimicing click of button', async () => {
+        wrapper.find('input#name').simulate('change', {target: {name: 'name', value: 'Parvana'}});
+        wrapper.find('input#sec').simulate('change', {target: {name: 'section', value: 'A'}});
+        expect(wrapper.state('name')).toEqual('Parvana');
+        expect(wrapper.state('section')).toEqual('A');
+        expect(wrapper.find("form").simulate("submit", { preventDefault() {} }))
+    });
+
     });
 
 
