@@ -8,16 +8,19 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
+    "@visma/react-intl-helpers": "^0.1.5",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "ejs": "^3.1.6",
     "enzyme": "^3.11.0",
+    "intl": "^1.2.5",
     "material-ui-rating": "^4.2.0",
     "react": "^17.0.1",
     "react-beautiful-dnd": "^13.1.0",
     "react-bootstrap": "^1.5.0",
     "react-bootstrap-icons": "^1.3.0",
     "react-dom": "^17.0.1",
+    "react-intl": "^5.15.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^2.0.5",
     "web-vitals": "^1.1.0"
@@ -47,7 +50,9 @@
     ]
   },
   "devDependencies": {
+    "@cerner/terra-enzyme-intl": "^4.2.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.0",
+    "enzyme-react-intl": "^2.0.6",
     "jest-sonar-reporter": "^2.0.0",
     "sonarqube-scanner": "^2.8.0"
   }

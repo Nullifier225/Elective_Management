@@ -65,7 +65,9 @@ export default class Login extends Component {
             </div>
         );
         function submit_signup(e){
-            e.preventDefault();
+          e.preventDefault();
+          
+          
             let request =  {
                 email:document.getElementById('email').value,
                 password:document.getElementById('pwd').value,
@@ -106,6 +108,7 @@ export default class Login extends Component {
             .catch(err=>{
               console.log(err);
             })
+            
         }
     }
 }
