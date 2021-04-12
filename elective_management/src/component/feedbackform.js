@@ -26,11 +26,9 @@ export default class Feedbackform extends Component {
             <div class="out0">
                         <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
 
-            
-            <div class="out" style={{height:"1050px" ,width:"auto",top:"5%"}}>
+            <div class="out" style={{ height:"auto", width:"auto",top:"0%"}}> 
                 
                 <img src={logo} className="rounded mx-auto d-block" style={{height:'auto',width:'auto'}}/>
-                <br/>
                 <br/>
             <form id="myForm" >
             
@@ -38,15 +36,15 @@ export default class Feedbackform extends Component {
 
                 <div className="form-group">
                     <label>Roll Number</label>
-                    <input type="text" name="text" id="Rollno"  className="form-control" placeholder="Enter Email ID" />
+                    <input type="text" name="text" id="Rollno"  className="form-control" placeholder="Enter Roll No" />
                 </div>
 
                 <div className="form-group">
                     <label>Elective Name</label>
-                    <input type="text" name="text" id="electivename" className="form-control" placeholder="Enter password" />
+                    <input type="text" name="text" id="electivename" className="form-control" placeholder="Enter Elective" />
                 </div>
 
-                <br></br>
+        
                 <p>Rating</p>
                 <div class="form-group" className="float-left ">
                 <span class="starRating">
