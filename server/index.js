@@ -76,6 +76,14 @@ app.post("/api/signin",(req,res)=>{
                
            });
           });
+
+          
+         
+        
+    })
+   
+
+          
          
         
     })
@@ -158,7 +166,45 @@ app.post("/api/signin",(req,res)=>{
          
         
     })     
+    app.post("/api/submitfeedback",(req,res)=>{
+        console.log("1")
+        var x1=tempid.split("@")[0]
+        const Rollno= x1;
+        const electivename=req.body.electivename;
+        const desc=req.body.desc;
+        const desc1=req.body.desc1;
+        const Rating=req.body.Rating;
+        
+        console.log(electivename);
+        console.log(Rating);
+       
+
+
+        
+        db.getConnection(function(err) {
+            
+            
+            console.log("connected")
+            
+            db.query("insert into student_feedback values(?,?,?,?,?)",[Rollno,electivename,desc,desc1,Rating], function (err,result) {
+               
+                if(err) 
+                {
+                    res.send('invalid')
+                   
+                    res.end()
+                    return next(err)
+                }
+                
+                res.send('valid')
+                    res.end()
+               
+               
+               
+           });
+          });
     
+})
 })
 app.post("/api/deptformcol",(req,res)=>{
     //console.log("1")
@@ -246,7 +292,7 @@ app.post("/api/studentformcol",(req,res)=>{
     
 });
 
-});
+
 
 
 

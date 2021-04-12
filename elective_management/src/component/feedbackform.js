@@ -19,7 +19,12 @@ export default class Feedbackform extends Component {
  
   constructor(){
       super()
+      this.state={rating:0}
   }
+  handleChange = (name) => (event) => {
+    this.setState({ [name]: event.target.value });
+    alert(this.state.rating)
+    };
     render() {
 
         return (
@@ -30,14 +35,11 @@ export default class Feedbackform extends Component {
                 
                 <img src={logo} className="rounded mx-auto d-block" style={{height:'auto',width:'auto'}}/>
                 <br/>
-            <form id="myForm" >
+            <form id="myForm" onSubmit={(e)=>submit_feedback(e,this.state.rating)}>
             
                <h3 className="text-center font-weight-bold font-size:1.5em" class="heading1">Feedback Form</h3> 
 
-                <div className="form-group">
-                    <label>Roll Number</label>
-                    <input type="text" name="text" id="Rollno"  className="form-control" placeholder="Enter Roll No" />
-                </div>
+                
 
                 <div className="form-group">
                     <label>Elective Name</label>
@@ -47,19 +49,23 @@ export default class Feedbackform extends Component {
         
                 <p>Rating</p>
                 <div class="form-group" className="float-left ">
-                <span class="starRating">
-                <input id="rating5" type="radio" name="rating" value="5"/>
-                <label for="rating5">5</label>
-                <input id="rating4" type="radio" name="rating" value="4"/>
+                <div class="starRating" id="stars">
+                <input id="rating5" type="radio" name="rating" value="5" onChange={this.handleChange}/>
+                 <label for="rating5">5</label>
+                <input id="rating4" type="radio" name="rating" value="4" onChange={this.handleChange}/>
                 <label for="rating4">4</label>
-                <input id="rating3" type="radio" name="rating" value="3"/>
+                <input id="rating3" type="radio" name="rating" value="3" onChange={this.handleChange}/>
                 <label for="rating3">3</label>
-                <input id="rating2" type="radio" name="rating" value="2"/>
+                <input id="rating2" type="radio" name="rating" value="2" onChange={this.handleChange}/>
                 <label for="rating2">2</label>
-                <input id="rating1" type="radio" name="rating" value="1"/>
+                <input id="rating1" type="radio" name="rating" value="1" onChange={this.handleChange}/>
                 <label for="rating1">1</label>
-                </span>
                 </div>
+                </div>
+
+  
+
+                
 
                 <br></br>
                 <br></br>
@@ -72,11 +78,11 @@ export default class Feedbackform extends Component {
 
                 <div className="form-group">
                 <label> Recommended courses for the future </label>
-                <textarea id="desc"   required name="desc"  rows="5" cols="50"></textarea>
+                <textarea id="desc1"   required name="desc"  rows="5" cols="50"></textarea>
                 </div>
 
 
-                <button type="submit" onClick={this.clickBtn} className="btn btn-info btn-lg btn-block">Submit</button>
+                <button type="submit"  className="btn btn-info btn-lg btn-block">Submit</button>
               
                   
             </form>
@@ -85,6 +91,69 @@ export default class Feedbackform extends Component {
             
             </div>
             </div>
+            
         );
+     
+        function submit_feedback(e,r){
+            e.preventDefault();
+            
+            
+    var rate_value;
+    
+    if(document.getElementById('rating1').checked == true ){
+        
+    rate_value = document.getElementById('rating1').value;}
+    if (document.getElementById('rating2').checked == true )
+    {
+    rate_value = document.getElementById('rating2').value;
+  }
+    else if(document.getElementById('rating3').checked == true )
+    {
+    rate_value = document.getElementById('rating3').value;
+  }  
+    else if(document.getElementById('rating4').checked == true )
+    {
+    rate_value = document.getElementById('rating4').value;
+  }  
+    else if(document.getElementById('rating5').checked == true ){
+    rate_value = document.getElementById('rating5').value;
+  }  
+
+            let request =  {
+               
+                electivename:document.getElementById('electivename').value,
+                desc:document.getElementById('desc').value,
+                desc1:document.getElementById('desc1').value,
+                Rating:rate_value
+                
+
+                
+        
+            }
+            axios.post('http://localhost:3001/api/submitfeedback',request)
+            
+            .then(resp=>{
+              var details = resp.data;
+              
+              if(details=='valid')
+              {
+                
+               
+                alert("response saved")
+                window.location.replace('/loginform');
+              }
+              else{
+                   
+                alert("Multiple responses not accepted")
+                window.location.replace('/loginform');
+              }
+             
+              
+            })
+            
+            .catch(err=>{
+              console.log(err);
+            })
+        }
     }
 }
