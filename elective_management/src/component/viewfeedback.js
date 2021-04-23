@@ -1,11 +1,68 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import logo from './index.png';
+import {Preview,print} from 'react-html2pdf';
 import { ArrowLeftCircleFill } from 'react-bootstrap-icons'; 
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-export default class viewfeedback extends Component(){
+export default class viewfeedback extends Component{
+    clickbtn=(event)=>{
+        event.preventDefault();
+        let req={
+            name:document.getElementById('electivename').value
+        }
+        
+        axios.post('http://localhost:3001/api/getreport',req).then(response=>{
+            var details = response.data;
+            var element;
+            
+            element=<table class="table table-bordered " style={{width:"635px",height:"auto"}}>
+            <tr class="table-primary">
+            <th>Feedback</th>
+            <th>Suggestions</th>
+            </tr>
+            {details.map((item) => (<tr>
+      
+            <td>{JSON.parse(JSON.stringify(item.content[0]))}</td>
+            <td>{JSON.parse(JSON.stringify(item.content[1]))}</td>
+            </tr>
 
+            ))}
+            </table>
+
+            ReactDOM.render(element, document.getElementById('tab1'));
+        })
+
+        axios.post('http://localhost:3001/api/getavg',req).then(response=>{
+            var details = response.data;
+            var element1,element2,name;
+
+            name=<p>Elective name:{document.getElementById('electivename').value}</p>
+            ReactDOM.render(name, document.getElementById('tab10'));
+
+            element1=<div>
+            {details.map((item) => (
+                
+                <p>Average Ratings:{JSON.parse(JSON.stringify(item.content[0]))}</p>
+        
+            ))}</div>
+            
+            
+            ReactDOM.render(element1, document.getElementById('tab11'));
+
+            element2=<div>
+            {details.map((item) => (
+            
+            <p>No.of entries:{JSON.parse(JSON.stringify(item.content[1]))}</p>
+
+            ))}</div>
+            
+            
+            ReactDOM.render(element2, document.getElementById('tab12'));
+        })
+    }
     constructor(){
+        
         super()
         axios.get('http://localhost:3001/api/getfeedele1').then(response=>{
       
@@ -23,13 +80,17 @@ export default class viewfeedback extends Component(){
       
     ReactDOM.render(element, document.getElementById('data'));
       
-  
+    
+        
      
       
       
       })
-        this.state={rating:0}
+
+      
+        
     }
+    
 
 render(){
 
@@ -37,31 +98,23 @@ render(){
 return(
 <html>
 <head>
-	<script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
-    <title>Convert Table to PDF using JavaScript</title>
 </head>
 <body>
-    {
-        function createPDF() {
-            
-            // Choose the element that our invoice is rendered in.
-            const element = document.getElementById("tab");
-            // Choose the element and save the PDF for our user.
-            html2pdf()
-              .from(element)
-              .save();
-              // PRINT THE CONTENTS.
-        }
-    }
+    
+    <form>
     <div id="data"></div>
+    <button type="submit" onClick={this.clickbtn}>Get report</button>
+    </form>
     <div id="tab">
-        
+    <div id="tab10"></div>
+    <div id="tab11"></div>
+    <div id="tab12"></div>
+    <div id="tab13"></div>
+    <div id="tab1"></div>
     </div>
-
-    <p>
-        <input type="button" value="Create PDF" 
-            id="btPrint" onclick="createPDF()" />
-    </p>
+    
+    <button onClick={()=>print('a', 'tab')}> print</button>
+    
 </body>
 
 </html>

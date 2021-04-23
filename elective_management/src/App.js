@@ -14,7 +14,7 @@ import AD from './component/admindashboard';
 import adminstudentlist from './component/adminstudentlist';
 import viewelectivechange from './component/viewelectivechange';
 import Feedbackform from './component/feedbackform';
-
+import viewfeedback from './component/viewfeedback';
 
 
 class App extends Component {
@@ -33,7 +33,8 @@ class App extends Component {
             <Route path="/adminstudentlist" component={adminstudentlist} exact/>
             <Route path="/viewelectivechange" component={viewelectivechange} exact/>
             <Route path="/feedbackforms" component={Feedbackform} exact/>
-
+            <Route path="/viewfeedbacks" component={viewfeedback} exact/>
+            
             
 
             </Switch>

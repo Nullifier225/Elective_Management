@@ -2,10 +2,17 @@ import React ,{Component} from 'react';
 
 
 export default class TD1  extends Component{
+    constructor(){
+        super()
     clickBtn = (event) => {
         event.preventDefault();
         window.location.replace('/');
     };
+    clickBtn1 = (event) => {
+        event.preventDefault();
+        window.location.replace('/viewfeedbacks');
+    };
+}
     render(){
     
     return (
@@ -27,7 +34,7 @@ export default class TD1  extends Component{
     <br></br>
     <button type="submit"  className="btn btn-info btn-lg btn-block">View final student list</button>
         <br></br>      
-    <button type="submit"  className="btn btn-info btn-lg btn-block">Feedback</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" onClick={this.clickBtn1}>Feedback</button>
               
                  
                   
