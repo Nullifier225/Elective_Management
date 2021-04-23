@@ -380,6 +380,47 @@ app.get("/api/getlist2",(req,res)=>{
     
 })
 
+app.get("/api/getfeedele",(req,res)=>{
+    const db = mysql.createPool({
+        host:"localhost",
+        user:"root",
+        password:"1234",
+        database:"electivedb"
+    });
+        
+    db.getConnection(function(err) {    
+        var x1=tempid.split("@")[0]
+        var depart=x1.split(".")[2].slice(2,5).toUpperCase()
+        db.query("SELECT electivename FROM dept_elective WHERE department=?",[depart], function (err,result) {
+
+           
+            if(err) 
+            {
+                res.send("error")
+               
+                res.end()
+                return next(err)
+            }
+            let x=[]
+            let n=result.length
+            for(let i=0;i<n;i++){
+            let vals=JSON.parse(JSON.stringify(result))[i]
+            let xn=Object.values(vals)
+            let state={
+                id:i+1,
+                content:xn}
+            x.push(state)
+            }
+        
+            res.send(JSON.stringify(x))
+            res.end()
+           
+       });
+    }  
+      );
+     
+    
+})
 app.post('/api/logout',()=>{
     tempid = ""
 });

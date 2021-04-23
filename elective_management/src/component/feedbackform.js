@@ -19,6 +19,27 @@ export default class Feedbackform extends Component {
  
   constructor(){
       super()
+      axios.get('http://localhost:3001/api/getfeedele').then(response=>{
+    
+    
+    var details = response.data;
+    var element;
+    
+    element=<select name="text" id="electivename">
+    {details.map((item) => (
+      
+      <option value={JSON.parse(JSON.stringify(item.content))}>{JSON.parse(JSON.stringify(item.content))}</option>
+
+    ))}
+    </select>
+    
+  ReactDOM.render(element, document.getElementById('data'));
+    
+
+   
+    
+    
+    })
       this.state={rating:0}
   }
   handleChange = (name) => (event) => {
@@ -43,7 +64,7 @@ export default class Feedbackform extends Component {
 
                 <div className="form-group">
                     <label>Elective Name</label>
-                    <input type="text" name="text" id="electivename" className="form-control" placeholder="Enter Elective" />
+                    <div id="data"></div>
                 </div>
 
         
