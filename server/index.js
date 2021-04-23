@@ -421,6 +421,47 @@ app.get("/api/getfeedele",(req,res)=>{
      
     
 })
+
+app.get("/api/getfeedele1",(req,res)=>{
+    const db = mysql.createPool({
+        host:"localhost",
+        user:"root",
+        password:"1234",
+        database:"electivedb"
+    });
+        
+    db.getConnection(function(err) {    
+        db.query("SELECT electivename FROM dept_elective" , function (err,result) {
+
+           
+            if(err) 
+            {
+                res.send("error")
+               
+                res.end()
+                return next(err)
+            }
+            let x=[]
+            let n=result.length
+            for(let i=0;i<n;i++){
+            let vals=JSON.parse(JSON.stringify(result))[i]
+            let xn=Object.values(vals)
+            let state={
+                id:i+1,
+                content:xn}
+            x.push(state)
+            }
+        
+            res.send(JSON.stringify(x))
+            res.end()
+           
+       });
+    }  
+      );
+     
+    
+})
+
 app.post('/api/logout',()=>{
     tempid = ""
 });
