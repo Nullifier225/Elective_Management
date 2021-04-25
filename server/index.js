@@ -475,7 +475,7 @@ app.post("/api/manageelective", (req, res) => {
                     let list1 = []
                     list1.push(xn[2])
                     list1.push(xn[3])
-                    list1.push(xn[8])
+                    list1.push(0)
                     dict1[xn[1]] = list1
 
                 }
@@ -509,7 +509,7 @@ app.post("/api/manageelective", (req, res) => {
                 }
             }
             let electivesdrop = []
-            
+
             for (var key in dict1) {
                 if (dict1.hasOwnProperty(key)) {
                     if (dict1[key][2] < dict1[key][1]) {
@@ -519,57 +519,66 @@ app.post("/api/manageelective", (req, res) => {
                 }
             }
             for (let i = 0; i < result.length; i += noofelectives) {
-               
+
                 if (electivesdrop.includes(finalallotment[filledpref[i][1]])) {
                     console.log("changing for")
-                    let y=false;
-                    let store=false;
-                    let maxcap="";
+                    let y = false;
+                    let store = false;
+                    let maxcap = "";
                     for (var key in dict1) {
                         if (dict1.hasOwnProperty(key)) {
-                            if(dict1[key][2] == dict1[key][0] && store==false )
-                            {
-                                store=true
-                                maxcap=key
+                            if (dict1[key][2] == dict1[key][0] && store == false) {
+                                store = true
+                                maxcap = key
                                 console.log(maxcap)
                             }
-                            if(dict1[key][2]>=dict1[key][1] && dict1[key][2]>dict1[key][0] && y==false)
-                            {
+                            if (dict1[key][2] >= dict1[key][1] && dict1[key][2] > dict1[key][0] && y == false) {
 
-                                finalallotment[filledpref[i][1]]=key
+                                finalallotment[filledpref[i][1]] = key
                             }
                         }
                     }
-                    console.log("y",y)
-                    if(y==false)
-                    {
-                        finalallotment[filledpref[i][1]]=maxcap
-                        dict1[maxcap][0]+=1
+                    console.log("y", y)
+                    if (y == false) {
+                        dict1[finalallotment[filledpref[i][1]]][2] -= 1
+                        finalallotment[filledpref[i][1]] = maxcap
+                        dict1[maxcap][0] += 1
+                        dict1[maxcap][2] += 1
                     }
- 
+
                 }
-                
+
             }
+            console.log(dict1)
             console.log(finalallotment)
 
+            for (var key in finalallotment) {
+                if (finalallotment.hasOwnProperty(key)) {
+                    db.query("update student_details set elective= ? where rno=? ", [finalallotment[key], key], function (err, result) {
+                        if (err) {
+
+                            res.end()
+                        }
+
+                    })
+                }
+            }
+
+            for (var key in dict1) {
+                if (dict1.hasOwnProperty(key)) {
+                    console.log(dict1[key], key)
+                    db.query("update dept_elective set  max = ?,alloted = ? where electivename = ?", [dict1[key][0], dict1[key][2], key], function (err, result) {
+                        if (err) {
+
+                            res.end()
+                        }
+
+                    })
+                }
+            }
 
         });
-        /*
-        for (var key in finalallotment) {
-            if (finalallotment.hasOwnProperty(key)) {
-                console.log(1)
-                db.query("alter table student_details set elective= ? where rno=? ", [finalallotment[key],key], function (err, result) {
-                    console.log(2)
-                 if(err)
-                 {
-                    
-                     res.end()
-                 }
-                
 
-            })}
-        }
-  */
     })
 })
 
