@@ -12,6 +12,11 @@ export default class TD  extends Component{
         event.preventDefault();
         window.location.replace('/departmentform');
     };
+    clickBtn2 = (event) => {
+        event.preventDefault();
+        window.location.replace('/viewfeedbacks');
+    };
+
     render(){
     
     return (
@@ -37,7 +42,7 @@ export default class TD  extends Component{
     <br></br>
     <button type="submit"  className="btn btn-info btn-lg btn-block" id="Button2" >View final student list</button>
     <br></br>      
-    <button type="submit"  className="btn btn-info btn-lg btn-block" id="Button3" >Feedback</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id="Button3" onClick={this.clickBtn2} >Feedback</button>
                  
                   
     
