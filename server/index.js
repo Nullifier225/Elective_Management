@@ -5,549 +5,578 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 process.on('uncaughtException', function (error) {
     console.log(error.stack);
- });
+});
 var router = express.Router()
 
 var url = require('url');
-const { nextTick } = require('process');
+const {nextTick} = require('process');
 
-const db = mysql.createPool({
-    host:"localhost",
-    user:"root",
-    password:"1234",
-    database:"electivedb"
-});
+const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended: true}));
 var tempid = ""
-app.post("/api/signin",(req,res)=>{
+app.post("/api/signin", (req, res) => {
     //console.log("1")
-    tempid = req.body.email; 
+    tempid = req.body.email;
     const emailid = req.body.email;
-    const password=req.body.password;
-     
+    const password = req.body.password;
 
-    db.getConnection(function(err) {
-        
-        
+    db.getConnection(function (err) {
+
         //console.log("connected")
-        db.query("SELECT ls_pass FROM student_login_details where ls_usern=? AND ls_pass=?",[emailid,password], function (err,result) {
-           
-           if(result.length>0)
-            {
-                //console.log("match")
-                res.send('valid')
-                res.end()
-            }
-          else{
-                res.send("mismatch")
-            } 
-            if(err){
-                print("retrievel error")
-            }
-            
-       });
-      
-      app.post("/api/changeform",(req,res)=>{
-        //console.log("1")
-        const cename = req.body.cename;
-        const cecoursecode=req.body.cecoursecode;
-        const dename=req.body.dename;
-        const decoursecode=req.body.decoursecode;
-        
-        db.getConnection(function(err) {
-            
-            
-            //console.log("connected")
-            db.query("insert into electivechange values(?,?,?,?,?)",[emailid,cename,cecoursecode,dename,decoursecode], function (err,result) {
-               
-                if(err) 
-                {
-                    res.send('invalid')
-                   
+        db
+            .query("SELECT ls_pass FROM student_login_details where ls_usern=? AND ls_pass=?", [
+                emailid, password
+            ], function (err, result) {
+
+                if (result.length > 0) {
+                    //console.log("match")
+                    res.send('valid')
                     res.end()
-                    return next(err)
+                } else {
+                    res.send("mismatch")
                 }
-                res.send('valid')
-                    res.end()
-               
-                  
-               
-           });
-          });
+                if (err) {
+                    print("retrievel error")
+                }
 
-          
-         
-        
-    })
-   
+            });
 
-          
-         
-        
+        app.post("/api/changeform", (req, res) => {
+            //console.log("1")
+            const cename = req.body.cename;
+            const cecoursecode = req.body.cecoursecode;
+            const dename = req.body.dename;
+            const decoursecode = req.body.decoursecode;
+
+            db.getConnection(function (err) {
+
+                //console.log("connected")
+                db
+                    .query("insert into electivechange values(?,?,?,?,?)", [
+                        emailid, cename, cecoursecode, dename, decoursecode
+                    ], function (err, result) {
+
+                        if (err) {
+                            res.send('invalid')
+
+                            res.end()
+                            return next(err)
+                        }
+                        res.send('valid')
+                        res.end()
+
+                    });
+            });
+
+        })
+
     })
-    app.get("/api/getele",(req,res)=>{
-        const db = mysql.createPool({
-            host:"localhost",
-            user:"root",
-            password:"1234",
-            database:"electivedb"
-        });
-        
-        db.getConnection(function(err) {
-            var x1=tempid.split("@")[0]
-            var depart=x1.split(".")[2].slice(2,5).toUpperCase()
-            var yr=21-parseInt(x1.split(".")[2].slice(5,7))
-            
-            db.query("SELECT electivename FROM dept_elective WHERE department=? AND courseyear=?", [depart,yr],function (err,result) {
-               
-                if(err) 
-                {
+    app.get("/api/getele", (req, res) => {
+        const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+
+        db.getConnection(function (err) {
+            var x1 = tempid.split("@")[0]
+            var depart = x1
+                .split(".")[2]
+                .slice(2, 5)
+                .toUpperCase()
+            var yr = 21 - parseInt(x1.split(".")[2].slice(5, 7))
+
+            db.query("SELECT electivename FROM dept_elective WHERE department=? AND courseyear=?", [
+                depart, yr
+            ], function (err, result) {
+
+                if (err) {
                     res.send("error")
-                   
+
                     res.end()
                     return next(err)
                 }
-                let x=[]
-                let n=result.length
-                for(let i=0;i<n;i++){
-                let vals=JSON.parse(JSON.stringify(result))[i]
-                let xn=Object.values(vals)
-                let state={
-                    id:i+1,
-                    content:xn[0]                
+                let x = []
+                let n = result.length
+                for (let i = 0; i < n; i++) {
+                    let vals = JSON.parse(JSON.stringify(result))[i]
+                    let xn = Object.values(vals)
+                    let state = {
+                        id: i + 1,
+                        content: xn[0]
+                    }
+                    x.push(state)
                 }
-                x.push(state)
-                }
-                
+
                 res.send(x)
-                    res.end()
-               
-                  
-               
-           });
-        }  
-          );
-         
-        
-    })
-    
-    app.get("/api/getname",(req,res)=>{
-        const db = mysql.createPool({
-            host:"localhost",
-            user:"root",
-            password:"1234",
-            database:"electivedb"
+                res.end()
+
+            });
         });
-        
-        db.getConnection(function(err) {
-            var x1=tempid.split("@")[0]
+
+    })
+
+    app.get("/api/getname", (req, res) => {
+        const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+
+        db.getConnection(function (err) {
+            var x1 = tempid.split("@")[0]
             console.log(x1)
-            db.query("SELECT name FROM student_details WHERE rno=?", [x1], function (err,result) {
-               
-                if(err) 
-                {
+            db.query("SELECT name FROM student_details WHERE rno=?", [x1], function (err, result) {
+
+                if (err) {
                     res.send("error")
-                   
+
                     res.end()
                     return next(err)
                 }
-                var x1=(JSON.parse(JSON.stringify(result)))
+                var x1 = (JSON.parse(JSON.stringify(result)))
                 console.log(Object.values(x1)[0].name)
                 res.send(Object.values(x1)[0].name)
                 res.end()
-               
-                  
-               
-           });
-        }  
-          );
-         
-        
-    })     
-    app.post("/api/submitfeedback",(req,res)=>{
+
+            });
+        });
+
+    })
+    app.post("/api/submitfeedback", (req, res) => {
         console.log("1")
-        var x1=tempid.split("@")[0]
-        const Rollno= x1;
-        const electivename=req.body.electivename;
-        const desc=req.body.desc;
-        const desc1=req.body.desc1;
-        const Rating=req.body.Rating;
-        
+        var x1 = tempid.split("@")[0]
+        const Rollno = x1;
+        const electivename = req.body.electivename;
+        const desc = req.body.desc;
+        const desc1 = req.body.desc1;
+        const Rating = req.body.Rating;
+
         console.log(electivename);
         console.log(Rating);
-       
 
+        db.getConnection(function (err) {
 
-        
-        db.getConnection(function(err) {
-            
-            
             console.log("connected")
-            
-            db.query("insert into student_feedback values(?,?,?,?,?)",[Rollno,electivename,desc,desc1,Rating], function (err,result) {
-               
-                if(err) 
-                {
+
+            db.query("insert into student_feedback values(?,?,?,?,?)", [
+                Rollno, electivename, desc, desc1, Rating
+            ], function (err, result) {
+
+                if (err) {
                     res.send('invalid')
-                   
+
                     res.end()
                     return next(err)
                 }
-                
+
                 res.send('valid')
-                    res.end()
-               
-               
-               
-           });
-          });
-    
+                res.end()
+
+            });
+        });
+
+    })
 })
-})
-app.post("/api/deptformcol",(req,res)=>{
-    //console.log("1")
-    //const  array= req.body.array1;
-    const elective=req.body.array1;
+app.post("/api/deptformcol", (req, res) => {
+    //console.log("1") const  array= req.body.array1;
+    const elective = req.body.array1;
     //console.log("array element",elective);
-    let n=elective.length;
-    
-       // console.log(vals);}
-    db.getConnection(function(err) {
-    
-    
+    let n = elective.length;
+
+    // console.log(vals);}
+    db.getConnection(function (err) {
+
         console.log("connected")
-        
-        
-        for(let i =0;i<n;i++){
-            let vals=Object.values(elective[i]);
-        db.query("insert into dept_elective(department,electivename,coursecode,courseyear,max,min,descr,cm) values(?,?,?,?,?,?,?,?)",vals, function (err,result) {
-           
-            if(err) 
-            {
-                res.send('invalid')
-               
+
+        for (let i = 0; i < n; i++) {
+            let vals = Object.values(elective[i]);
+            db.query("insert into dept_elective(department,electivename,coursecode,courseyear,max,min," +
+                    "descr,cm) values(?,?,?,?,?,?,?,?)",
+            vals, function (err, result) {
+
+                if (err) {
+                    res.send('invalid')
+
+                    res.end()
+                    return next(err)
+                }
+                res.send('valid')
                 res.end()
-                return next(err)
-            }
-            res.send('valid')
-                res.end()
-           
-              
-           
-       });
-    }  
 
+            });
+        }
 
-      });
-     
-    
-
-
-
-
+    });
 
 })
 
-app.post("/api/studentformcol",(req,res)=>{
-    //console.log("1")
-    //const  array= req.body.array1;
-    const name=req.body.name;
+app.post("/api/studentformcol", (req, res) => {
+    //console.log("1") const  array= req.body.array1;
+    const name = req.body.name;
     var temp = "";
     temp = tempid;
-    const rno=temp.slice(0,16);
+    const rno = temp.slice(0, 16);
     console.log(tempid);
-    const sec=req.body.sec;
-    const pref=req.body.pref;
-    console.log("array element",pref);
-    let n=pref.length;
-    
-       // console.log(vals);}
-    db.getConnection(function(err) {
-    
-    
+    const sec = req.body.sec;
+    const pref = req.body.pref;
+    console.log("array element", pref);
+    let n = pref.length;
+
+    // console.log(vals);}
+    db.getConnection(function (err) {
+
         console.log("connected")
-        
-        let refs="valid"
-        for(let i =0;i<n;i++){
-            let vals=Object.values(pref[i]);
-            
+
+        let refs = "valid"
+        for (let i = 0; i < n; i++) {
+            let vals = Object.values(pref[i]);
+
             console.log(vals)
-        db.query("insert into student_elective values(?,?,?,?,?)",[name,rno,sec,i+1,vals[1]], function (err,result) {
-           
-            if(err) 
-            {
-            refs="invalid"
-            }
-           
-              
-           
-       });
-    }  
-    res.send(refs)
-    res.end()
-      });
-     
-    
+            db.query("insert into student_elective values(?,?,?,?,?)", [
+                name, rno, sec, i + 1,
+                vals[1]
+            ], function (err, result) {
+
+                if (err) {
+                    refs = "invalid"
+                }
+
+            });
+        }
+        res.send(refs)
+        res.end()
+    });
+
 });
 
+app.get("/api/getlist1", (req, res) => {
+    const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
 
+    db.getConnection(function (err) {
 
+        db
+            .query("SELECT * FROM student_elective ", function (err, result) {
 
+                if (err) {
+                    res.send("error")
 
+                    res.end()
+                    return next(err)
+                }
+                let x = []
+                let n = result.length
+                for (let i = 0; i < n; i++) {
+                    let vals = JSON.parse(JSON.stringify(result))[i]
+                    let xn = Object.values(vals)
+                    let state = {
+                        id: i + 1,
+                        content: xn
+                    }
+                    x.push(state)
+                }
 
-
-app.get("/api/getlist1",(req,res)=>{
-    const db = mysql.createPool({
-        host:"localhost",
-        user:"root",
-        password:"1234",
-        database:"electivedb"
-    });
-        
-    db.getConnection(function(err) {    
-        
-        db.query("SELECT * FROM student_elective ",function (err,result) {
-
-           
-            if(err) 
-            {
-                res.send("error")
-               
+                res.send(JSON.stringify(x))
                 res.end()
-                return next(err)
-            }
-            let x=[]
-            let n=result.length
-            for(let i=0;i<n;i++){
-            let vals=JSON.parse(JSON.stringify(result))[i]
-            let xn=Object.values(vals)
-            let state={
-                id:i+1,
-                content:xn}
-            x.push(state)
-            }
-        
-            res.send(JSON.stringify(x))
-            res.end()
-           
-       });
-    }  
-      );
-     
-    
+
+            });
+    });
+
 })
 
-app.get("/api/getlist2",(req,res)=>{
-    const db = mysql.createPool({
-        host:"localhost",
-        user:"root",
-        password:"1234",
-        database:"electivedb"
-    });
-        
-    db.getConnection(function(err) {    
-        
-        db.query("SELECT * FROM electivechange ", function (err,result) {
+app.get("/api/getlist2", (req, res) => {
+    const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
 
-           
-            if(err) 
-            {
-                res.send("error")
-               
+    db.getConnection(function (err) {
+
+        db
+            .query("SELECT * FROM electivechange ", function (err, result) {
+
+                if (err) {
+                    res.send("error")
+
+                    res.end()
+                    return next(err)
+                }
+                let x = []
+                let n = result.length
+                for (let i = 0; i < n; i++) {
+                    let vals = JSON.parse(JSON.stringify(result))[i]
+                    let xn = Object.values(vals)
+                    let state = {
+                        id: i + 1,
+                        content: xn
+                    }
+                    x.push(state)
+                }
+
+                res.send(JSON.stringify(x))
                 res.end()
-                return next(err)
-            }
-            let x=[]
-            let n=result.length
-            for(let i=0;i<n;i++){
-            let vals=JSON.parse(JSON.stringify(result))[i]
-            let xn=Object.values(vals)
-            let state={
-                id:i+1,
-                content:xn}
-            x.push(state)
-            }
-        
-            res.send(JSON.stringify(x))
-            res.end()
-           
-       });
-    }  
-      );
-     
-    
+
+            });
+    });
+
 })
 
-app.get("/api/getfeedele",(req,res)=>{
-    const db = mysql.createPool({
-        host:"localhost",
-        user:"root",
-        password:"1234",
-        database:"electivedb"
-    });
-        
-    db.getConnection(function(err) {    
-        var x1=tempid.split("@")[0]
-        var depart=x1.split(".")[2].slice(2,5).toUpperCase()
-        db.query("SELECT electivename FROM dept_elective WHERE department=?",[depart], function (err,result) {
+app.get("/api/getfeedele", (req, res) => {
+    const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
 
-           
-            if(err) 
-            {
+    db.getConnection(function (err) {
+        var x1 = tempid.split("@")[0]
+        var depart = x1
+            .split(".")[2]
+            .slice(2, 5)
+            .toUpperCase()
+        db.query("SELECT electivename FROM dept_elective WHERE department=?", [depart], function (err, result) {
+
+            if (err) {
                 res.send("error")
-               
+
                 res.end()
                 return next(err)
             }
-            let x=[]
-            let n=result.length
-            for(let i=0;i<n;i++){
-            let vals=JSON.parse(JSON.stringify(result))[i]
-            let xn=Object.values(vals)
-            let state={
-                id:i+1,
-                content:xn}
-            x.push(state)
+            let x = []
+            let n = result.length
+            for (let i = 0; i < n; i++) {
+                let vals = JSON.parse(JSON.stringify(result))[i]
+                let xn = Object.values(vals)
+                let state = {
+                    id: i + 1,
+                    content: xn
+                }
+                x.push(state)
             }
-        
+
             res.send(JSON.stringify(x))
             res.end()
-           
-       });
-    }  
-      );
-     
-    
+
+        });
+    });
+
 })
 
-app.get("/api/getfeedele1",(req,res)=>{
-    const db = mysql.createPool({
-        host:"localhost",
-        user:"root",
-        password:"1234",
-        database:"electivedb"
-    });
-        
-    db.getConnection(function(err) {    
-        db.query("SELECT electivename FROM dept_elective" , function (err,result) {
+app.get("/api/getfeedele1", (req, res) => {
+    const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
 
-           
-            if(err) 
-            {
-                res.send("error")
-               
+    db.getConnection(function (err) {
+        db
+            .query("SELECT electivename FROM dept_elective", function (err, result) {
+
+                if (err) {
+                    res.send("error")
+
+                    res.end()
+                    return next(err)
+                }
+                let x = []
+                let n = result.length
+                for (let i = 0; i < n; i++) {
+                    let vals = JSON.parse(JSON.stringify(result))[i]
+                    let xn = Object.values(vals)
+                    let state = {
+                        id: i + 1,
+                        content: xn
+                    }
+                    x.push(state)
+                }
+
+                res.send(JSON.stringify(x))
                 res.end()
-                return next(err)
-            }
-            let x=[]
-            let n=result.length
-            for(let i=0;i<n;i++){
-            let vals=JSON.parse(JSON.stringify(result))[i]
-            let xn=Object.values(vals)
-            let state={
-                id:i+1,
-                content:xn}
-            x.push(state)
-            }
-        
-            res.send(JSON.stringify(x))
-            res.end()
-           
-       });
-    }  
-      );
-     
-    
+
+            });
+    });
+
 })
 
-app.post("/api/getreport",(req,res)=>{
-    const db = mysql.createPool({
-        host:"localhost",
-        user:"root",
-        password:"1234",
-        database:"electivedb"
-    });
-    
-    db.getConnection(function(err) {    
-        db.query("SELECT feedback,suggestions FROM student_feedback WHERE electivename=?",[req.body.name] , function (err,result) {
+app.post("/api/getreport", (req, res) => {
+    const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
 
-           
-            if(err) 
-            {
-                res.send("error")
-               
+    db.getConnection(function (err) {
+        db
+            .query("SELECT feedback,suggestions FROM student_feedback WHERE electivename=?", [req.body.name], function (err, result) {
+
+                if (err) {
+                    res.send("error")
+
+                    res.end()
+                    return next(err)
+                }
+                let x = []
+                let n = result.length
+                for (let i = 0; i < n; i++) {
+                    let vals = JSON.parse(JSON.stringify(result))[i]
+                    let xn = Object.values(vals)
+                    let state = {
+                        id: i + 1,
+                        content: xn
+                    }
+                    x.push(state)
+
+                }
+
+                res.send(JSON.stringify(x))
                 res.end()
-                return next(err)
+
+            });
+    });
+
+})
+
+app.post("/api/getavg", (req, res) => {
+    const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+
+    db.getConnection(function (err) {
+        db
+            .query("SELECT AVG(rating),COUNT(*)FROM student_feedback WHERE electivename=?", [req.body.name], function (err, result) {
+
+                if (err) {
+                    res.send("error")
+
+                    res.end()
+                    return next(err)
+                }
+                let x = []
+                let n = result.length
+                for (let i = 0; i < n; i++) {
+                    let vals = JSON.parse(JSON.stringify(result))[i]
+                    let xn = Object.values(vals)
+                    let state = {
+                        id: i + 1,
+                        content: xn
+                    }
+                    x.push(state)
+
+                }
+
+                res.send(JSON.stringify(x))
+                res.end()
+
+            });
+    });
+
+})
+app.post("/api/manageelective", (req, res) => {
+    const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+    var department = req.body.dept;
+    let noofelectives = 0;
+
+    let dict1 = {}
+    db.getConnection(function (err) {
+        db
+            .query("SELECT * from dept_elective where department=?", [department], function (err, result) {
+
+                if (err) {
+                    res.send("error")
+
+                    res.end()
+                    return next(err)
+                }
+
+                noofelectives = result.length
+
+                for (let i = 0; i < noofelectives; i++) {
+                    let vals = JSON.parse(JSON.stringify(result))[i]
+                    let xn = Object.values(vals)
+
+                    let list1 = []
+                    list1.push(xn[2])
+                    list1.push(xn[3])
+                    list1.push(xn[8])
+                    dict1[xn[1]] = list1
+
+                }
+
+            });
+        department = department.toLowerCase();
+        console.log(department)
+        let finalallotment = {}
+        let filledpref = []
+        db.query("SELECT * from student_elective where rno REGEXP ? ", [department], function (err, result) {
+            console.log(result.length)
+            for (let i = 0; i < result.length; i++) {
+                let vals = JSON.parse(JSON.stringify(result))[i]
+                let xn = Object.values(vals)
+                filledpref.push(xn)
+
             }
-            let x=[]
-            let n=result.length
-            for(let i=0;i<n;i++){
-            let vals=JSON.parse(JSON.stringify(result))[i]
-            let xn=Object.values(vals)
-            let state={
-                id:i+1,
-                content:xn}
-            x.push(state)
+
+            for (let i = 0; i < result.length; i += noofelectives) {
+                //console.log(finalallotment)
+                for (let j = i; j < i + noofelectives; j++) {
+                    let preference = filledpref[j][4]
+                    let rollno = filledpref[j][1]
+                    if (dict1[preference][2] < dict1[preference][0]) {
+                        finalallotment[rollno] = preference
+                        dict1[preference][2] += 1
+                        break;
+
+                    }
+
+                }
+            }
+            let electivesdrop = []
             
+            for (var key in dict1) {
+                if (dict1.hasOwnProperty(key)) {
+                    if (dict1[key][2] < dict1[key][1]) {
+                        electivesdrop.push(key)
+
+                    }
+                }
             }
-        
-            res.send(JSON.stringify(x))
-            res.end()
-           
-       });
-    }  
-      );
-     
-    
-})
-
-app.post("/api/getavg",(req,res)=>{
-    const db = mysql.createPool({
-        host:"localhost",
-        user:"root",
-        password:"1234",
-        database:"electivedb"
-    });
-       
-    db.getConnection(function(err) {    
-        db.query("SELECT AVG(rating),COUNT(*)FROM student_feedback WHERE electivename=?",[req.body.name] , function (err,result) {
-
-           
-            if(err) 
-            {
-                res.send("error")
+            for (let i = 0; i < result.length; i += noofelectives) {
                
-                res.end()
-                return next(err)
+                if (electivesdrop.includes(finalallotment[filledpref[i][1]])) {
+                    console.log("changing for")
+                    let y=false;
+                    let store=false;
+                    let maxcap="";
+                    for (var key in dict1) {
+                        if (dict1.hasOwnProperty(key)) {
+                            if(dict1[key][2] == dict1[key][0] && store==false )
+                            {
+                                store=true
+                                maxcap=key
+                                console.log(maxcap)
+                            }
+                            if(dict1[key][2]>=dict1[key][1] && dict1[key][2]>dict1[key][0] && y==false)
+                            {
+
+                                finalallotment[filledpref[i][1]]=key
+                            }
+                        }
+                    }
+                    console.log("y",y)
+                    if(y==false)
+                    {
+                        finalallotment[filledpref[i][1]]=maxcap
+                        dict1[maxcap][0]+=1
+                    }
+ 
+                }
+                
             }
-            let x=[]
-            let n=result.length
-            for(let i=0;i<n;i++){
-            let vals=JSON.parse(JSON.stringify(result))[i]
-            let xn=Object.values(vals)
-            let state={
-                id:i+1,
-                content:xn}
-            x.push(state)
-            
-            }
-        
-            res.send(JSON.stringify(x))
-            res.end()
-           
-       });
-    }  
-      );
-     
-    
+            console.log(finalallotment)
+
+
+        });
+        /*
+        for (var key in finalallotment) {
+            if (finalallotment.hasOwnProperty(key)) {
+                console.log(1)
+                db.query("alter table student_details set elective= ? where rno=? ", [finalallotment[key],key], function (err, result) {
+                    console.log(2)
+                 if(err)
+                 {
+                    
+                     res.end()
+                 }
+                
+
+            })}
+        }
+  */
+    })
 })
 
-app.post('/api/logout',()=>{
+app.post('/api/logout', () => {
     tempid = ""
 });
 
-app.listen(3001,()=>{
+app.listen(3001, () => {
     console.log('running on port 3001');
 })
