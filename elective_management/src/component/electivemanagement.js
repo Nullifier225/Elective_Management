@@ -13,10 +13,30 @@ export default class management extends Component {
                 .getElementById('select1')
                 .value
         }
-
+        document.getElementById('print').style={display:"block"};
         axios
             .post('http://localhost:3001/api/manageelective', req)
-            .then(response => {})
+            .then(response => {
+                var details=response.data
+                var element,element1;
+                element=<table class="table table-bordered " style={{width:"635px",height:"auto"}}>
+                <tr class="table-primary">
+                <th>Student</th>
+                <th>Elective</th>
+                </tr>
+                {details.map((item) => (<tr>
+        
+                <td>{JSON.parse(JSON.stringify(item.id))}</td>
+                <td>{JSON.parse(JSON.stringify(item.content))}</td>
+                </tr>
+
+                ))}
+                </table>
+                ReactDOM.render(element, document.getElementById('data'));
+
+                
+            })
+            
 
     }
     constructor() {
@@ -32,9 +52,10 @@ export default class management extends Component {
             <html>
                 <head></head>
                 <body>
+       
 
                     <form>
-                        <div id="data"></div>
+                        
 
                         <div className="form-group">
                             <label>Department</label>
@@ -50,8 +71,19 @@ export default class management extends Component {
                         </div>
                         <button type="submit" onClick={this.clickbtn}>Allocate
                         </button>
-
-                    </form>
+                        
+                        <div id="tab">
+                        <div id="data"></div>
+                        
+                        </div>
+                        </form>
+                        
+                            
+                        <button id="print" style={{display:"none"}} onClick={()=>print('a', 'data')}>print</button>
+                           
+                        
+                        
+                    
                 </body>
 
             </html>

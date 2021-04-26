@@ -571,10 +571,12 @@ app.post("/api/manageelective", (req, res) => {
                     })
                 }
             }
-
+            
             for (var key in dict1) {
                 if (dict1.hasOwnProperty(key)) {
                     console.log(dict1[key], key)
+                    
+                    
                     db.query("update dept_elective set  max = ?,alloted = ? where electivename = ?", [dict1[key][0], dict1[key][2], key], function (err, result) {
                         if (err) {
 
@@ -584,6 +586,17 @@ app.post("/api/manageelective", (req, res) => {
                     })
                 }
             }
+            ans=[]
+            for(var key in finalallotment){
+                let state={
+                    id:key,
+                    content:finalallotment[key]
+            }
+            ans.push(state)
+        }
+            console.log(ans)
+            res.send(JSON.stringify(ans))
+            res.end()
 
         });
 
