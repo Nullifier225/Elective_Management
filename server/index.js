@@ -467,7 +467,7 @@ app.post("/api/manageelective", (req, res) => {
                 }
 
                 noofelectives = result.length
-
+                console.log(noofelectives)
                 for (let i = 0; i < noofelectives; i++) {
                     let vals = JSON.parse(JSON.stringify(result))[i]
                     let xn = Object.values(vals)
@@ -509,29 +509,35 @@ app.post("/api/manageelective", (req, res) => {
                 }
             }
             let electivesdrop = []
-
+            let maxcap="";
             for (var key in dict1) {
+                if (maxcap==""){
+                    maxcap=key;
+                }
                 if (dict1.hasOwnProperty(key)) {
                     if (dict1[key][2] < dict1[key][1]) {
                         electivesdrop.push(key)
+                        if (dict1[maxcap][2]<dict1[key][2]){
+                            maxcap=key
+                        }
 
                     }
                 }
             }
+            
+            
+            //console.log(finalallotment)
             for (let i = 0; i < result.length; i += noofelectives) {
 
                 if (electivesdrop.includes(finalallotment[filledpref[i][1]])) {
                     console.log("changing for")
                     let y = false;
-                    let store = false;
-                    let maxcap = "";
+                    
+                    
                     for (var key in dict1) {
                         if (dict1.hasOwnProperty(key)) {
-                            if (dict1[key][2] == dict1[key][0] && store == false) {
-                                store = true
-                                maxcap = key
-                                console.log(maxcap)
-                            }
+                            //console.log(key,dict1[key][2],dict1[key][0])
+                            
                             if (dict1[key][2] >= dict1[key][1] && dict1[key][2] > dict1[key][0] && y == false) {
 
                                 finalallotment[filledpref[i][1]] = key
@@ -542,8 +548,10 @@ app.post("/api/manageelective", (req, res) => {
                     if (y == false) {
                         dict1[finalallotment[filledpref[i][1]]][2] -= 1
                         finalallotment[filledpref[i][1]] = maxcap
-                        dict1[maxcap][0] += 1
-                        dict1[maxcap][2] += 1
+                        //console.log(maxcap)
+                        //console.log(dict1[maxcap])
+                        dict1[maxcap][0] +=1 
+                        dict1[maxcap][2] +=1
                     }
 
                 }
