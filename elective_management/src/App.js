@@ -17,6 +17,8 @@ import Feedbackform from './component/feedbackform';
 import viewfeedback from './component/viewfeedback';
 import errorpage from './component/ErrorPage';
 import management from './component/electivemanagement';
+import viewstudentelective from './component/studentviewelective';
+
 
 class App extends Component {
   render() {
@@ -37,6 +39,8 @@ class App extends Component {
             <Route path="/viewfeedbacks" component={viewfeedback} exact/>
             <Route path="/error" component={errorpage} exact/>
             <Route path="/management" component={management} exact/>
+            <Route path="/tentativelist" component={viewstudentelective} exact/>
+
             
             
 
