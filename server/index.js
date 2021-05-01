@@ -114,6 +114,49 @@ app.post("/api/signin", (req, res) => {
 
     })
 
+    app.get("/api/getcc", (req, res) => {
+        const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+
+        db.getConnection(function (err) {
+            var x1 = tempid.split("@")[0]
+            var depart = x1
+                .split(".")[2]
+                .slice(2, 5)
+                .toUpperCase()
+            var yr = 21 - parseInt(x1.split(".")[2].slice(5, 7))
+
+            console.log(req.body.name)
+            db.query("SELECT coursecode FROM dept_elective WHERE electivename=? ", [
+                req.body.name
+            ], function (err, result) {
+
+                if (err) {
+                    res.send("error")
+
+                    res.end()
+                    return next(err)
+                }
+                let x = []
+                let n = result.length
+                for (let i = 0; i < n; i++) {
+                    let vals = JSON.parse(JSON.stringify(result))[i]
+                    let xn = Object.values(vals)
+                    let state = {
+                        id: i + 1,
+                        content: xn[0]
+                    }
+                    x.push(state)
+                }
+                // console.log(x)
+
+                res.send(x)
+                res.end()
+
+            });
+        });
+
+    })
+
     app.get("/api/getname", (req, res) => {
         const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
 
