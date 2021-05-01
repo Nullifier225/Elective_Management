@@ -4,17 +4,22 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 import {ArrowLeftCircleFill} from 'react-bootstrap-icons';
 export default class ChangeForm extends Component {
-    
+    handleChange = (event) => {  
+        
+        axios.get('http://localhost:3001/api/getcc',{
+            params:{
+                name: document.getElementById('electivename').value
+            }
+        }).then(response => {
+            var details = response.data;             
+            var element;
+            
+            element = <input type="text" id="coursecode" value={JSON.parse(JSON.stringify(details[0].content))} readOnly></input>
 
-    // OnChanging = (event) => {     event.preventDefault();     let req = {
-    // name: document             .getElementById('electivename')             .value
-    //     }     console.log(req.body.name)     axios
-    // .get('http://localhost:3001/api/getcc',req)         .then(response => {
-    //       var details = response.data;             var element;
-    // element = <input                 type="text"                 id="coursecode"
-    //
-    // value={JSON.parse(JSON.stringify(details.content[0]))}></input>
-    // ReactDOM.render(element, document.getElementById('data2'));         }) }
+         ReactDOM.render(element, document.getElementById('data2'));         })
+    };
+
+    
     constructor() {
         super();
 
@@ -32,11 +37,12 @@ export default class ChangeForm extends Component {
                 var details = response.data;
                 var element;
 
-                element = <select name="text" id="electivename">
+                element = <select defaultValue={'DEFAULT'} name="text" id="electivename" onChange={this.handleChange}>
+                    <option value="DEFAULT" disabled>Choose desired elective</option>
                     {details.map((item) => (
-
-                        <option value={JSON.parse(JSON.stringify(item.content))}>{JSON.parse(JSON.stringify(item.content))}</option>
-
+                        
+                        <option value={JSON.parse(JSON.stringify(item.content))} default>{JSON.parse(JSON.stringify(item.content))}</option>
+                        
                     ))}
                 </select>
 
@@ -47,25 +53,10 @@ export default class ChangeForm extends Component {
 
     // $('electivename')
     //     .change(function () {
-    //         var electivename = $(this).val();
-    //          axios
-    //             .get('http://localhost:3001/api/getcc', electivename)
-    //             .then(response => {
-    //                 var details = response.data;
-    //                 var element;
-
-    //                 element = <input
-    //                     type="text"
-    //                     id="coursecode"
-    //                     value={JSON.parse(JSON.stringify(details.content[0]))}></input>
-
-    //                 ReactDOM.render(element, document.getElementById('data2'));
-    //             })
+    //         
     //     })
 
-    handleChange = (name) => (event) => {
-        this.setState({[name]: event.target.value});
-    };
+    
 
     clickBtn1 = (event) => {
         event.preventDefault();

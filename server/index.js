@@ -118,16 +118,10 @@ app.post("/api/signin", (req, res) => {
         const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
 
         db.getConnection(function (err) {
-            var x1 = tempid.split("@")[0]
-            var depart = x1
-                .split(".")[2]
-                .slice(2, 5)
-                .toUpperCase()
-            var yr = 21 - parseInt(x1.split(".")[2].slice(5, 7))
 
-            console.log(req.body.name)
+            console.log(req.query)
             db.query("SELECT coursecode FROM dept_elective WHERE electivename=? ", [
-                req.body.name
+                req.query.name
             ], function (err, result) {
 
                 if (err) {
