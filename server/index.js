@@ -44,30 +44,46 @@ app.post("/api/signin", (req, res) => {
             });
 
         app.post("/api/changeform", (req, res) => {
-            //console.log("1")
-            const cename = req.body.cename;
-            const cecoursecode = req.body.cecoursecode;
             const dename = req.body.dename;
             const decoursecode = req.body.decoursecode;
-
+            var x1 = tempid.split("@")[0]
+            let ele =[]
+            let ele3,ele4 =""
             db.getConnection(function (err) {
+                
+                db.query("select elective from student_details where rno = ? ",[x1],function (err, result) {
+                    if (err) {
+                        print("retrievel error")
+                    }
 
-                //console.log("connected")
-                db
-                    .query("insert into electivechange values(?,?,?,?,?)", [
-                        emailid, cename, cecoursecode, dename, decoursecode
-                    ], function (err, result) {
+                    ele3=JSON.parse(JSON.stringify(result))
+                    ele.push(Object.values(ele3)[0].elective)
+
+               
+
+                db.query("select coursecode from dept_elective where electivename = ? ",[ele[0]],function (err, result) {
+                    if (err) {
+                        print("retrievel error")
+                    }
+                    ele4=JSON.parse(JSON.stringify(result))
+                    ele.push(Object.values(ele4)[0].coursecode)
+
+
+                
+                db.query("insert into electivechange values(?,?,?,?,?)", [x1, ele[0], ele[1], dename, decoursecode], function (err, result) {
 
                         if (err) {
                             res.send('invalid')
-
                             res.end()
-                            return next(err)
                         }
                         res.send('valid')
                         res.end()
-
                     });
+
+                })
+
+            })
+
             });
 
         })

@@ -120,17 +120,12 @@ export default class ChangeForm extends Component {
         function submit_signup(e) {
             e.preventDefault();
             let request = {
-                cename: document
-                    .getElementById('en1')
-                    .value,
-                cecoursecode: document
-                    .getElementById('cc1')
-                    .value,
+                
                 dename: document
-                    .getElementById('den')
+                    .getElementById('electivename')
                     .value,
                 decoursecode: document
-                    .getElementById('decc')
+                    .getElementById('coursecode')
                     .value
             }
             axios
