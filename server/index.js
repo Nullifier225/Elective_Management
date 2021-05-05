@@ -648,6 +648,13 @@ app.post("/api/manageelective", (req, res) => {
             ans.push(state)
         }
             console.log(ans)
+            db.query("Delete from dept_elective where alloted = 0 and department = ?",[department],function (err, result) {
+                if (err) {
+
+                    res.end()
+                }
+
+            })
             res.send(JSON.stringify(ans))
             res.end()
 
