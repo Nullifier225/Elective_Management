@@ -272,27 +272,67 @@ app.post("/api/studentformcol", (req, res) => {
 
     // console.log(vals);}
     db.getConnection(function (err) {
-
+        
         console.log("connected")
-
+        var check=false;
         let refs = "valid"
+        let done=false;
+        function changecheck(){
+            check=!(check)
+            console.log("cheange check",check)
+        }
+        function changedone(){
+            done=!(done)
+            
+        }
+        function changeref(){
+            var bool=false
+            if(refs=="valid" && bool==false){
+                bool=true;
+                refs="invalid"
+            }
+            if(refs=="invalid" && bool==false){
+                bool=true;
+                refs="valid"
+            }
+            return
+            
+            
+        }
         for (let i = 0; i < n; i++) {
             let vals = Object.values(pref[i]);
 
-            console.log(vals)
+            //console.log(vals)
             db.query("insert into student_elective values(?,?,?,?,?)", [
                 name, rno, sec, i + 1,
                 vals[1]
             ], function (err, result) {
 
                 if (err) {
-                    refs = "invalid"
+                    if (refs=='valid'){
+                    console.log("errr")
+                    changeref();
+                    
+                    }
+                }
+                console.log("refs=",refs)
+                if (refs=='invalid' && done==false){
+                    changecheck();
+                    changedone();   
+                    res.send(refs)
+                    res.end()
+                }
+                if (i==n-1 && refs=='valid'){
+                    res.send(refs)
+                    res.end()
                 }
 
             });
         }
-        res.send(refs)
-        res.end()
+        console.log("check here",check)
+        console.log("refs here",refs)
+        
+    
     });
 
 });

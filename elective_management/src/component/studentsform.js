@@ -207,7 +207,8 @@ function submit_studentform(e,items){
     if(details!='valid')
     {
       alert("multiple responses are not accepted")
-      console.log("error");
+      window.location.replace('/loginform');
+      
     }
   })
    
