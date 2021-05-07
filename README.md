@@ -22,4 +22,8 @@ elective management system
 <td>admindashboard.js</td>
 <td>The dashboard for admin</td>
 </tr>
+ <tr>
+<td>viewfeedback.js</td>
+<td>The Feedback report for faculties</td>
+</tr>
 </table>
