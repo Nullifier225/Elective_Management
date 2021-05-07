@@ -18,6 +18,7 @@ import viewfeedback from './component/viewfeedback';
 import errorpage from './component/ErrorPage';
 import management from './component/electivemanagement';
 import viewstudentelective from './component/studentviewelective';
+import changemanagement from './component/electivechangemanagement';
 
 
 
@@ -41,7 +42,7 @@ class App extends Component {
             <Route path="/error" component={errorpage} exact/>
             <Route path="/management" component={management} exact/>
             <Route path="/tentativelist" component={viewstudentelective} exact/>
-           
+            <Route path="/electivechangemanagement" component={changemanagement} exact/>
             
             
 
