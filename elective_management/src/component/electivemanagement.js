@@ -11,7 +11,10 @@ export default class management extends Component {
         let req = {
             dept: document
                 .getElementById('select1')
-                .value
+                .value,
+            year: document
+                .getElementById('select2')
+                .value.parseInt()
         }
         document.getElementById('print').style={display:"block"};
         axios
@@ -66,6 +69,18 @@ export default class management extends Component {
                                 </option>
                                 <option value="CSE">CSE</option>
                                 <option value="ECE">ECE</option>
+                               
+                            </select>
+                            <label>Year</label>
+                            <br/>
+                            <select required name="year" id="select2">
+                                <option value="">
+                                    -- select an option --
+                                </option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
                                
                             </select>
                         </div>

@@ -542,12 +542,14 @@ app.post("/api/signin", (req, res) => {
         app.post("/api/manageelective", (req, res) => {
             const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
             var department = req.body.dept;
+            var dummy=department.toLowerCase()
+            var year=dummy+21-req.body.year.parseInt().toString()
             let noofelectives = 0;
 
             let dict1 = {}
             db.getConnection(function (err) {
                 db
-                    .query("SELECT * from dept_elective where department=?", [department], function (err, result) {
+                    .query("SELECT * from dept_elective where department=? and year=?", [department,req.body.year], function (err, result) {
 
                         if (err) {
                             res.send("error")
@@ -575,7 +577,7 @@ app.post("/api/signin", (req, res) => {
                 console.log(department)
                 let finalallotment = {}
                 let filledpref = []
-                db.query("SELECT * from student_elective where rno REGEXP ? ", [department], function (err, result) {
+                db.query("SELECT * from student_elective where rno REGEXP ? ", [year], function (err, result) {
                     console.log(result.length)
                     for (let i = 0; i < result.length; i++) {
                         let vals = JSON.parse(JSON.stringify(result))[i]
@@ -686,16 +688,48 @@ app.post("/api/signin", (req, res) => {
                         ans.push(state)
                     }
                     console.log(ans)
-                    db.query("Delete from dept_elective where alloted = 0 and department = ?", [department], function (err, result) {
+                    db.query("Delete from dept_elective where alloted = 0 and department = ? and year = ?", [department,req.body.year], function (err, result) {
                         if (err) {
 
                             res.end()
                         }
 
                     })
+                    let maxele=""
+                    let flag=0
+                    let add=0
+                    db.query("SELECT name from student_details WHERE elective is NULL and rno REGEXP ?",[year],function (err, result) {
+                        add=result.length
+                        
+                        if (err) {
+        
+                            res.end()
+                        }
+        
+                
+                    for (var key in dict1){
+                        if ((dict1[key][0] - dict1[key][2]) > (dict1[maxele][0] - dict1[maxele][2])){
+                            maxele=key
+                            flag=1
+                            continue
+                        }
+                        else if ((dict1[key][0] - dict1[key][2])==0 && flag==0){
+                            if (dict1[key][0]<dict1[maxele][0]){
+                                maxele=key
+                            }
+                        }
+                    }
+                    
+                    db.query("UPDATE student_details SET elective = ? WHERE elective is NULL and rno REGEXP ?",[maxele,year],function (err, result) {
+                        if (err) {
+        
+                            res.end()
+                        }
+        
+                    })
                     res.send(JSON.stringify(ans))
                     res.end()
-
+                })
                 });
 
             })
