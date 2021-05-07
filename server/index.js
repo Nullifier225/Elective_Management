@@ -120,6 +120,7 @@ app.post("/api/signin", (req, res) => {
                         content: xn[0]
                     }
                     x.push(state)
+                    console.log(state)
                 }
 
                 res.send(x)

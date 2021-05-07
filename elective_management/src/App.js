@@ -20,6 +20,7 @@ import management from './component/electivemanagement';
 import viewstudentelective from './component/studentviewelective';
 
 
+
 class App extends Component {
   render() {
     return (
@@ -40,7 +41,7 @@ class App extends Component {
             <Route path="/error" component={errorpage} exact/>
             <Route path="/management" component={management} exact/>
             <Route path="/tentativelist" component={viewstudentelective} exact/>
-
+           
             
             
 
