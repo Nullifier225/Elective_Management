@@ -14,7 +14,7 @@ export default class management extends Component {
                 .value,
             year: document
                 .getElementById('select2')
-                .value.parseInt()
+                .value
         }
         document.getElementById('print').style={display:"block"};
         axios

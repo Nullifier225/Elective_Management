@@ -543,13 +543,17 @@ app.post("/api/signin", (req, res) => {
             const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
             var department = req.body.dept;
             var dummy=department.toLowerCase()
-            var year=dummy+21-req.body.year.parseInt().toString()
+            var year0=parseInt(req.body.year)
+            var year1=21-year0
+            var year2=year1.toString()
+            var year=dummy+year2
             let noofelectives = 0;
 
             let dict1 = {}
+            console.log(year,year0,year1,year2)
             db.getConnection(function (err) {
                 db
-                    .query("SELECT * from dept_elective where department=? and year=?", [department,req.body.year], function (err, result) {
+                    .query("SELECT * from dept_elective where department=? and courseyear=?", [department,year0], function (err, result) {
 
                         if (err) {
                             res.send("error")
@@ -591,6 +595,7 @@ app.post("/api/signin", (req, res) => {
                         for (let j = i; j < i + noofelectives; j++) {
                             let preference = filledpref[j][4]
                             let rollno = filledpref[j][1]
+                            console.log(preference,dict1)
                             if (dict1[preference][2] < dict1[preference][0]) {
                                 finalallotment[rollno] = preference
                                 dict1[preference][2] += 1
@@ -646,9 +651,7 @@ app.post("/api/signin", (req, res) => {
                         }
 
                     }
-                    console.log(dict1)
-                    console.log(finalallotment)
-
+                    
                     for (var key in finalallotment) {
                         if (finalallotment.hasOwnProperty(key)) {
                             db
@@ -666,7 +669,7 @@ app.post("/api/signin", (req, res) => {
 
                     for (var key in dict1) {
                         if (dict1.hasOwnProperty(key)) {
-                            console.log(dict1[key], key)
+                            //console.log(dict1[key], key)
 
                             db.query("update dept_elective set  max = ?,alloted = ? where electivename = ?", [
                                 dict1[key][0], dict1[key][2], key
@@ -687,20 +690,12 @@ app.post("/api/signin", (req, res) => {
                         }
                         ans.push(state)
                     }
-                    console.log(ans)
-                    db.query("Delete from dept_elective where alloted = 0 and department = ? and year = ?", [department,req.body.year], function (err, result) {
-                        if (err) {
-
-                            res.end()
-                        }
-
-                    })
-                    let maxele=""
+                    
+                    let maxele=Object.keys(dict1)[0]
                     let flag=0
                     let add=0
-                    db.query("SELECT name from student_details WHERE elective is NULL and rno REGEXP ?",[year],function (err, result) {
-                        add=result.length
-                        
+                    console.log(year)
+                    db.query("SELECT rno from student_details WHERE elective is NULL and rno REGEXP ?",[year],function (err, result) {
                         if (err) {
         
                             res.end()
@@ -719,13 +714,51 @@ app.post("/api/signin", (req, res) => {
                             }
                         }
                     }
+                    console.log(result)
+                        for (i=0;i<add;i++){
+                            let vals = JSON.parse(JSON.stringify(result))[i]
+                            let xn = Object.values(vals)
+                            if(finalallotment.hasOwnProperty(xn[0])==false){
+                                //ans[xn[0]]=maxele
+                                let state={id:xn[0],content:maxele}
+                                ans.push(state)
+                                add+=1
+                            }
+                            //console.log(ans)
+                            //console.log(xn)
+
+                        }
                     
+                    if (flag==0){
+                        dict1[maxele][0]+=add
+                        dict1[maxele][2]+=add
+                    }
+                    if (flag==1){
+                        dict1[maxele][2]+=add
+                        if (dict1[maxele][0]< dict1[maxele][2]){
+                            dict1[maxele][0]=dict1[maxele][2]
+                        }                    
+                    }
+                    console.log(maxele,dict1[maxele][0],dict1[maxele][2],flag)
+                    db.query("UPDATE dept_elective SET max = ? and alloted = ? WHERE electivename = ?",[dict1[maxele][0],dict1[maxele][2],maxele],function(err,result){
+                        if (err) {
+        
+                            res.end()
+                        }
+                    })
                     db.query("UPDATE student_details SET elective = ? WHERE elective is NULL and rno REGEXP ?",[maxele,year],function (err, result) {
                         if (err) {
         
                             res.end()
                         }
         
+                    })
+                    db.query("Delete from dept_elective where alloted = 0 and department = ? and courseyear = ?", [department,year0], function (err, result) {
+                        if (err) {
+
+                            res.end()
+                        }
+
                     })
                     res.send(JSON.stringify(ans))
                     res.end()
