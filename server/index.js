@@ -715,7 +715,7 @@ app.post("/api/signin", (req, res) => {
                         }
                     }
                     console.log(result)
-                        for (i=0;i<add;i++){
+                        for (i=0;i<result.length;i++){
                             let vals = JSON.parse(JSON.stringify(result))[i]
                             let xn = Object.values(vals)
                             if(finalallotment.hasOwnProperty(xn[0])==false){
@@ -723,12 +723,13 @@ app.post("/api/signin", (req, res) => {
                                 let state={id:xn[0],content:maxele}
                                 ans.push(state)
                                 add+=1
+                                console.log(add,"at loop")
                             }
                             //console.log(ans)
                             //console.log(xn)
 
                         }
-                    
+                        console.log(add,"at change ")
                     if (flag==0){
                         dict1[maxele][0]+=add
                         dict1[maxele][2]+=add
@@ -740,7 +741,8 @@ app.post("/api/signin", (req, res) => {
                         }                    
                     }
                     console.log(maxele,dict1[maxele][0],dict1[maxele][2],flag)
-                    db.query("UPDATE dept_elective SET max = ? and alloted = ? WHERE electivename = ?",[dict1[maxele][0],dict1[maxele][2],maxele],function(err,result){
+                    
+                    db.query("UPDATE dept_elective SET max = ? , alloted = ? WHERE electivename = ? AND courseyear=?",[dict1[maxele][0],dict1[maxele][2],maxele,year0],function(err,result){
                         if (err) {
         
                             res.end()
