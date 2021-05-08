@@ -1,6 +1,6 @@
 # Elective_Management
 elective management system
-### The following are the components that are currently present in repository
+### The following are the components that are currently present in the repository.
 <table>
 <tr>
 <th>File name</th>
