@@ -542,18 +542,20 @@ app.post("/api/signin", (req, res) => {
         app.post("/api/manageelective", (req, res) => {
             const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
             var department = req.body.dept;
-            var dummy=department.toLowerCase()
-            var year0=parseInt(req.body.year)
-            var year1=21-year0
-            var year2=year1.toString()
-            var year=dummy+year2
+            var dummy = department.toLowerCase()
+            var year0 = parseInt(req.body.year)
+            var year1 = 21 - year0
+            var year2 = year1.toString()
+            var year = dummy + year2
             let noofelectives = 0;
 
             let dict1 = {}
-            console.log(year,year0,year1,year2)
+            console.log(year, year0, year1, year2)
             db.getConnection(function (err) {
                 db
-                    .query("SELECT * from dept_elective where department=? and courseyear=?", [department,year0], function (err, result) {
+                    .query("SELECT * from dept_elective where department=? and courseyear=?", [
+                        department, year0
+                    ], function (err, result) {
 
                         if (err) {
                             res.send("error")
@@ -595,7 +597,7 @@ app.post("/api/signin", (req, res) => {
                         for (let j = i; j < i + noofelectives; j++) {
                             let preference = filledpref[j][4]
                             let rollno = filledpref[j][1]
-                            console.log(preference,dict1)
+                            console.log(preference, dict1)
                             if (dict1[preference][2] < dict1[preference][0]) {
                                 finalallotment[rollno] = preference
                                 dict1[preference][2] += 1
@@ -651,7 +653,7 @@ app.post("/api/signin", (req, res) => {
                         }
 
                     }
-                    
+
                     for (var key in finalallotment) {
                         if (finalallotment.hasOwnProperty(key)) {
                             db
@@ -671,15 +673,16 @@ app.post("/api/signin", (req, res) => {
                         if (dict1.hasOwnProperty(key)) {
                             //console.log(dict1[key], key)
 
-                            db.query("update dept_elective set  max = ?,alloted = ? where electivename = ?", [
-                                dict1[key][0], dict1[key][2], key
-                            ], function (err, result) {
-                                if (err) {
+                            db
+                                .query("update dept_elective set  max = ?,alloted = ? where electivename = ?", [
+                                    dict1[key][0], dict1[key][2], key
+                                ], function (err, result) {
+                                    if (err) {
 
-                                    res.end()
-                                }
+                                        res.end()
+                                    }
 
-                            })
+                                })
                         }
                     }
                     ans = []
@@ -690,81 +693,91 @@ app.post("/api/signin", (req, res) => {
                         }
                         ans.push(state)
                     }
-                    
-                    let maxele=Object.keys(dict1)[0]
-                    let flag=0
-                    let add=0
+
+                    let maxele = Object.keys(dict1)[0]
+                    let flag = 0
+                    let add = 0
                     console.log(year)
-                    db.query("SELECT rno from student_details WHERE elective is NULL and rno REGEXP ?",[year],function (err, result) {
+                    db.query("SELECT rno from student_details WHERE elective is NULL and rno REGEXP ?", [year], function (err, result) {
                         if (err) {
-        
+
                             res.end()
                         }
-        
-                
-                    for (var key in dict1){
-                        if ((dict1[key][0] - dict1[key][2]) > (dict1[maxele][0] - dict1[maxele][2])){
-                            maxele=key
-                            flag=1
-                            continue
-                        }
-                        else if ((dict1[key][0] - dict1[key][2])==0 && flag==0){
-                            if (dict1[key][0]<dict1[maxele][0]){
-                                maxele=key
+
+                        for (var key in dict1) {
+                            if ((dict1[key][0] - dict1[key][2]) > (dict1[maxele][0] - dict1[maxele][2])) {
+                                maxele = key
+                                flag = 1
+                                continue
+                            } else if ((dict1[key][0] - dict1[key][2]) == 0 && flag == 0) {
+                                if (dict1[key][0] < dict1[maxele][0]) {
+                                    maxele = key
+                                }
                             }
                         }
-                    }
-                    console.log(result)
-                        for (i=0;i<result.length;i++){
+                        console.log(result)
+                        for (i = 0; i < result.length; i++) {
                             let vals = JSON.parse(JSON.stringify(result))[i]
                             let xn = Object.values(vals)
-                            if(finalallotment.hasOwnProperty(xn[0])==false){
+                            if (finalallotment.hasOwnProperty(xn[0]) == false) {
                                 //ans[xn[0]]=maxele
-                                let state={id:xn[0],content:maxele}
+                                let state = {
+                                    id: xn[0],
+                                    content: maxele
+                                }
                                 ans.push(state)
-                                add+=1
-                                console.log(add,"at loop")
+                                add += 1
+                                console.log(add, "at loop")
                             }
-                            //console.log(ans)
-                            //console.log(xn)
+                            //console.log(ans) console.log(xn)
 
                         }
-                        console.log(add,"at change ")
-                    if (flag==0){
-                        dict1[maxele][0]+=add
-                        dict1[maxele][2]+=add
-                    }
-                    if (flag==1){
-                        dict1[maxele][2]+=add
-                        if (dict1[maxele][0]< dict1[maxele][2]){
-                            dict1[maxele][0]=dict1[maxele][2]
-                        }                    
-                    }
-                    console.log(maxele,dict1[maxele][0],dict1[maxele][2],flag)
-                    
-                    db.query("UPDATE dept_elective SET max = ? , alloted = ? WHERE electivename = ? AND courseyear=?",[dict1[maxele][0],dict1[maxele][2],maxele,year0],function(err,result){
-                        if (err) {
-        
-                            res.end()
+                        console.log(add, "at change ")
+                        if (flag == 0) {
+                            dict1[maxele][0] += add
+                            dict1[maxele][2] += add
                         }
-                    })
-                    db.query("UPDATE student_details SET elective = ? WHERE elective is NULL and rno REGEXP ?",[maxele,year],function (err, result) {
-                        if (err) {
-        
-                            res.end()
+                        if (flag == 1) {
+                            dict1[maxele][2] += add
+                            if (dict1[maxele][0] < dict1[maxele][2]) {
+                                dict1[maxele][0] = dict1[maxele][2]
+                            }
                         }
-        
-                    })
-                    db.query("Delete from dept_elective where alloted = 0 and department = ? and courseyear = ?", [department,year0], function (err, result) {
-                        if (err) {
+                        console.log(maxele, dict1[maxele][0], dict1[maxele][2], flag)
 
-                            res.end()
-                        }
+                        db.query("UPDATE dept_elective SET max = ? , alloted = ? WHERE electivename = ? AND course" +
+                                "year=?",
+                        [
+                            dict1[maxele][0], dict1[maxele][2], maxele, year0
+                        ], function (err, result) {
+                            if (err) {
 
+                                res.end()
+                            }
+                        })
+                        db.query("UPDATE student_details SET elective = ? WHERE elective is NULL and rno REGEXP ?", [
+                            maxele, year
+                        ], function (err, result) {
+                            if (err) {
+
+                                res.end()
+                            }
+
+                        })
+                        db.query("Delete from dept_elective where alloted = 0 and department = ? and courseyear = " +
+                                "?",
+                        [
+                            department, year0
+                        ], function (err, result) {
+                            if (err) {
+
+                                res.end()
+                            }
+
+                        })
+                        res.send(JSON.stringify(ans))
+                        res.end()
                     })
-                    res.send(JSON.stringify(ans))
-                    res.end()
-                })
                 });
 
             })
@@ -868,33 +881,156 @@ app.post("/api/signin", (req, res) => {
                             // console.log(electivechange)
 
                             let updated = {}
-                            n = Object.keys(electivechange).length;
-                            for(let _ =0; _<n;_++)
-                            {
+                            n = Object
+                                .keys(electivechange)
+                                .length;
+                            for (let _ = 0; _ < n; _++) {
                                 for (var key in electivechange) {
-                                    // console.log(dept_elective[electivechange[key][0]][2] - 1 >= dept_elective[electivechange[key][0]][1] )
-                                        if((dept_elective[electivechange[key][1]][0] - dept_elective[electivechange[key][1]][2]) > 0 && (dept_elective[electivechange[key][0]][2] - 1 >= dept_elective[electivechange[key][0]][1] )){
-                                            dept_elective[electivechange[key][0]][2] -=1
-                                            // console.log(dept_elective[electivechange[key][1]][0])
-                                            // console.log(dept_elective[electivechange[key][0]][2])
-                                            dept_elective[electivechange[key][1]][2] +=1
-                                            updated[key] = electivechange[key][1]
-                                        }
+                                    // console.log(dept_elective[electivechange[key][0]][2] - 1 >=
+                                    // dept_elective[electivechange[key][0]][1] )
+                                    if ((dept_elective[electivechange[key][1]][0] - dept_elective[electivechange[key][1]][2]) > 0 && (dept_elective[electivechange[key][0]][2] - 1 >= dept_elective[electivechange[key][0]][1])) {
+                                        dept_elective[electivechange[key][0]][2] -= 1
+                                        // console.log(dept_elective[electivechange[key][1]][0])
+                                        // console.log(dept_elective[electivechange[key][0]][2])
+                                        dept_elective[electivechange[key][1]][2] += 1
+                                        updated[key] = electivechange[key][1]
                                     }
+                                }
                             }
-                            
 
-    
                             console.log(dept_elective)
-                            // console.log(electivechange)
-                            // console.log(updated);
-
+                            // console.log(electivechange) console.log(updated);
 
                         });
                     });
             })
         })
 
+        app.post("/api/sendemail", (req, res) => {
+
+            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+
+            db.getConnection(function (err) {
+                db
+                    .query("SELECT ls_usern FROM student_login_details1", function (err, result) {
+
+                        n = result.length
+                        var arr1 = []
+                        for (let i = 0; i < n; i++) {
+                            let vals = JSON.parse(JSON.stringify(result))[i]
+                            let xn = Object.values(vals)
+                            //console.log(xn)
+                            arr1.push(xn)
+                        }
+
+                        //console.log("trying to send email")
+                        var nodemailer = require('nodemailer');
+                        for (let person = 0; person < n; person++) {
+                            var transporter = nodemailer.createTransport({
+                                service: 'gmail',
+                                auth: {
+                                    user: 'amritacbelectiveteam@gmail.com',
+                                    pass: 'amritacb1234'
+                                }
+                            });
+
+                            var mailOptions = {
+                                from: 'amritacbelectiveteam@gmail.com',
+                                to: arr1[person],
+                                subject: 'Availability of 7th sem elective application form',
+                                html: '<p>Dear students,</p><p>This is to notify you that the forms for elective applic' +
+                                        'ation for the 7th semester will be available starting <b>17th May 2021</b> till ' +
+                                        '<b>28th May 2021</b> on your AUEMS website.Submit your response at the earliest<' +
+                                        '/p><br> <p><i>regards, <br>AUEMS Team</i></p>'
+                            };
+
+                            transporter.sendMail(mailOptions, function (error, info) {
+                                if (error) {
+                                    console.log(error);
+                                } else {
+                                    console.log('Email sent: ' + info.response);
+                                }
+                            });
+                        }
+                        if (err) {
+                            res.send("error")
+
+                            res.end()
+                            return next(err)
+                        } else {
+                            res.send("valid")
+                        }
+
+                        res.end()
+
+                    });
+            });
+
+        })
+
+        app.post("/api/sendemail2", (req, res) => {
+
+            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+
+            db.getConnection(function (err) {
+                db
+                    .query("SELECT ls_usern FROM student_login_details1", function (err, result) {
+
+                        n = result.length
+                        var arr1 = []
+                        for (let i = 0; i < n; i++) {
+                            let vals = JSON.parse(JSON.stringify(result))[i]
+                            let xn = Object.values(vals)
+                            //console.log(xn)
+                            arr1.push(xn)
+                        }
+
+                        //console.log("trying to send email")
+                        var nodemailer = require('nodemailer');
+                        for (let person = 0; person < n; person++) {
+                            var transporter = nodemailer.createTransport({
+                                service: 'gmail',
+                                auth: {
+                                    user: 'amritacbelectiveteam@gmail.com',
+                                    pass: 'amritacb1234'
+                                }
+                            });
+
+                            var mailOptions = {
+                                from: 'amritacbelectiveteam@gmail.com',
+                                to: arr1[person],
+                                subject: 'Availability of 7th sem change elective application form',
+                                html: '<p>Dear students,</p><p>This is to notify you that the forms for elective change' +
+                                        ' application for the 7th semester will be available starting <b>28th May 2021</b' +
+                                        '> till <b>31th May 2021</b> on your AUEMS website.Submit your response at the ea' +
+                                        'rliest , your responses will be handled in a first come first server basis and t' +
+                                        'he acceptance of your application is purely subjected to the availability in the' +
+                                        ' applied elective.</p><br> <p><i>regards, <br>AUEMS Team</i></p>'
+                            };
+
+                            transporter.sendMail(mailOptions, function (error, info) {
+                                if (error) {
+                                    console.log(error);
+                                } else {
+                                    console.log('Email sent: ' + info.response);
+                                }
+                            });
+                        }
+                        if (err) {
+                            res.send("error")
+
+                            res.end()
+                            return next(err)
+                        } else {
+                            res.send("valid")
+                        }
+
+                        res.end()
+
+                    });
+            });
+
+        })
         app.post('/api/logout', () => {
             tempid = ""
         });

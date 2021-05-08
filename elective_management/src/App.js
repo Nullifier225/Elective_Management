@@ -19,6 +19,7 @@ import errorpage from './component/ErrorPage';
 import management from './component/electivemanagement';
 import viewstudentelective from './component/studentviewelective';
 import changemanagement from './component/electivechangemanagement';
+import sendmail from './component/emailtry1';
 
 
 
@@ -43,6 +44,7 @@ class App extends Component {
             <Route path="/management" component={management} exact/>
             <Route path="/tentativelist" component={viewstudentelective} exact/>
             <Route path="/electivechangemanagement" component={changemanagement} exact/>
+            <Route path="/sendmail" component={sendmail} exact/>
             
             
 
