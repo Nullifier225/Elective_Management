@@ -20,7 +20,7 @@ import management from './component/electivemanagement';
 import viewstudentelective from './component/studentviewelective';
 import changemanagement from './component/electivechangemanagement';
 import sendmail from './component/emailtry1';
-
+import printpage from './component/htmlpdfsample'
 
 
 class App extends Component {
@@ -45,7 +45,7 @@ class App extends Component {
             <Route path="/tentativelist" component={viewstudentelective} exact/>
             <Route path="/electivechangemanagement" component={changemanagement} exact/>
             <Route path="/sendmail" component={sendmail} exact/>
-            
+            <Route path="/printpage" component={printpage} exact/>
             
 
             </Switch>

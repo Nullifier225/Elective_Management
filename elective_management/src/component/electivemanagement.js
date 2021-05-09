@@ -4,6 +4,7 @@ import {Preview, print} from 'react-html2pdf';
 import {ArrowLeftCircleFill} from 'react-bootstrap-icons';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import {PDFExport} from '@progress/kendo-react-pdf';
 
 export default class management extends Component {
     clickbtn = (event) => {
@@ -16,7 +17,6 @@ export default class management extends Component {
                 .getElementById('select2')
                 .value
         }
-        document.getElementById('print').style={display:"block"};
         axios
             .post('http://localhost:3001/api/manageelective', req)
             .then(response => {
@@ -88,13 +88,28 @@ export default class management extends Component {
                         </button>
                         
                         <div id="tab">
+                        <PDFExport
+                    paperSize="A4"
+                    margin="0.5cm"
+                    ref={(component) => this.pdfExportComponent = component}>
                         <div id="data"></div>
+                        </PDFExport>
                         
                         </div>
                         </form>
                         
                             
-                        <button id="print" style={{display:"none"}} onClick={()=>print('a', 'data')}>print</button>
+                        <div className="example-config">
+                    <button
+                        className="k-button"
+                        onClick={() => {
+                        this
+                            .pdfExportComponent
+                            .save();
+                    }}>
+                        Export PDF
+                    </button>
+                </div>
                            
                         
                         
