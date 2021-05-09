@@ -909,10 +909,23 @@ app.post("/api/signin", (req, res) => {
         app.post("/api/sendemail", (req, res) => {
 
             const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+            var receiver = req.body.receiver;
+            var subject = req.body.subject;
+            var content = req.body.content;
+            var dept = req.body.dept;
+            var year= 21-req.body.year;
+            var dept1=dept.toLowerCase();
+            var deptyr=dept1+year;
+            console.log(receiver)
+            console.log(subject)
+            console.log(content)
+            console.log(dept)
+            console.log(year)
+            console.log(deptyr)
 
+            if (receiver=="Student") {
             db.getConnection(function (err) {
-                db
-                    .query("SELECT ls_usern FROM student_login_details1", function (err, result) {
+                db.query("SELECT ls_usern FROM student_login_details1 where ls_usern REGEXP ?",[deptyr] ,function (err, result) {
 
                         n = result.length
                         var arr1 = []
@@ -937,11 +950,8 @@ app.post("/api/signin", (req, res) => {
                             var mailOptions = {
                                 from: 'amritacbelectiveteam@gmail.com',
                                 to: arr1[person],
-                                subject: 'Availability of 7th sem elective application form',
-                                html: '<p>Dear students,</p><p>This is to notify you that the forms for elective applic' +
-                                        'ation for the 7th semester will be available starting <b>17th May 2021</b> till ' +
-                                        '<b>28th May 2021</b> on your AUEMS website.Submit your response at the earliest<' +
-                                        '/p><br> <p><i>regards, <br>AUEMS Team</i></p>'
+                                subject: subject,
+                                text: content
                             };
 
                             transporter.sendMail(mailOptions, function (error, info) {
@@ -964,17 +974,10 @@ app.post("/api/signin", (req, res) => {
                         res.end()
 
                     });
-            });
-
-        })
-
-        app.post("/api/sendemail2", (req, res) => {
-
-            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
-
-            db.getConnection(function (err) {
-                db
-                    .query("SELECT ls_usern FROM student_login_details1", function (err, result) {
+            }); }
+            else {
+                db.getConnection(function (err) {
+                    db.query("SELECT ls_usern FROM teacher_login_details1",[deptyr] ,function (err, result) {
 
                         n = result.length
                         var arr1 = []
@@ -999,13 +1002,8 @@ app.post("/api/signin", (req, res) => {
                             var mailOptions = {
                                 from: 'amritacbelectiveteam@gmail.com',
                                 to: arr1[person],
-                                subject: 'Availability of 7th sem change elective application form',
-                                html: '<p>Dear students,</p><p>This is to notify you that the forms for elective change' +
-                                        ' application for the 7th semester will be available starting <b>28th May 2021</b' +
-                                        '> till <b>31th May 2021</b> on your AUEMS website.Submit your response at the ea' +
-                                        'rliest , your responses will be handled in a first come first server basis and t' +
-                                        'he acceptance of your application is purely subjected to the availability in the' +
-                                        ' applied elective.</p><br> <p><i>regards, <br>AUEMS Team</i></p>'
+                                subject: subject,
+                                text: content
                             };
 
                             transporter.sendMail(mailOptions, function (error, info) {
@@ -1028,9 +1026,14 @@ app.post("/api/signin", (req, res) => {
                         res.end()
 
                     });
-            });
+
+                })
+            }
+            
 
         })
+
+        
         app.post('/api/logout', () => {
             tempid = ""
         });
