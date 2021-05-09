@@ -7,6 +7,13 @@ import axios from 'axios';
 import {PDFExport} from '@progress/kendo-react-pdf';
 
 export default class management extends Component {
+
+    clickBtn1 = (event) => {
+        event.preventDefault();
+        window
+            .location
+            .replace('/admindashboard');
+    }
     clickbtn = (event) => {
         event.preventDefault();
         let req = {
@@ -56,9 +63,30 @@ export default class management extends Component {
                 <head></head>
                 <body>
        
+                <div class="out0">
+                <button type="" id="button1" onClick={this.clickBtn1} className="btn">
+                    <ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill>
+                </button>
+                <div
+                    class="out"
+                    style={{
+                    height: "700px",
+                    width: "auto",
+                    top: "5%"
+                }}>
+                    <img
+                        id="img1"
+                        src={logo}
+                        className="rounded mx-auto d-block"
+                        style={{
+                        height: '25%',
+                        width: '25%'
+                    }}/>
+                    <br/>
+                    <br/>
 
                     <form>
-                        
+                        <h3>ELECTIVE ALLOCATION MANAGEMENT</h3>
 
                         <div className="form-group">
                             <label>Department</label>
@@ -71,6 +99,8 @@ export default class management extends Component {
                                 <option value="ECE">ECE</option>
                                
                             </select>
+                            <br></br>
+                            <br></br>
                             <label>Year</label>
                             <br/>
                             <select required name="year" id="select2">
@@ -111,8 +141,8 @@ export default class management extends Component {
                     </button>
                 </div>
                            
-                        
-                        
+                        </div>
+                        </div>
                     
                 </body>
 

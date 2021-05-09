@@ -60,7 +60,7 @@ export default class sendemail extends Component {
         event.preventDefault();
         window
             .location
-            .replace('/loginform');
+            .replace('/admindashboard');
     }
 
     render() {

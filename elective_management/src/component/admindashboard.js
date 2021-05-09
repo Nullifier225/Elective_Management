@@ -15,6 +15,18 @@ export default class AD  extends Component{
         event.preventDefault();
         window.location.replace('/viewelectivechange');
     };
+    clickbtn3 = (event) => {
+        event.preventDefault();
+        window.location.replace('/sendmail');
+    };
+    clickbtn4 = (event) => {
+        event.preventDefault();
+        window.location.replace('/management');
+    };
+    clickbtn5 = (event) => {
+        event.preventDefault();
+        window.location.replace('/electivechangemanagement');
+    };
     render(){
     
     return (
@@ -40,8 +52,13 @@ export default class AD  extends Component{
     <br></br>
     <button type="submit"  className="btn btn-info btn-lg btn-block" id = "button2" onClick={this.clickbtn2}>View elective change students</button>
     <br></br>      
-    <button type="submit" id = "button3"  className="btn btn-info btn-lg btn-block">View faculties for electives</button>
+    <button type="submit" id = "button3"  className="btn btn-info btn-lg btn-block" onClick={this.clickbtn3}>Send Notifications</button>
+    <br></br>      
+    <button type="submit" id = "button4"  className="btn btn-info btn-lg btn-block" onClick={this.clickbtn4}>Manage Elective Application</button>
+    <br></br>      
+    <button type="submit" id = "button3"  className="btn btn-info btn-lg btn-block" onClick={this.clickbtn5}>manage Elective Change Application</button>
                  
+
                   
     
     </form>

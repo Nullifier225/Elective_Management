@@ -6,6 +6,12 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 export default class changemanagement extends Component {
+    clickBtn1 = (event) => {
+        event.preventDefault();
+        window
+            .location
+            .replace('/admindashboard');
+    }
     clickbtn = (event) => {
         event.preventDefault();
         let req = {
@@ -52,11 +58,31 @@ export default class changemanagement extends Component {
             <html>
                 <head></head>
                 <body>
-       
+                <div class="out0">
+                <button type="" id="button1" onClick={this.clickBtn1} className="btn">
+                    <ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill>
+                </button>
+                <div
+                    class="out"
+                    style={{
+                    height: "700px",
+                    width: "auto",
+                    top: "5%"
+                }}>
+                    <img
+                        id="img1"
+                        src={logo}
+                        className="rounded mx-auto d-block"
+                        style={{
+                        height: '25%',
+                        width: '25%'
+                    }}/>
+                    <br/>
+                    <br/>
 
                     <form>
                         
-
+                     <h3>ELECTIVE CHANGE MANAGEMENT</h3>
                         <div className="form-group">
                             <label>Department</label>
                             <br/>
@@ -80,9 +106,9 @@ export default class changemanagement extends Component {
                         
                             
                         <button id="print" style={{display:"none"}} onClick={()=>print('a', 'data')}>print</button>
-                           
+                       </div>    
                         
-                        
+                     </div>   
                     
                 </body>
 
