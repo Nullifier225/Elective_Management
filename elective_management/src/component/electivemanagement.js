@@ -85,8 +85,8 @@ export default class management extends Component {
                     <br/>
                     <br/>
 
-                    <form>
-                        <h3>ELECTIVE ALLOCATION MANAGEMENT</h3>
+                    <form >
+                        <h3 className="text-center font-weight-bold font-size:1.5em" class="heading1">Manage Elective Allocation</h3>
 
                         <div className="form-group">
                             <label>Department</label>
@@ -114,7 +114,7 @@ export default class management extends Component {
                                
                             </select>
                         </div>
-                        <button type="submit" onClick={this.clickbtn}>Allocate
+                        <button className="btn btn-info btn-lg btn-block"type="submit" onClick={this.clickbtn}>Allocate
                         </button>
                         
                         <div id="tab">
@@ -128,10 +128,10 @@ export default class management extends Component {
                         </div>
                         </form>
                         
-                            
+                           <br></br> 
                         <div className="example-config">
-                    <button
-                        className="k-button"
+                    <button  className="btn btn-info btn-lg btn-block k-button"
+                        
                         onClick={() => {
                         this
                             .pdfExportComponent

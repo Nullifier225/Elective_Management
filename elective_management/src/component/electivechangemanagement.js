@@ -80,9 +80,9 @@ export default class changemanagement extends Component {
                     <br/>
                     <br/>
 
-                    <form>
+                    <form >
                         
-                     <h3>ELECTIVE CHANGE MANAGEMENT</h3>
+                     <h3 className="text-center font-weight-bold font-size:1.5em" class="heading1">Manage Elective Change</h3>
                         <div className="form-group">
                             <label>Department</label>
                             <br/>
@@ -95,7 +95,7 @@ export default class changemanagement extends Component {
                                
                             </select>
                         </div>
-                        <button type="submit" onClick={this.clickbtn}>Allocate
+                        <button  className="btn btn-info btn-lg btn-block" type="submit" onClick={this.clickbtn}>Allocate
                         </button>
                         
                         <div id="tab">
@@ -105,7 +105,7 @@ export default class changemanagement extends Component {
                         </form>
                         
                             
-                        <button id="print" style={{display:"none"}} onClick={()=>print('a', 'data')}>print</button>
+                        <button className="btn btn-info btn-lg btn-block" id="print" style={{display:"none"}} onClick={()=>print('a', 'data')}>print</button>
                        </div>    
                         
                      </div>   
