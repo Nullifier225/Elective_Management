@@ -2,6 +2,20 @@ import React,{ Component }  from 'react';
 import logo from './index.png';
 import ReactDOM from 'react-dom'
 import axios from 'axios';
+// function modify (){
+//     let n1 = new Date()
+//     if((n1.getMonth()>=4) && (n1.getDate()>=10) && (n1.getHours()>=14) && (n1.getMinutes()>=0)){
+//         document.getElementById("Button5").style.display="block"
+//         if((n1.getMonth()>=4) && (n1.getDate()>=10) && (n1.getHours()>=14) && (n1.getMinutes()>=10)){
+//             document.getElementById("Button4").style.display="block"
+//             document.getElementById("Button5").style.display="none"
+            
+//         }
+    
+
+//     }
+// }
+
 
 export default class LoginForm extends Component {
     
@@ -9,10 +23,23 @@ export default class LoginForm extends Component {
     constructor(){
         super()
         let n1 = new Date()
-        alert(n1.getMonth())
-        alert(n1.getDate())
-        alert(n1.getHours())
-        alert(n1.getMinutes())
+            // alert(n1.getMonth())
+            // alert(n1.getDate())
+            // alert(n1.getHours())
+            // alert(n1.getMinutes())
+            // modify()
+            if((n1.getMonth()>=4) && (n1.getDate()>=10) && (n1.getHours()>=14) && (n1.getMinutes()>=0)){
+                document.getElementById("Button5").style.display="block"
+                if((n1.getMonth()>=4) && (n1.getDate()>=10) && (n1.getHours()>=14) && (n1.getMinutes()>=10)){
+                    document.getElementById("Button4").style.display="block"
+                    document.getElementById("Button5").style.display="none"
+                    
+                }
+            
+    
+            }
+        
+        
         axios.get('http://localhost:3001/api/getname').then(response=>{
     
     
@@ -50,6 +77,9 @@ export default class LoginForm extends Component {
         window.location.replace('/tentativelist');
     }
 
+    componentDidMount() {
+        const script = document.createElement("script");    script.async = true;    script.src = "https://some-scripturl.js/";    this.div.appendChild(script);  }
+
     render(){
 
         
@@ -76,17 +106,17 @@ export default class LoginForm extends Component {
    <div >
     <form>
         
-    <button type="submit"  className="btn btn-info btn-lg btn-block " id ="Button1" onClick={this.clickBtn1}>Apply</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block " id ="Button1"  onClick={this.clickBtn1}>Apply</button>
     <br></br>
     <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button2" onClick={this.clickBtn2}>Change</button>
         <br></br>      
     <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button3" onClick={this.clickBtn3}>Feedback</button>
     <br></br>      
-    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button4" >View My Elective</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button4" style={{display:"none"}} >View My Elective</button>
     <br></br> 
-    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button5" onClick={this.clickBtn5}>Tentative List</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button5" style={{display:"none"}} onClick={this.clickBtn5}>Tentative List</button>
     <br></br>
-                 
+        
                   
     
     </form>
@@ -94,7 +124,10 @@ export default class LoginForm extends Component {
     </div>
     </div>
     </div>
+    
     )
 }
+
+
 }
 
