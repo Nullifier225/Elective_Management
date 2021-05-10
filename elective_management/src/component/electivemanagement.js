@@ -29,7 +29,7 @@ export default class management extends Component {
             .then(response => {
                 var details=response.data
                 var element,element1;
-                element=<table class="table table-bordered " style={{width:"635px",height:"auto"}}>
+                element=<table class="table table-bordered " style={{width:"575px",height:"auto"}}>
                 <tr class="table-primary">
                 <th>Student</th>
                 <th>Elective</th>
@@ -63,17 +63,20 @@ export default class management extends Component {
                 <head></head>
                 <body>
        
-                <div class="out0">
-                <button type="" id="button1" onClick={this.clickBtn1} className="btn">
-                    <ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill>
-                </button>
+                <div class="out222">
+            
+                <img class="img12"src="https://image3.mouthshut.com/images/Restaurant/Photo/-73020_62102.jpg"></img>
+                
                 <div
                     class="out"
                     style={{
-                    height: "700px",
-                    width: "auto",
+                    width: "620px",
+                    height: "auto",
                     top: "5%"
                 }}>
+                    <button type="" id="button1" onClick={this.clickBtn1} className="btn">
+                    <ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill>
+                </button>
                     <img
                         id="img1"
                         src={logo}
@@ -116,20 +119,23 @@ export default class management extends Component {
                         </div>
                         <button className="btn btn-info btn-lg btn-block"type="submit" onClick={this.clickbtn}>Allocate
                         </button>
-                        
+                        </form>
+                        <br></br>
                         <div id="tab">
                         <PDFExport
                     paperSize="A4"
                     margin="0.5cm"
                     ref={(component) => this.pdfExportComponent = component}>
+                        
                         <div id="data"></div>
                         </PDFExport>
                         
                         </div>
-                        </form>
+                        
                         
                            <br></br> 
                         <div className="example-config">
+                            <br></br>
                     <button  className="btn btn-info btn-lg btn-block k-button"
                         
                         onClick={() => {

@@ -101,11 +101,14 @@ export default class App22 extends Component {
     window.onunload = function () { null };  
 </script> 
 
-        <div class ="out1">
-           <button type="button" onClick={this.clickBtn1} className="btn" id="back1" ><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+<div class="out222">
+            
+<img class="img12"src="https://image3.mouthshut.com/images/Restaurant/Photo/-73020_62102.jpg"></img>
+
+           
        
 <div class="out4">
-
+<button type="button" onClick={this.clickBtn1} className="btn" id="back1" ><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
 <img src={logo} className="rounded mx-auto d-block" id="img1" style={{height:'25%',width:'25%'}}/>
 <br/>
 <br/>

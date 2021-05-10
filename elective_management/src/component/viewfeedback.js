@@ -6,6 +6,12 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 export default class viewfeedback extends Component {
+    clickBtn1=(event)=>{
+        event.preventDefault();
+        window
+            .location
+            .replace('/deptdashboard');
+    }
     clickbtn = (event) => {
         event.preventDefault();
         let req = {
@@ -23,7 +29,7 @@ export default class viewfeedback extends Component {
                 element = <table
                     class="table table-bordered "
                     style={{
-                    width: "635px",
+                    width: "580px",
                     height: "auto"
                 }}>
                     <tr class="table-primary">
@@ -41,6 +47,7 @@ export default class viewfeedback extends Component {
                 </table>
 
                 ReactDOM.render(element, document.getElementById('tab1'));
+                document.getElementById("printbutton").style.display="block"
             })
 
         axios
@@ -98,17 +105,33 @@ export default class viewfeedback extends Component {
             })
 
     }
+   
 
     render() {
 
         return (
-            <html>
-                <head></head>
-                <body>
-
+            
+                <div
+                    class="out"
+                    style={{
+                    width: "620px",
+                    height: "auto",
+                    top: "5%"
+                }}>
+                    <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+                    <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
+                    <br></br>
+                    <h4 className="text-center font-weight-bold font-size:1.5em" class="heading1">Get feedback report</h4>
+                    <br></br>
+                    <br></br>
                     <form>
-                        <div id="data"></div>
-                        <button type="submit" onClick={this.clickbtn}>Get report</button>
+                        <div class="form-group">
+                            <label>Elective Name</label>
+                        </div>
+                        <div class="form-group" id="data"></div>
+                        <button class="btn btn-info btn-lg btn-block k-button" type="submit" onClick={this.clickbtn}>Get report</button>
+                        <br></br>
+                        <br></br>
                     </form>
                     <div id="tab">
                         <div id="tab10"></div>
@@ -118,12 +141,10 @@ export default class viewfeedback extends Component {
                         <div id="tab1"></div>
                     </div>
 
-                    <button onClick={() => print('a', 'tab')}>
+                    <button class="btn btn-info btn-lg btn-block k-button" id ="printbutton" style={{display:"none"}} onClick={() => print('a', 'tab')}>
                         print</button>
 
-                </body>
-
-            </html>
+               </div>
         )
     }
 }

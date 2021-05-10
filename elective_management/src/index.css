@@ -5,10 +5,11 @@
   body {
     min-height: 100vh;
     font-weight: 400;
-    font-family: sans-serif;   
-    background-image: url("./backgroundimage.png");
-    background-repeat: no-repeat;
-    background-size:cover;
+    font-family: sans-serif;
+    background-image:url("./backgroundimage.png");
+    background-repeat:no-repeat;
+    background-size: cover;
+    
   }
   .out1{
     height:100%;
@@ -19,6 +20,25 @@
     filter:blur(2.5px);
     height:fill;
     width:1550px;
+  }
+  .out222{
+    height:100%;
+    max-width:100%;
+    
+  }
+  .img12{
+    filter:blur(2.5px);
+    min-height: 100%;
+    min-width: 1024px;
+    
+    
+    width: 100%;
+    height: auto;
+    
+    /* Set up positioning */
+    position:fixed;
+    top: 0;
+    left: 0;
   }
 
   .button {
