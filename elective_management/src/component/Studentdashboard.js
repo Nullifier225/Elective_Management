@@ -4,9 +4,15 @@ import ReactDOM from 'react-dom'
 import axios from 'axios';
 
 export default class LoginForm extends Component {
-
+    
+        
     constructor(){
         super()
+        let n1 = new Date()
+        alert(n1.getMonth())
+        alert(n1.getDate())
+        alert(n1.getHours())
+        alert(n1.getMinutes())
         axios.get('http://localhost:3001/api/getname').then(response=>{
     
     
@@ -37,6 +43,11 @@ export default class LoginForm extends Component {
     clickBtn3 = (event) => {
         event.preventDefault();
         window.location.replace('/feedbackforms');
+    }
+
+    clickBtn5 = (event) => {
+        event.preventDefault();
+        window.location.replace('/tentativelist');
     }
 
     render(){
@@ -72,6 +83,9 @@ export default class LoginForm extends Component {
     <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button3" onClick={this.clickBtn3}>Feedback</button>
     <br></br>      
     <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button4" >View My Elective</button>
+    <br></br> 
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button5" onClick={this.clickBtn5}>Tentative List</button>
+    <br></br>
                  
                   
     
