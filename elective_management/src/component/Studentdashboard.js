@@ -28,16 +28,8 @@ export default class LoginForm extends Component {
             // alert(n1.getHours())
             // alert(n1.getMinutes())
             // modify()
-            if((n1.getMonth()>=4) && (n1.getDate()>=10) && (n1.getHours()>=14) && (n1.getMinutes()>=0)){
-                document.getElementById("Button5").style.display="block"
-                if((n1.getMonth()>=4) && (n1.getDate()>=10) && (n1.getHours()>=14) && (n1.getMinutes()>=10)){
-                    document.getElementById("Button4").style.display="block"
-                    document.getElementById("Button5").style.display="none"
-                    
-                }
             
-    
-            }
+            
         
         
         axios.get('http://localhost:3001/api/getname').then(response=>{
@@ -50,7 +42,21 @@ export default class LoginForm extends Component {
         Welcome, {JSON.parse(JSON.stringify(details))}!
 
     </h5>
-    ReactDOM.render(element, document.getElementById('data'));
+    ReactDOM.render(element, document.getElementById('data1'));
+    var element1
+    let n1 = new Date()
+            if((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=15))){
+                element1=<button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button5"  onClick={this.clickBtn5}>Tentative List</button>
+                
+                if((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=16))){
+                    element1=<button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button5"  onClick={this.clickBtn5}>View Final List</button>
+
+                    
+                }
+            
+                
+            }
+            ReactDOM.render(element1,document.getElementById("data"));
     }
     )}
     clickBtn = (event) => {
@@ -60,12 +66,24 @@ export default class LoginForm extends Component {
     };
     clickBtn1 = (event) => {
         event.preventDefault();
-        window.location.replace('/studentsform');
+        let n1 = new Date()
+        if((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=15)) && ((n1.getMonth()<=4) && (n1.getDate()<11 || (n1.getDate()==11 && n1.getHours()>=15)))){
+            window.location.replace('/studentsform');
+        }
+        else{
+            window.location.replace('/error');
+        }
 
     };
     clickBtn2 = (event) => {
         event.preventDefault();
-        window.location.replace('/changeform');
+        let n1 = new Date()
+        if(((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=15)))&&((n1.getMonth()<=4) && (n1.getDate()<12 || (n1.getDate()==12 && n1.getHours()>=15)))){
+            window.location.replace('/changeform');
+        }
+        else{
+            window.location.replace('/error');
+        }
     }
     clickBtn3 = (event) => {
         event.preventDefault();
@@ -77,8 +95,7 @@ export default class LoginForm extends Component {
         window.location.replace('/tentativelist');
     }
 
-    componentDidMount() {
-        const script = document.createElement("script");    script.async = true;    script.src = "https://some-scripturl.js/";    this.div.appendChild(script);  }
+    
 
     render(){
 
@@ -90,10 +107,11 @@ export default class LoginForm extends Component {
     return (
     <div>
         <div class="float-right">
+        
         <button type="submit" class="btn btn-danger" id = "Button0" onClick={this.clickBtn} >LOGOUT</button>
-         
+        
         </div>
-        <div id="data"></div>
+    <div id="data1"></div>
     <div className="out4">
     <div >
         <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
@@ -112,10 +130,8 @@ export default class LoginForm extends Component {
         <br></br>      
     <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button3" onClick={this.clickBtn3}>Feedback</button>
     <br></br>      
-    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button4" style={{display:"none"}} >View My Elective</button>
-    <br></br> 
-    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button5" style={{display:"none"}} onClick={this.clickBtn5}>Tentative List</button>
-    <br></br>
+    <div id="data"></div>
+    
         
                   
     

@@ -69,6 +69,13 @@ export default class viewstudentelective extends Component {
             
            
             <div id="data"></div>
+            <div class="row">
+              <div class="col-md-9 col-md-offset-3">
+              <a  style={{paddingLeft:"280px"}} href="https://aumscb.amrita.edu/cas/login?service=https%3A%2F%2Faumscb.amrita.edu%2Faums%2FJsp%2FCore_Common%2Findex.jsp" target="blank"><h4 style={{paddingLeft:"230px"}}>Click Here to Register</h4></a>
+
+              </div>
+            </div>
+            
             </div>
             </div>
 

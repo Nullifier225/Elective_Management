@@ -17,11 +17,22 @@ export default class changemanagement extends Component {
         let req = {
             dept: document
                 .getElementById('select1')
+                .value,
+            year: document
+                .getElementById('select2')
                 .value
         }
-        document.getElementById('print').style={display:"block"};
+        //document.getElementById('print').style={display:"block"};
         axios
-            .post('http://localhost:3001/api/manageelectivechange', req)
+            .post('http://localhost:3001/api/manageelectivechange', req).then(response=>{
+                var details=response.data
+                if (details=="done"){
+                    alert("Allocation done")
+                    window
+            .location
+            .replace('/admindashboard');
+                }
+            })
             // .then(response => {
             //     var details=response.data
             //     var element,element1;
@@ -94,6 +105,21 @@ export default class changemanagement extends Component {
                                 <option value="ECE">ECE</option>
                                
                             </select>
+                            <br/>
+                            <br/>
+                            <label>Year</label>
+                            <br/>
+                            
+                            <select required name="year" id="select2">
+                                <option value="">
+                                    -- select an option --
+                                </option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                               
+                            </select>
                         </div>
                         <button  className="btn btn-info btn-lg btn-block" type="submit" onClick={this.clickbtn}>Allocate
                         </button>
@@ -105,7 +131,7 @@ export default class changemanagement extends Component {
                         </form>
                         
                             
-                        <button className="btn btn-info btn-lg btn-block" id="print" style={{display:"none"}} onClick={()=>print('a', 'data')}>print</button>
+                        
                        </div>    
                         
                      </div>   

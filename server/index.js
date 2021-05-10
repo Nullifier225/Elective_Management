@@ -178,7 +178,7 @@ app.post("/api/signin", (req, res) => {
                             res.send("error")
 
                             res.end()
-                            return next(err)
+                            //return next(err)
                         }
                         var x1 = (JSON.parse(JSON.stringify(result)))
                         console.log(Object.values(x1)[0].name)
@@ -822,13 +822,18 @@ app.post("/api/signin", (req, res) => {
         app.post("/api/manageelectivechange", (req, res) => {
             const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
             var department = req.body.dept;
+            var year=req.body.year;
+            year1=parseInt(year);
+            year2=21-year1;
+            year0=year2.toString();
+            
             let noofelectives = 0;
 
             let dept_elective = {}
             let electivechange = {}
             db.getConnection(function (err) {
                 db
-                    .query("SELECT * from dept_elective where department=?", [department], function (err, result) {
+                    .query("SELECT * from dept_elective where department=? and courseyear=?", [department,year1], function (err, result) {
 
                         if (err) {
                             res.send("error")
@@ -852,8 +857,8 @@ app.post("/api/signin", (req, res) => {
                             console.log(xn[3])
 
                         }
-
-                        department = department.toLowerCase();
+                        
+                        department = department.toLowerCase()+year0;
                         console.log(department)
                         db.query("SELECT * from electivechange where ls_usern REGEXP ?", [department], function (err, result) {
 
@@ -899,6 +904,20 @@ app.post("/api/signin", (req, res) => {
                             }
 
                             console.log(dept_elective)
+                            console.log(updated)
+                            for (key in updated){
+                            db.query("UPDATE student_details SET elective = ? WHERE  rno = ?", [
+                                updated[key], key
+                            ], function (err, result) {
+                                if (err) {
+    
+                                    res.end()
+                                }
+    
+                            })
+                            res.send("done")
+                            res.end()
+                        }
                             // console.log(electivechange) console.log(updated);
 
                         });

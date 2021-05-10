@@ -6,7 +6,7 @@ import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
 export default class errorpage extends Component {
     clickBtn1 = (event) => {
         event.preventDefault();
-        window.location.replace('/loginform');
+        window.location.replace('/deptdashboard');
       }
 constructor(){
     super();
@@ -48,9 +48,9 @@ return(
     <title>We&#39;ve got some trouble | 404 - Resource not found</title>
 </head>
 <body>
-<button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
-
     <div class="cover">
+    <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
+
     <img src={logo} className="rounded mx-auto d-block" id="img1" style={{height:'10%',width:'10%'}}/>
     <h1 className="text-center">Resource not found <small>404</small></h1>
     <h2 className="text-center">The requested file could not be found but will be coming soon in: </h2>
