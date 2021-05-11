@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import logo from './index.png';
-import {Preview, print} from 'react-html2pdf';
+import {PDFExport} from '@progress/kendo-react-pdf';
 import {ArrowLeftCircleFill} from 'react-bootstrap-icons';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
@@ -133,6 +133,11 @@ export default class viewfeedback extends Component {
                         <br></br>
                         <br></br>
                     </form>
+                    <PDFExport
+                    paperSize="A4"
+                    margin="0.5cm"
+                    ref={(component) => this.pdfExportComponent = component}>
+                    </PDFExport>
                     <div id="tab">
                         <div id="tab10"></div>
                         <div id="tab11"></div>
@@ -141,8 +146,15 @@ export default class viewfeedback extends Component {
                         <div id="tab1"></div>
                     </div>
 
-                    <button class="btn btn-info btn-lg btn-block k-button" id ="printbutton" style={{display:"none"}} onClick={() => print('a', 'tab')}>
-                        print</button>
+                    <button  id = "printbutton" className="btn btn-info btn-lg btn-block k-button"
+                        
+                        onClick={() => {
+                        this
+                            .pdfExportComponent
+                            .save();
+                    }}>
+                        Print PDF
+                    </button>
 
                </div>
         )

@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import logo from './index.png';
-import {Preview, print} from 'react-html2pdf';
 import {ArrowLeftCircleFill} from 'react-bootstrap-icons';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
