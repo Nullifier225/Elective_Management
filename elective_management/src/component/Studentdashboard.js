@@ -2,7 +2,7 @@ import React,{ Component }  from 'react';
 import logo from './index.png';
 import ReactDOM from 'react-dom'
 import axios from 'axios';
-import {PencilSquare} from "react-bootstrap-icons";
+import {BorderStyle, PencilSquare} from "react-bootstrap-icons";
 import {CardList} from "react-bootstrap-icons"
 import {ArrowRepeat} from 'react-bootstrap-icons';
 import {Star} from 'react-bootstrap-icons';
@@ -93,12 +93,12 @@ export default class LoginForm extends Component {
 
     return (
     <div >
-        <div class="float-right">
+        <div style={{fontFamily: 'Raleway',height:"38px",width:"auto"}}>
         
-        <button type="submit" class="btn btn-danger" id = "Button0" onClick={this.clickBtn} >LOGOUT</button>
-        
+        <button type="submit" class="btn btn-danger float-right" id = "Button0" onClick={this.clickBtn} >LOGOUT</button>
+        <div id="data1" ></div>
         </div>
-    <div id="data1" ></div>
+    
 
     <div className="out4" >
 

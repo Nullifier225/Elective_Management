@@ -823,6 +823,8 @@ app.post("/api/signin", (req, res) => {
 
         })
 
+        
+
         app.post("/api/manageelectivechange", (req, res) => {
             const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
             var department = req.body.dept;
@@ -935,21 +937,27 @@ app.post("/api/signin", (req, res) => {
             var receiver = req.body.receiver;
             var subject = req.body.subject;
             var content = req.body.content;
+            if (receiver=="Student"){
             var dept = req.body.dept;
             var year= 21-req.body.year;
             var dept1=dept.toLowerCase();
             var deptyr=dept1+year;
-            console.log(receiver)
-            console.log(subject)
-            console.log(content)
-            console.log(dept)
-            console.log(year)
-            console.log(deptyr)
-
+            }
+            
+            let originalString = "amritacb1234";
+  
+            
+            let bufferObj = Buffer.from(originalString, "utf8");
+            
+            let base64String = bufferObj.toString("base64");
+            bufferObj = Buffer.from(base64String, "base64");
+  
+            let decodedString = bufferObj.toString("utf8");
+            
             if (receiver=="Student") {
             db.getConnection(function (err) {
                 db.query("SELECT ls_usern FROM student_login_details1 where ls_usern REGEXP ?",[deptyr] ,function (err, result) {
-
+                        
                         n = result.length
                         var arr1 = []
                         for (let i = 0; i < n; i++) {
@@ -966,7 +974,7 @@ app.post("/api/signin", (req, res) => {
                                 service: 'gmail',
                                 auth: {
                                     user: 'amritacbelectiveteam@gmail.com',
-                                    pass: 'amritacb1234'
+                                    pass: decodedString
                                 }
                             });
 
@@ -1018,7 +1026,7 @@ app.post("/api/signin", (req, res) => {
                                 service: 'gmail',
                                 auth: {
                                     user: 'amritacbelectiveteam@gmail.com',
-                                    pass: 'amritacb1234'
+                                    pass: decodedString
                                 }
                             });
 
@@ -1053,6 +1061,38 @@ app.post("/api/signin", (req, res) => {
                 })
             }
             
+
+        })
+
+        app.get("/api/getlist33", (req,res) => {
+            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+
+            db.getConnection(function (err) {
+                db.query("SELECT * FROM student_details", function (err, result) {
+
+                    if (err) {
+                        res.send("error")
+
+                        res.end()
+                        return next(err)
+                    }
+                    let x = []
+                    let n = result.length
+                    for (let i = 0; i < n; i++) {
+                        let vals = JSON.parse(JSON.stringify(result))[i]
+                        let xn = Object.values(vals)
+                        let state = {
+                            id: i + 1,
+                            content: xn
+                        }
+                        x.push(state)
+                    }
+
+                    res.send(JSON.stringify(x))
+                    res.end()
+
+                });
+            });
 
         })
 

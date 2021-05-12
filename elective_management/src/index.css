@@ -6,11 +6,13 @@
   body {
     min-height: 100vh;
     font-weight: 400;
+    
     background-image:url("./backgroundimage.png");
     background-repeat:no-repeat;
     background-size: cover;
     
   }
+  
 
 
   .out1{

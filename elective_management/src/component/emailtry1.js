@@ -67,18 +67,21 @@ export default class sendemail extends Component {
 
         return (
 
-            <div class="out0">
-                <button type="" id="button1" onClick={this.clickBtn1} className="btn">
-                    <ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill>
-                </button>
+            <div class="out222">
+            
+            <img class="img12"src="https://image3.mouthshut.com/images/Restaurant/Photo/-73020_62102.jpg"></img>
+                
 
                 <div
                     class="out"
                     style={{
-                    height: "700px",
-                    width: "auto",
+                        width: "600px",
+                    height: "auto",
                     top: "5%"
                 }}>
+                    <button type="" id="button1" onClick={this.clickBtn1} className="btn">
+                    <ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill>
+                </button>
                     <img
                         id="img1"
                         src={logo}
@@ -104,23 +107,28 @@ export default class sendemail extends Component {
                             <option value="Student">Student</option>
                             <option value="Department">Department</option>
                         </select>
-                        
+                        <br></br>
+                        <br></br>
                         <div id="data2"></div>
-                    
+                        <br></br>
                         <div id="data3"></div>
-                        
+                        <br></br>
+                        <br></br>
                         Enter subject of email
                         <br></br>
-                        <input type="text" id="subject"/>
+                        <br></br>
+                        <textarea id="subject" rows="1" cols="50" style={{resize:"none"}}/>
                         <div>
                         <br></br>
                         Enter content of email
+                        <br></br>
                         <br></br>
                         <textarea
                             id="content" rows="5" cols="50"/> 
                             
 
                         </div>
+                        <br></br>
                         <button
                             type="submit"
                             id="button2"
@@ -135,7 +143,9 @@ export default class sendemail extends Component {
         );
         function submit_email1(e) {
             e.preventDefault();
-            let request =  {
+            var request;
+            if(document.getElementById("receiver").value=="Student"){
+             request =  {
                 
                  receiver:document.getElementById("receiver").value,
                  subject:document.getElementById("subject").value,
@@ -148,6 +158,20 @@ export default class sendemail extends Component {
                  
                   
               }
+            }
+            else{
+                 request =  {
+                
+                    receiver:document.getElementById("receiver").value,
+                    subject:document.getElementById("subject").value,
+                    content:document.getElementById("content").value,
+   
+   
+   
+                    
+                     
+                 }
+            }
             axios
                 .post('http://localhost:3001/api/sendemail',request)
                 .then(resp => {

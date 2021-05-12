@@ -46,8 +46,15 @@ return(
 <head>
     <meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>We&#39;ve got some trouble | 404 - Resource not found</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet"></link>
 </head>
-<body>
+
+    
+
+<body style={{fontFamily:"Raleway,sans-serif"
+        
+    }}>
 <button type="" onClick={this.clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
 
     <div class="cover">

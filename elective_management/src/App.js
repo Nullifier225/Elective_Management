@@ -18,6 +18,7 @@ import viewfeedback from './component/viewfeedback';
 import errorpage from './component/ErrorPage';
 import management from './component/electivemanagement';
 import viewstudentelective from './component/studentviewelective';
+import fviewstudentelective from './component/facultyviewelective';
 import changemanagement from './component/electivechangemanagement';
 import sendemail from './component/emailtry1';
 import printpage from './component/htmlpdfsample'
@@ -43,6 +44,7 @@ class App extends Component {
             <Route path="/error" component={errorpage} exact/>
             <Route path="/management" component={management} exact/>
             <Route path="/tentativelist" component={viewstudentelective} exact/>
+            <Route path="/finallist" component={fviewstudentelective} exact/>
             <Route path="/electivechangemanagement" component={changemanagement} exact/>
             <Route path="/sendmail" component={sendemail} exact/>
             <Route path="/printpage" component={printpage} exact/>
