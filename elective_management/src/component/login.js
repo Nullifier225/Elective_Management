@@ -3,6 +3,7 @@ import logo from './index.png';
 import LoginForm from './Signup.js'
 import axios from 'axios';
 import ReactDOM from 'react-dom';
+import {BoxArrowInRight} from "react-bootstrap-icons"
 export default class Login extends Component {
     constructor(){
         super();
@@ -34,12 +35,11 @@ export default class Login extends Component {
             <div class="out" style={{height:"auto"}}>
                 <img src={logo} id="Amrita" className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
-                <br/>
             <form id="myForm" onSubmit={(e)=>submit_signup(e)}>
             
 
                <h3 className="text-center font-weight-bold font-size:1.5em" class="heading1">Login</h3> 
-
+               <br/>
                 <div className="form-group">
                     <label>Email ID</label>
                     <input type="email" name="email" id="email" onChange={this.handleChange("email")} className="form-control" placeholder="Enter Email ID" value={this.state.email}/>
@@ -52,7 +52,8 @@ export default class Login extends Component {
 
                 
 
-                <button type="submit" id="Button"className="btn btn-info btn-lg btn-block" value="Sign in">Sign in</button>
+                <button type="submit" id="Button"className="btn btn-info btn-lg btn-block" value="Sign in">Sign In <BoxArrowInRight color="white" class="hover:bg-gray-100" size={30}></BoxArrowInRight>
+</button>
               
                   
                   

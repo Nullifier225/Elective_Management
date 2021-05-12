@@ -2,19 +2,12 @@ import React,{ Component }  from 'react';
 import logo from './index.png';
 import ReactDOM from 'react-dom'
 import axios from 'axios';
-// function modify (){
-//     let n1 = new Date()
-//     if((n1.getMonth()>=4) && (n1.getDate()>=10) && (n1.getHours()>=14) && (n1.getMinutes()>=0)){
-//         document.getElementById("Button5").style.display="block"
-//         if((n1.getMonth()>=4) && (n1.getDate()>=10) && (n1.getHours()>=14) && (n1.getMinutes()>=10)){
-//             document.getElementById("Button4").style.display="block"
-//             document.getElementById("Button5").style.display="none"
-            
-//         }
-    
+import {PencilSquare} from "react-bootstrap-icons";
+import {CardList} from "react-bootstrap-icons"
+import {ArrowRepeat} from 'react-bootstrap-icons';
+import {Star} from 'react-bootstrap-icons';
 
-//     }
-// }
+
 
 
 export default class LoginForm extends Component {
@@ -23,13 +16,7 @@ export default class LoginForm extends Component {
     constructor(){
         super()
         let n1 = new Date()
-            // alert(n1.getMonth())
-            // alert(n1.getDate())
-            // alert(n1.getHours())
-            // alert(n1.getMinutes())
-            // modify()
-            
-            
+           
         
         
         axios.get('http://localhost:3001/api/getname').then(response=>{
@@ -46,10 +33,10 @@ export default class LoginForm extends Component {
     var element1
     let n1 = new Date()
             if((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=15))){
-                element1=<button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button5"  onClick={this.clickBtn5}>Tentative List</button>
+                element1=<button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button5"  onClick={this.clickBtn5}><CardList color="white" class="hover:bg-gray-100" size={30}></CardList>                &nbsp; &nbsp; Tentative List</button>
                 
                 if((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=16))){
-                    element1=<button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button5"  onClick={this.clickBtn5}>View Final List</button>
+                    element1=<button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button5"  onClick={this.clickBtn5}><CardList color="white" class="hover:bg-gray-100" size={30}></CardList>                    &nbsp; &nbsp; View Final List</button>
 
                     
                 }
@@ -105,30 +92,34 @@ export default class LoginForm extends Component {
     
 
     return (
-    <div>
+    <div >
         <div class="float-right">
         
         <button type="submit" class="btn btn-danger" id = "Button0" onClick={this.clickBtn} >LOGOUT</button>
         
         </div>
-    <div id="data1"></div>
-    <div className="out4">
+    <div id="data1" ></div>
+
+    <div className="out4" >
+
     <div >
         <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
-        <h3 class="header3" >Amrita University Elective Management Portal</h3>
+        <br></br>
+        <h3 class="text-center font-weight-bold font-size:1.5em" >Amrita University Elective Management Portal</h3>
         <br></br>
         <br></br>
-        <br></br>
+        
         </div> 
        
    <div >
+
     <form>
         
-    <button type="submit"  className="btn btn-info btn-lg btn-block " id ="Button1"  onClick={this.clickBtn1}>Apply</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block " id ="Button1"  onClick={this.clickBtn1}><PencilSquare color="white" class="hover:bg-gray-100" size={30}></PencilSquare>&nbsp; &nbsp; Apply</button>
     <br></br>
-    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button2" onClick={this.clickBtn2}>Change</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button2" onClick={this.clickBtn2}><ArrowRepeat color="white" class="hover:bg-gray-100" size={30}></ArrowRepeat>&nbsp; &nbsp; Change</button>
         <br></br>      
-    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button3" onClick={this.clickBtn3}>Feedback</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id ="Button3" onClick={this.clickBtn3}><Star color="white" class="hover:bg-gray-100" size={30}></Star>&nbsp; &nbsp; Feedback</button>
     <br></br>      
     <div id="data"></div>
     
@@ -136,7 +127,6 @@ export default class LoginForm extends Component {
                   
     
     </form>
-    
     </div>
     </div>
     </div>

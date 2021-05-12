@@ -3,6 +3,8 @@ import logo from './index.png';
 import {ArrowLeftCircleFill} from 'react-bootstrap-icons';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import {PersonCheck} from 'react-bootstrap-icons';
+
 
 export default class changemanagement extends Component {
     clickBtn1 = (event) => {
@@ -120,7 +122,7 @@ export default class changemanagement extends Component {
                                
                             </select>
                         </div>
-                        <button  className="btn btn-info btn-lg btn-block" type="submit" onClick={this.clickbtn}>Allocate
+                        <button  className="btn btn-info btn-lg btn-block" type="submit" onClick={this.clickbtn}><PersonCheck color="white" class="hover:bg-gray-100" size={30}></PersonCheck>&nbsp; &nbsp;Allocate
                         </button>
                         
                         <div id="tab">

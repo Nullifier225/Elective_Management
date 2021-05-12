@@ -4,6 +4,10 @@ import {ArrowLeftCircleFill} from 'react-bootstrap-icons';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {PDFExport} from '@progress/kendo-react-pdf';
+import {PersonCheck} from 'react-bootstrap-icons';
+import {Download} from 'react-bootstrap-icons';
+
+
 
 export default class management extends Component {
 
@@ -42,6 +46,7 @@ export default class management extends Component {
                 ))}
                 </table>
                 ReactDOM.render(element, document.getElementById('data'));
+                document.getElementById('printbtn').style.display="block";
 
                 
             })
@@ -116,7 +121,7 @@ export default class management extends Component {
                                
                             </select>
                         </div>
-                        <button className="btn btn-info btn-lg btn-block"type="submit" onClick={this.clickbtn}>Allocate
+                        <button className="btn btn-info btn-lg btn-block"type="submit" onClick={this.clickbtn}><PersonCheck color="white" class="hover:bg-gray-100" size={30}></PersonCheck>&nbsp; &nbsp;Allocate
                         </button>
                         </form>
                         <br></br>
@@ -135,13 +140,14 @@ export default class management extends Component {
                            <br></br> 
                         <div className="example-config">
                             <br></br>
-                    <button  className="btn btn-info btn-lg btn-block k-button"
+                    <button  className="btn btn-info btn-lg btn-block k-button" id="printbtn" style={{display:"none"}}
                         
                         onClick={() => {
                         this
                             .pdfExportComponent
                             .save();
-                    }}>
+                    }}><Download color="white" class="hover:bg-gray-100" size={30}></Download>
+                         &nbsp; &nbsp;
                         Export PDF
                     </button>
                 </div>

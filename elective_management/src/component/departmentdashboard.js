@@ -1,6 +1,9 @@
 import React ,{Component} from 'react';
 import Card from "react-bootstrap/Card";
 import logo from './index.png';
+import {CardList} from "react-bootstrap-icons";
+import {PencilSquare} from "react-bootstrap-icons";
+import {ClipboardData} from "react-bootstrap-icons";
 
 
 export default class TD  extends Component{
@@ -29,8 +32,8 @@ export default class TD  extends Component{
     <div className="out4">
     <div >
         <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
-        <h3 className="text-center" class="header2" style = {{left:"-50px"}} >Amrita University Elective Management Portal</h3>
         <br></br>
+        <h3 className="text-center" class="text-center font-weight-bold font-size:1.5em" style = {{left:"-50px"}} >Amrita University Elective Management Portal</h3>
         <br></br>
         <br></br>
         </div> 
@@ -38,11 +41,11 @@ export default class TD  extends Component{
    <div >
     <form>
         
-    <button type="submit"  className="btn btn-info btn-lg btn-block " id="Button1" onClick={this.clickBtn1}>Provide list</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block " id="Button1" onClick={this.clickBtn1}><PencilSquare color="white" class="hover:bg-gray-100" size={30}></PencilSquare>&nbsp; &nbsp; Provide list</button>
     <br></br>
-    <button type="submit"  className="btn btn-info btn-lg btn-block" id="Button2" >View final student list</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id="Button2" ><CardList color="white" class="hover:bg-gray-100" size={30}></CardList>&nbsp; &nbsp; View final student list</button>
     <br></br>      
-    <button type="submit"  className="btn btn-info btn-lg btn-block" id="Button3" onClick={this.clickBtn2} >Feedback</button>
+    <button type="submit"  className="btn btn-info btn-lg btn-block" id="Button3" onClick={this.clickBtn2} ><ClipboardData color="white" class="hover:bg-gray-100" size={30}></ClipboardData>&nbsp; &nbsp; Feedback</button>
                  
                   
     
