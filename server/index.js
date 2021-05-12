@@ -3,6 +3,7 @@ const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 process.on('uncaughtException', function (error) {
     console.log(error.stack);
 });
@@ -18,25 +19,28 @@ app.use(bodyParser.urlencoded({extended: true}));
 var tempid = ""
 app.post("/api/signin", (req, res) => {
     //console.log("1")
+    const salt = bcrypt.genSaltSync(10)    
     tempid = req.body.email;
     const emailid = req.body.email;
-    const password = req.body.password;
 
     db.getConnection(function (err) {
 
         //console.log("connected")
         db
-            .query("SELECT ls_pass FROM student_login_details where ls_usern=? AND ls_pass=?", [
-                emailid, password
-            ], function (err, result) {
+            .query("SELECT ls_pass FROM student_login_details where ls_usern=?", [
+                emailid], function (err, result) {
 
                 if (result.length > 0) {
+                    const hashedpass = bcrypt.hashSync(result[0]["ls_pass"],salt)
+                    if(bcrypt.compareSync(req.body.password,hashedpass)){
                     //console.log("match")
                     res.send('valid')
                     res.end()
-                } else {
+                    }
+                    else {
                     res.send("mismatch")
                 }
+            }
                 if (err) {
                     print("retrievel error")
                 }
