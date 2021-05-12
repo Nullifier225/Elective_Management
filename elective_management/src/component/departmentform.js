@@ -34,14 +34,16 @@ function App1() {
  
   return (
     <div className="App1">
-                <button id = "back1" type="" onClick={clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
       { inputList.map((x, i) => {
         return (
-          <div>
+          <div class="out222">
+            
+            <img class="img12"src="https://image3.mouthshut.com/images/Restaurant/Photo/-73020_62102.jpg"></img>
 
          <div class="out" style={{ height:"auto", width:"auto",top:"0%"}}> 
         
         <form onSubmit={(e)=>submit_deptform(e)} >
+        <button id = "back1" type="" onClick={clickBtn1} className="btn"><ArrowLeftCircleFill color="greenyellow" class="hover:bg-gray-100" size={40}></ArrowLeftCircleFill></button>
         <img src={logo} id = "img1" className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
             <br/>
             <br/>

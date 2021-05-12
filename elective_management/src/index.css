@@ -2,10 +2,17 @@
     box-sizing: border-box;
   }
   
+  @font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Ubuntu'), url(http://example.com/fonts/ubuntu.woff) format('woff');
+}
+
   body {
     min-height: 100vh;
     font-weight: 400;
-    font-family: sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background-image:url("./backgroundimage.png");
     background-repeat:no-repeat;
     background-size: cover;
@@ -143,9 +150,15 @@
     color: #167bff;
   }
 
+    .out:hover{
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
   .out{
       position:absolute;
-      background-color: white;
+      background-color:#f5f5f5;
+      border-radius: 25px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
       
     height:500px;
     width:500px;
@@ -176,11 +189,16 @@
   padding-top: 20px;
   padding-bottom:20px;
   }
+  .out4:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
+  }
   .out4{
     position:absolute;
-      background-color: white;
-      
+      background-color: #f5f5f5;
+      border-radius: 25px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     height:700px;
     width:600px;
     right:30%;
