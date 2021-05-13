@@ -6,6 +6,7 @@ import {BorderStyle, PencilSquare} from "react-bootstrap-icons";
 import {CardList} from "react-bootstrap-icons"
 import {ArrowRepeat} from 'react-bootstrap-icons';
 import {Star} from 'react-bootstrap-icons';
+import {List} from 'react-bootstrap-icons';
 
 
 
@@ -25,10 +26,7 @@ export default class LoginForm extends Component {
     var details = response.data;
     var element;
     
-    element=<h5 class="float-right mr-50">
-        Welcome, {JSON.parse(JSON.stringify(details))}!
-
-    </h5>
+    element=<h5>Welcome, {JSON.parse(JSON.stringify(details))}!</h5>
     ReactDOM.render(element, document.getElementById('data1'));
     var element1
     let n1 = new Date()
@@ -92,13 +90,19 @@ export default class LoginForm extends Component {
     
 
     return (
-    <div >
-        <div style={{fontFamily: 'Raleway',height:"38px",width:"auto"}}>
+    <div class="scrollbar" id="style-2" >
+        <div class="dropdown" style={{fontFamily: 'Raleway'}}>
+        <List color="black" class="dropbtn float-right" size={30}></List>
+        <br></br>
+        <div class="dropdown-content" style={{backgroundColor: "#ccddff", fontFamily: 'Raleway',height:"auto",right:"5%"}}>
+        <br></br>
+        <br></br>
+        <div id="data1" style={{width:"195px",height:"auto",left:"50%"}}></div>
+        <br></br>
+        <button type="submit" class="btn btn-danger center" style={{fontFamily: 'Raleway',height:"38px",width:"100px"}} id = "Button0" onClick={this.clickBtn} >LOGOUT</button>
         
-        <button type="submit" class="btn btn-danger float-right" id = "Button0" onClick={this.clickBtn} >LOGOUT</button>
-        <div id="data1" ></div>
         </div>
-    
+    </div>
 
     <div className="out4" >
 

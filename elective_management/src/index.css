@@ -281,7 +281,20 @@
     opacity         : 0;
     transition      : opacity 0.2s linear;
   }
-  
+  .dropdown {float: right; position: relative; display: inline-block; }
+  .dropdown-content {display: none; position:absolute;}
+  .dropdown-content a:hover {background-color: #ddd;}
+
+  .dropdown:hover .dropdown-content {display: block;}
+
+  .dropdown:hover .dropbtn {background-color: #938bd6;}
+
+  #style-2::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #ddd;
+}
 
   .starRating:not(.old) > label:hover:before,
   .starRating:not(.old) > label:hover ~ label:before,
