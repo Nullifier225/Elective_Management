@@ -2,13 +2,13 @@ import React,{ Component }  from 'react';
 import logo from './index.png';
 import ReactDOM from 'react-dom'
 import axios from 'axios';
-import {BorderStyle, PencilSquare} from "react-bootstrap-icons";
+import {BorderStyle, BorderWidth, PencilSquare} from "react-bootstrap-icons";
 import {CardList} from "react-bootstrap-icons"
 import {ArrowRepeat} from 'react-bootstrap-icons';
 import {Star} from 'react-bootstrap-icons';
-import {List} from 'react-bootstrap-icons';
-
-
+import {List,PersonCircle} from 'react-bootstrap-icons';
+import {Power,InfoCircle} from 'react-bootstrap-icons';
+import { DoorOpenFill } from 'react-bootstrap-icons';
 
 
 export default class LoginForm extends Component {
@@ -26,7 +26,7 @@ export default class LoginForm extends Component {
     var details = response.data;
     var element;
     
-    element=<h5>Welcome, {JSON.parse(JSON.stringify(details))}!</h5>
+    element=<h5>Welcome<br></br> {JSON.parse(JSON.stringify(details))}!</h5>
     ReactDOM.render(element, document.getElementById('data1'));
     var element1
     let n1 = new Date()
@@ -94,13 +94,25 @@ export default class LoginForm extends Component {
         <div class="dropdown" style={{fontFamily: 'Raleway'}}>
         <List color="black" class="dropbtn float-right" size={30}></List>
         <br></br>
-        <div class="dropdown-content" style={{backgroundColor: "#ccddff", fontFamily: 'Raleway',height:"auto",right:"5%"}}>
+        <br></br>
+        <div class="dropdown-content" style={{backgroundColor: "#ccddff", fontFamily: 'Raleway', height:"auto",right:"5%",borderRadius:"16px"}}>
+        <br></br>
+        <div class="center" style={{paddingLeft:"45%"}}>
+        <PersonCircle color="black" size={30}></PersonCircle>
         <br></br>
         <br></br>
-        <div id="data1" style={{width:"195px",height:"auto",left:"50%"}}></div>
+        </div>
+        <div id="data1" style={{width:"195px",height:"auto",paddingLeft: "30%"}}></div>
         <br></br>
-        <button type="submit" class="btn btn-danger center" style={{fontFamily: 'Raleway',height:"38px",width:"100px"}} id = "Button0" onClick={this.clickBtn} >LOGOUT</button>
-        
+        <div class="center" style={{paddingLeft:"45%"}}>
+        <InfoCircle color="#ff8c1a" size={30}></InfoCircle>
+        <br></br>
+        <br></br>
+        <DoorOpenFill color="red" onClick={this.clickBtn} size={30}></DoorOpenFill>
+        <br></br>
+        <br></br>
+
+        </div>
         </div>
     </div>
 
