@@ -282,10 +282,15 @@ padding-bottom:20px;
   transition      : opacity 0.2s linear;
 }
 .dropdown {float: right; position: relative; display: inline-block; }
-.dropdown-content { display:none;position:absolute;}
+.dropdown-content {   
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  position:absolute;}
 .dropdown-content a:hover {background-color: #ddd;}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {visibility: visible;
+  opacity: 1;}
 
 .dropdown:hover .dropbtn {background-color: #938bd6;}
 

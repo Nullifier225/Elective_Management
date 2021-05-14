@@ -7,7 +7,7 @@ import {CardList} from "react-bootstrap-icons"
 import {ArrowRepeat} from 'react-bootstrap-icons';
 import {Star} from 'react-bootstrap-icons';
 import {List,PersonCircle} from 'react-bootstrap-icons';
-import {Power,InfoCircle} from 'react-bootstrap-icons';
+import {InfoCircle} from 'react-bootstrap-icons';
 import { DoorOpenFill } from 'react-bootstrap-icons';
 
 
