@@ -338,13 +338,18 @@ app.post("/api/signin", (req, res) => {
 
         });
 
-        app.get("/api/getlist1", (req, res) => {
+        app.post("/api/getlist1", (req, res) => {
             const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
 
             db.getConnection(function (err) {
-
+                var dept;
+                dept=req.body.dept
+                dept=dept.toLowerCase()
+                var year=21-parseInt(req.body.year)
+                var reg=dept+year.toString()
+                console.log(reg)
                 db
-                    .query("SELECT * FROM student_elective ", function (err, result) {
+                    .query("SELECT * FROM student_elective where rno REGEXP ?",[reg], function (err, result) {
 
                         if (err) {
                             res.send("error")
@@ -372,13 +377,18 @@ app.post("/api/signin", (req, res) => {
 
         })
 
-        app.get("/api/getlist2", (req, res) => {
+        app.post("/api/getlist2", (req, res) => {
             const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
 
             db.getConnection(function (err) {
+                var dept;
+                dept=req.body.dept
+                dept=dept.toLowerCase()
+                var year=21-parseInt(req.body.year)
+                var reg=dept+year.toString()
 
                 db
-                    .query("SELECT * FROM electivechange ", function (err, result) {
+                    .query("SELECT * FROM electivechange where ls_usern REGEXP ?",[reg] ,function (err, result) {
 
                         if (err) {
                             res.send("error")
@@ -1064,11 +1074,16 @@ app.post("/api/signin", (req, res) => {
 
         })
 
-        app.get("/api/getlist33", (req,res) => {
+        app.post("/api/getlist33", (req,res) => {
             const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
 
             db.getConnection(function (err) {
-                db.query("SELECT * FROM student_details", function (err, result) {
+                var dept,yr;
+                dept=req.body.dept
+                yr=parseInt(req.body.year)
+                ans=[]
+                index={}
+                db.query("SELECT electivename,cm FROM dept_elective where department=? AND courseyear=? AND alloted > 0",[dept,yr], function (err, result) {
 
                     if (err) {
                         res.send("error")
@@ -1076,20 +1091,64 @@ app.post("/api/signin", (req, res) => {
                         res.end()
                         return next(err)
                     }
-                    let x = []
+                    
                     let n = result.length
                     for (let i = 0; i < n; i++) {
                         let vals = JSON.parse(JSON.stringify(result))[i]
                         let xn = Object.values(vals)
-                        let state = {
-                            id: i + 1,
-                            content: xn
+                        let state={
+                            elective:xn[0],
+                            mentor:xn[1],
+                            ppl:[]
                         }
-                        x.push(state)
+                        index[xn[0]]=i
+                        ans.push(state)
                     }
+                    dept=dept.toLowerCase()
+                    var year=21-parseInt(req.body.year)
+                    var reg=dept+year.toString()
+                    console.log(ans)
+                    console.log(index)
+                    if (ans.length==0){
+                        res.send(JSON.stringify(ans))
+                        res.end()
+                    }
+                    if (ans.length>0){
+                        db.query("SELECT * from student_details where rno REGEXP ?",[reg], function (err, result) {
+                            if (err) {
+                                res.send("error")
+        
+                                res.end()
+                                return next(err)
+                            }
+                            let x = []
+                            let n = result.length
+                            for (let i = 0; i < n; i++) {
+                                let vals = JSON.parse(JSON.stringify(result))[i]
+                                let xn = Object.values(vals)
+                                if (index.hasOwnProperty(xn[2])){
+                                    let state1={
+                                        id:i,
+                                        content:xn
+                                    }
+                                    
+                                    console.log(ans[index[xn[2]]].ppl.length)
+                                    //console.log(state)
+                                    ans[index[xn[2]]].ppl.push(state1)
 
-                    res.send(JSON.stringify(x))
-                    res.end()
+                                }
+                                if (i==n-1){
+                                
+                                res.send(JSON.stringify(ans))
+                                res.end()
+                                }
+                                
+                            }
+                            
+
+                        })
+                    }
+                    
 
                 });
             });

@@ -8,30 +8,44 @@ export default class adminstudentlist extends Component {
     event.preventDefault();
     window.location.replace('/admindashboard');
     }
+    clickbtn=(event)=>{
+      event.preventDefault();
+      let req={
+        dept:document.getElementById("select1").value,
+        year:document.getElementById("select2").value
+      }
+      axios.post('http://localhost:3001/api/getlist1',req).then(response=>{
+        var details = response.data;
+        var element;
+        if (details.length>0){
+        element=<table class="table table-bordered ">
+        <tr class="table-primary">
+        <th>Name</th>
+        <th>Roll.no</th>
+        <th>section</th>
+        <th>Preference number</th>
+        <th>Elective</th>
+        </tr>
+        {details.map((item) => (<tr>
+          <td>{JSON.parse(JSON.stringify(item.content[0]))}</td>
+          <td>{JSON.parse(JSON.stringify(item.content[1]))}</td>
+          <td>{JSON.parse(JSON.stringify(item.content[2]))}</td>
+          <td>{JSON.parse(JSON.stringify(item.content[3]))}</td>
+          <td>{JSON.parse(JSON.stringify(item.content[4]))}</td>
+          </tr>
+        ))}
+        </table>
+      ReactDOM.render(element, document.getElementById('data'));
+        }
+        else{
+          element=<h5 class="text-center font-weight-bold"><i>No applications Yet</i></h5>
+          ReactDOM.render(element, document.getElementById('data'));
+        }
+        })
+    }
     constructor(){
         super();
-    axios.get('http://localhost:3001/api/getlist1').then(response=>{
-    var details = response.data;
-    var element;
-    element=<table class="table table-bordered ">
-    <tr class="table-primary">
-    <th>Name</th>
-    <th>Roll.no</th>
-    <th>section</th>
-    <th>Preference number</th>
-    <th>Elective</th>
-    </tr>
-    {details.map((item) => (<tr>
-      <td>{JSON.parse(JSON.stringify(item.content[0]))}</td>
-      <td>{JSON.parse(JSON.stringify(item.content[1]))}</td>
-      <td>{JSON.parse(JSON.stringify(item.content[2]))}</td>
-      <td>{JSON.parse(JSON.stringify(item.content[3]))}</td>
-      <td>{JSON.parse(JSON.stringify(item.content[4]))}</td>
-      </tr>
-    ))}
-    </table>
-  ReactDOM.render(element, document.getElementById('data'));
-    })
+  
   }
     render() {
         return (
@@ -48,7 +62,42 @@ export default class adminstudentlist extends Component {
             <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
                 <br/>
+                <h4 className="text-center font-weight-bold font-size:1.5em" class="heading1">View Student Applications</h4>
             <br></br>
+            <div className="form-group" style={{display:"flex"}}>
+              <div style={{display:"block"}}>
+                            <label>Department</label>
+                            <br/>
+                            <select required defaultValue={'DEFAULT'} name="text" id="select1" onChange={this.handleChange}>
+                                <option value="DEFAULT" disabled>Choose department</option>
+                                <option value="CSE">CSE</option>
+                                <option value="ECE">ECE</option>
+                               
+                            </select>
+                            <br/>
+                            <br/>
+                            </div>
+                            <div style={{display:"block",paddingLeft:"10px"}}>
+                            <label>Year</label>
+                            <br/>
+                            
+                            <select defaultValue={'DEFAULT'} name="text" id="select2" onChange={this.handleChange}>
+                            <option value="DEFAULT" disabled>Choose year</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                               
+                            </select>
+                            </div>
+                        
+                        
+                        <div style={{display:"block",paddingLeft:"30%",paddingTop:"2%"}}>
+                        
+                        <button  className="btn btn-info btn-lg " type="submit" onClick={this.clickbtn}>View List
+                        </button>
+                        </div>
+                        </div>
             <div id="data"></div>
             </div>
             </div>
