@@ -91,11 +91,11 @@ export default class LoginForm extends Component {
 
     return (
     <div class="scrollbar" id="style-2" >
-        <div class="dropdown" style={{fontFamily: 'Raleway'}}>
+        <div class="dropdown" id="dropdown" style={{fontFamily: 'Raleway'}}>
         <List color="black" class="dropbtn float-right" size={30}></List>
         <br></br>
         <br></br>
-        <div class="dropdown-content" style={{backgroundColor: "#ccddff", fontFamily: 'Raleway', height:"auto",right:"5%",borderRadius:"16px"}}>
+        <div class="dropdown-content" id="dropdowncontent" style={{backgroundColor: "#ccddff", fontFamily: 'Raleway', height:"auto",right:"5%",borderRadius:"16px"}}>
         <br></br>
         <div class="center" style={{paddingLeft:"45%"}}>
         <PersonCircle color="black" size={30}></PersonCircle>
@@ -105,10 +105,10 @@ export default class LoginForm extends Component {
         <div id="data1" style={{width:"195px",height:"auto",paddingLeft: "30%"}}></div>
         <br></br>
         <div class="center" style={{paddingLeft:"45%"}}>
-        <InfoCircle color="#ff8c1a" size={30}></InfoCircle>
+        <InfoCircle color="#ff8c1a" id="aboutus" size={30}></InfoCircle>
         <br></br>
         <br></br>
-        <DoorOpenFill color="red" onClick={this.clickBtn} size={30}></DoorOpenFill>
+        <DoorOpenFill color="red" id="logout" onClick={this.clickBtn} size={30}></DoorOpenFill>
         <br></br>
         <br></br>
 
