@@ -8,11 +8,12 @@ import {List,PersonCircle} from 'react-bootstrap-icons';
 import {InfoCircle} from 'react-bootstrap-icons';
 import { DoorOpenFill } from 'react-bootstrap-icons';
 import axios from 'axios';
+import { removeUserSession } from './common';
 export default class TD  extends Component{
     clickBtn = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:3001/api/logout');
-        window.location.replace('/');
+        removeUserSession();
+        this.props.history.push("/");
     };
     clickBtn1 = (event) => {
         event.preventDefault();

@@ -7,11 +7,13 @@ import {Gear} from "react-bootstrap-icons"
 import {List,PersonCircle} from 'react-bootstrap-icons';
 import {InfoCircle} from 'react-bootstrap-icons';
 import { DoorOpenFill } from 'react-bootstrap-icons';
+import { removeUserSession } from './common';
 
 export default class AD  extends Component{
     clickBtn = (event) => {
         event.preventDefault();
-        window.location.replace('/');
+        removeUserSession();
+        this.props.history.push("/");
     };
     clickbtn1 = (event) => {
         event.preventDefault();

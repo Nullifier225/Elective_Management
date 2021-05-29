@@ -9,6 +9,8 @@ process.on('uncaughtException', function (error) {
 });
 var router = express.Router()
 
+require('dotenv').config();
+const utils = require('./utils');
 var url = require('url');
 const {nextTick} = require('process');
 
@@ -17,6 +19,26 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 var tempid = ""
+
+app.use(function (req, res, next) {
+    // check header or url parameters or post parameters for token
+    var token = req.headers['authorization'];
+    if (!token) return next(); //if no token, continue
+  
+    token = token.replace('Bearer ', '');
+    jwt.verify(token, process.env.JWT_SECRET, function (err, user) {
+      if (err) {
+        return res.status(401).json({
+            error: true,
+            message: "Invalid user."
+        });
+      } else {
+        req.user = user; //set the user to req so other routes can use it
+        next();
+      }
+    });
+  });
+
 app.post("/api/signin", (req, res) => {
     //console.log("1")
     const salt = bcrypt.genSaltSync(10)    
@@ -29,21 +51,27 @@ app.post("/api/signin", (req, res) => {
         db
             .query("SELECT ls_pass FROM student_login_details where ls_usern=?", [
                 emailid], function (err, result) {
-
+                var sent=false
                 if (result.length > 0) {
                     const hashedpass = bcrypt.hashSync(result[0]["ls_pass"],salt)
                     if(bcrypt.compareSync(req.body.password,hashedpass)){
                     //console.log("match")
-                    res.send('valid')
-                    res.end()
+                    // generate token
+                    const token = utils.generateToken(emailid);
+                    // get basic user details
+                    //const userObj = utils.getCleanUser(emailid);
+                    // return the token along with user details
+                    //return res.json({ user: userObj, token });
+                    res.send(JSON.stringify({ emailid, token }));
+                    sent=true
                     }
-                    else {
-                    res.send("mismatch")
-                }
             }
                 if (err) {
                     print("retrievel error")
                 }
+                if(sent==false) {
+                    res.send("mismatch")
+                    res.end()}
 
             });
 
@@ -175,7 +203,7 @@ app.post("/api/signin", (req, res) => {
 
                 db.getConnection(function (err) {
                     var x1 = tempid.split("@")[0]
-                    console.log(x1)
+                    //console.log(x1)
                     db.query("SELECT name FROM student_details WHERE rno=?", [x1], function (err, result) {
 
                         if (err) {
@@ -185,7 +213,7 @@ app.post("/api/signin", (req, res) => {
                             //return next(err)
                         }
                         var x1 = (JSON.parse(JSON.stringify(result)))
-                        console.log(Object.values(x1)[0].name)
+                        //console.log(Object.values(x1)[0].name)
                         res.send(Object.values(x1)[0].name)
                         res.end()
 
@@ -1155,10 +1183,35 @@ app.post("/api/signin", (req, res) => {
 
         })
 
-        
-        app.post('/api/logout', () => {
-            tempid = ""
-        });
+        app.get('/verifyToken', function (req, res) {
+            // check header or url parameters or post parameters for token
+            var token = req.body.token || req.query.token;
+            const emailid = req.body.email
+            if (!token) {
+              return res.status(400).json({
+                error: true,
+                message: "Token is required."
+              });
+            }
+            // check token that was passed by decoding token using secret
+            jwt.verify(token, process.env.JWT_SECRET, function (err, user) {
+              if (err) return res.status(401).json({
+                error: true,
+                message: "Invalid token."
+              });
+          
+              // return 401 status if the userId does not match.
+              if (user.emailid !== emailid) {
+                return res.status(401).json({
+                  error: true,
+                  message: "Invalid user."
+                });
+              }
+              // get basic user details
+              var userObj = utils.getCleanUser(emailid);
+              return res.json({ emailid, token });
+            });
+          });
 
         app.listen(3001, () => {
             console.log('running on port 3001');

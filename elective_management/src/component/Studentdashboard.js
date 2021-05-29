@@ -9,18 +9,19 @@ import {Star} from 'react-bootstrap-icons';
 import {List,PersonCircle} from 'react-bootstrap-icons';
 import {InfoCircle} from 'react-bootstrap-icons';
 import { DoorOpenFill } from 'react-bootstrap-icons';
+import { removeUserSession } from './common';
 
 
 export default class LoginForm extends Component {
     
         
-    constructor(){
-        super()
-        let n1 = new Date()
+    constructor(props){
+        super(props);
+        let n1 = new Date();
            
         
         
-        axios.get('http://localhost:3001/api/getname').then(response=>{
+    axios.get('http://localhost:3001/api/getname').then(response=>{
     
     
     var details = response.data;
@@ -46,17 +47,19 @@ export default class LoginForm extends Component {
     )}
     clickBtn = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:3001/api/logout');
-        window.location.replace('/');
+        removeUserSession();
+        //auth.logout(()=>{});
+        //axios.post('http://localhost:3001/api/logout');
+        this.props.history.push('/');
     };
     clickBtn1 = (event) => {
         event.preventDefault();
         let n1 = new Date()
         if((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=15)) && ((n1.getMonth()<=4) && (n1.getDate()<11 || (n1.getDate()==11 && n1.getHours()>=15)))){
-            window.location.replace('/studentsform');
+            this.props.history.push('/studentsform');
         }
         else{
-            window.location.replace('/error');
+            this.props.history.push('/error');
         }
 
     };
@@ -64,20 +67,20 @@ export default class LoginForm extends Component {
         event.preventDefault();
         let n1 = new Date()
         if(((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=15)))&&((n1.getMonth()<=4) && (n1.getDate()<12 || (n1.getDate()==12 && n1.getHours()>=15)))){
-            window.location.replace('/changeform');
+            this.props.history.push('/changeform');
         }
         else{
-            window.location.replace('/error');
+            this.props.history.push('/error');
         }
     }
     clickBtn3 = (event) => {
         event.preventDefault();
-        window.location.replace('/feedbackforms');
+        this.props.history.push('/feedbackforms');
     }
 
     clickBtn5 = (event) => {
         event.preventDefault();
-        window.location.replace('/tentativelist');
+        this.props.history.push('/tentativelist');
     }
 
     
@@ -124,7 +127,6 @@ export default class LoginForm extends Component {
         <h3 class="text-center font-weight-bold font-size:1.5em" >Amrita University Elective Management Portal</h3>
         <br></br>
         <br></br>
-        
         </div> 
        
    <div >

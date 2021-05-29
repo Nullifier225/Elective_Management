@@ -21,34 +21,41 @@ import viewstudentelective from './component/studentviewelective';
 import fviewstudentelective from './component/facultyviewelective';
 import changemanagement from './component/electivechangemanagement';
 import sendemail from './component/emailtry1';
-import printpage from './component/htmlpdfsample'
-
-
+import printpage from './component/htmlpdfsample';
+import { PublicRoute } from "./PublicRoute";
+import { StudRoute } from "./StudentRoute";
+import { DeptRoute } from "./DepartmentRoute";
+import { AdminRoute } from "./AdminRoute";
+import axios from 'axios';
+import { removeUserSession } from './component/common';
 class App extends Component {
+  constructor(){
+    super();
+  }
   render() {
     return (
 <BrowserRouter>
         
             <Switch>
-            <Route path="/" component={Login} exact/>
-            <Route path="/loginform" component={LoginForm} exact/>
-            <Route path="/studentsform" component={StudentForm} exact/>
-            <Route path="/departmentform" component={App1} exact/>
-            <Route path="/changeform" component={ChangeForm} exact/>
-            <Route path="/deptdashboard" component={TD} exact/>
-            <Route path="/admindashboard" component={AD} exact/>
-            <Route path="/adminstudentlist" component={adminstudentlist} exact/>
-            <Route path="/viewelectivechange" component={viewelectivechange} exact/>
-            <Route path="/feedbackforms" component={Feedbackform} exact/>
-            <Route path="/viewfeedbacks" component={viewfeedback} exact/>
+            <PublicRoute path="/" component={Login} exact/>
+            <StudRoute path="/loginform" component={LoginForm} exact/>
+            <StudRoute path="/studentsform" component={StudentForm} exact/>
+            <DeptRoute path="/departmentform" component={App1} exact/>
+            <StudRoute path="/changeform" component={ChangeForm} exact/>
+            <DeptRoute path="/deptdashboard" component={TD} exact/>
+            <AdminRoute path="/admindashboard" component={AD} exact/>
+            <AdminRoute path="/adminstudentlist" component={adminstudentlist} exact/>
+            <AdminRoute path="/viewelectivechange" component={viewelectivechange} exact/>
+            <StudRoute path="/feedbackforms" component={Feedbackform} exact/>
+            <DeptRoute path="/viewfeedbacks" component={viewfeedback} exact/>
             <Route path="/error" component={errorpage} exact/>
-            <Route path="/management" component={management} exact/>
-            <Route path="/tentativelist" component={viewstudentelective} exact/>
-            <Route path="/finallist" component={fviewstudentelective} exact/>
-            <Route path="/electivechangemanagement" component={changemanagement} exact/>
-            <Route path="/sendmail" component={sendemail} exact/>
+            <AdminRoute path="/management" component={management} exact/>
+            <StudRoute path="/tentativelist" component={viewstudentelective} exact/>
+            <DeptRoute path="/finallist" component={fviewstudentelective} exact/>
+            <AdminRoute path="/electivechangemanagement" component={changemanagement} exact/>
+            <AdminRoute path="/sendmail" component={sendemail} exact/>
             <Route path="/printpage" component={printpage} exact/>
-            
+            <Route path="*" component={()=> "404 NOT FOUND"}/>
 
             </Switch>
             
