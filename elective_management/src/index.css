@@ -212,6 +212,42 @@ padding-bottom:20px;
   bottom: 10%;
 } 
 
+.outabout{
+  position:absolute;
+    background-color:#f5f5f5;
+    border-radius: 25px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    font-family: 'Raleway',sans-serif;
+  height:auto;
+  width:auto;
+  right:20%;
+  left:20%;
+  top: 5%;
+ 
+  padding-left: 20px;
+  padding-right:20px;
+  padding-top: 20px;
+  padding-bottom:20px;
+  border-color: black;
+}
+
+.each-slide > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 350px;
+}
+
+.each-slide span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}
+
+
 .heading1{
     font-size: 40px;
     font-weight: bold;
@@ -245,6 +281,7 @@ padding-bottom:20px;
 .App1{
   height: fit-content;
 }
+
 
 
 .starRating:not(.old) > input{

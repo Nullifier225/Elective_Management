@@ -1,7 +1,23 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {PDFExport} from '@progress/kendo-react-pdf';
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
+import { FaHtml5 } from "react-icons/fa";
+import { FaReact } from "react-icons/fa";
+import { FaNodeJs } from "react-icons/fa";
+import { FaBootstrap } from "react-icons/fa";
+import { FaCss3Alt } from "react-icons/fa";
+import { FaJenkins } from "react-icons/fa";
+import { FaJira } from "react-icons/fa";
+import { FaNpm } from "react-icons/fa";
+import { FaNode } from "react-icons/fa";
 
+const slideImages = [
+    'https://i.ytimg.com/vi/MlagMNOPkQU/maxresdefault.jpg',
+    'https://images.shiksha.com/mediadata/images/1566297871phpuuCoYB.jpeg',
+    'https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2020/08/amrita-college-chennai4186-1598331104.jpg'
+  ];
+  
 
 export default class printpage extends React.Component {
     pdfExportComponent;
@@ -9,79 +25,56 @@ export default class printpage extends React.Component {
     render() {
         return (
             <div>
-                <div className="example-config">
-                    <button
-                        className="k-button"
-                        onClick={() => {
-                        this
-                            .pdfExportComponent
-                            .save();
-                    }}>
-                        Export PDF
-                    </button>
+                <div className="outabout">
+                    <h1 className="text-center">About Us</h1>
+                    <div className="slide-container">
+                        <Slide easing="ease">
+                            <div className="each-slide">
+                                <div
+                                    style={{
+                                    'backgroundImage': `url(${slideImages[0]})`
+                                }}>
+                                </div>
+                            </div>
+                            <div className="each-slide">
+                                <div
+                                    style={{
+                                    'backgroundImage': `url(${slideImages[1]})`
+                                }}>
+                                </div>
+                            </div>
+                            <div className="each-slide">
+                                <div
+                                    style={{
+                                    'backgroundImage': `url(${slideImages[2]})`
+                                }}>
+                                </div>
+                            </div>
+                        </Slide>
+                    </div>
+                    <p>
+                        <br></br>
+                        This Elective Management system aims to bring about an easier way for the teachers and their 
+                        departments to put up their electives and for students to choose them by viewing the available electives
+                        and the admins to mediate and oversee these operations.<br></br>
+                        The student,teacher and the admin each have their own dashboard where their required facilities are provided.
+                        With the automation of the allocation and realloacation (after change in students preferences), it provides a 
+                        hassle free expreience for the student, teacher and the administrator.<br></br>
+                        The students can choose the electives from the list provided with the guidance of the ratings by the batch who 
+                        attended the course before them. They also get an email or a notification whenever the forms open.<br></br>
+                        The teachers need not worry about getting the list they would received the final copy.<br></br><br></br><br></br>      
+                        <FaHtml5 color='red' size={100}></FaHtml5>
+                        <FaReact color='lightblue' size={100}></FaReact>
+                        <FaBootstrap color='purple' size={100}></FaBootstrap>
+                        <FaCss3Alt color='blue' size={100}></FaCss3Alt>
+                        <FaJenkins size={100}></FaJenkins>
+                        <FaJira color='blue' size={100}></FaJira><span>           </span>
+                        <FaNpm color='red' size={100}></FaNpm><span>           </span>
+                        <FaNode color='green' size={100}></FaNode>
+                        
+                        
+                    </p>
                 </div>
-
-                <PDFExport
-                    paperSize="A4"
-                    margin="2cm"
-                    ref={(component) => this.pdfExportComponent = component}>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer felis libero,
-                        lobortis ac rutrum quis, varius a velit. Donec lacus erat, cursus sed porta
-                        quis, adipiscing et ligula. Duis volutpat, sem pharetra accumsan pharetra, mi
-                        ligula cursus felis, ac aliquet leo diam eget risus. Integer facilisis, justo
-                        cursus venenatis vehicula, massa nisl tempor sem, in ullamcorper neque mauris in
-                        orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer felis
-                        libero, lobortis ac rutrum quis, varius a velit. Donec lacus erat, cursus sed
-                        porta quis, adipiscing et ligula. Duis volutpat, sem pharetra accumsan pharetra,
-                        mi ligula cursus felis, ac aliquet leo diam eget risus. Integer facilisis, justo
-                        cursus venenatis vehicula, massa nisl tempor sem, in ullamcorper neque mauris in
-                        orci.
-                    </p>
-                    <p>
-                        Ut orci ligula, varius ac consequat in, rhoncus in dolor. Mauris pulvinar
-                        molestie accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et
-                        ultrices posuere cubilia Curae; Aenean velit ligula, pharetra quis aliquam sed,
-                        scelerisque sed sapien. Class aptent taciti sociosqu ad litora torquent per
-                        conubia nostra, per inceptos himenaeos. Aliquam dui mi, vulputate vitae pulvinar
-                        ac, condimentum sed eros. Ut orci ligula, varius ac consequat in, rhoncus in
-                        dolor. Mauris pulvinar molestie accumsan. Vestibulum ante ipsum primis in
-                        faucibus orci luctus et ultrices posuere cubilia Curae; Aenean velit ligula,
-                        pharetra quis aliquam sed, scelerisque sed sapien. Class aptent taciti sociosqu
-                        ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam dui mi,
-                        vulputate vitae pulvinar ac, condimentum sed eros.
-                    </p>
-                    <p>
-                        Aliquam at nisl quis est adipiscing bibendum. Nam malesuada eros facilisis arcu
-                        vulputate at aliquam nunc tempor. In commodo scelerisque enim, eget sodales
-                        lorem condimentum rutrum. Phasellus sem metus, ultricies at commodo in,
-                        tristique non est. Morbi vel mauris eget mauris commodo elementum. Nam eget
-                        libero lacus, ut sollicitudin ante. Nam odio quam, suscipit a fringilla eget,
-                        dignissim nec arcu. Donec tristique arcu ut sapien elementum pellentesque.
-                        Aliquam at nisl quis est adipiscing bibendum. Nam malesuada eros facilisis arcu
-                        vulputate at aliquam nunc tempor. In commodo scelerisque enim, eget sodales
-                        lorem condimentum rutrum. Phasellus sem metus, ultricies at commodo in,
-                        tristique non est. Morbi vel mauris eget mauris commodo elementum. Nam eget
-                        libero lacus, ut sollicitudin ante. Nam odio quam, suscipit a fringilla eget,
-                        dignissim nec arcu. Donec tristique arcu ut sapien elementum pellentesque.
-                    </p>
-                    <p>
-                        Maecenas vitae eros vel enim molestie cursus. Proin ut lacinia ipsum. Nam at
-                        elit arcu, at porttitor ipsum. Praesent id viverra lorem. Nam lacinia elementum
-                        fermentum. Nulla facilisi. Nulla bibendum erat sed sem interdum suscipit.
-                        Vestibulum eget molestie leo. Aliquam erat volutpat. Ut sed nulla libero.
-                        Suspendisse id euismod quam. Aliquam interdum turpis vitae purus consectetur in
-                        pulvinar libero accumsan. In id augue dui, ac volutpat ante. Suspendisse purus
-                        est, ullamcorper id bibendum sed, placerat id leo. Maecenas vitae eros vel enim
-                        molestie cursus. Proin ut lacinia ipsum. Nam at elit arcu, at porttitor ipsum.
-                        Praesent id viverra lorem. Nam lacinia elementum fermentum. Nulla facilisi.
-                        Nulla bibendum erat sed sem interdum suscipit. Vestibulum eget molestie leo.
-                        Aliquam erat volutpat. Ut sed nulla libero. Suspendisse id euismod quam. Aliquam
-                        interdum turpis vitae purus consectetur in pulvinar libero accumsan. In id augue
-                        dui, ac volutpat ante. Suspendisse purus est, ullamcorper id bibendum sed,
-                        placerat id leo.
-                    </p>
-                </PDFExport>
             </div>
         );
     }
