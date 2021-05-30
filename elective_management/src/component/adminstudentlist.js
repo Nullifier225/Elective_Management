@@ -45,7 +45,7 @@ export default class adminstudentlist extends Component {
     }
     constructor(){
         super();
-  
+        document.title="View student applications"
   }
     render() {
         return (

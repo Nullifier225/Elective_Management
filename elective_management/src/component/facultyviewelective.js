@@ -3,7 +3,10 @@ import logo from './index.png';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
+import {PDFExport} from '@progress/kendo-react-pdf';
+import {Download} from 'react-bootstrap-icons';
 export default class fviewstudentelective extends Component {
+  
    clickBtn1 = (event) => {
     event.preventDefault();
     window.location.replace('/deptdashboard');
@@ -43,12 +46,17 @@ export default class fviewstudentelective extends Component {
         </div>
       ))}</div>
       
-      
-    ReactDOM.render(element, document.getElementById('data'));
+      document.getElementById('datap').style.display="block";  
+    ReactDOM.render(element, document.getElementById('datap'));
+    document.getElementById('printbtn').style.display="block";
+    document.getElementById('data').style.display="none";
         }
         else{
+          document.getElementById('data').style.display="block";
           element=<h5 class="text-center font-weight-bold"><i>Allotment not finalized yet </i></h5>
           ReactDOM.render(element, document.getElementById('data'));
+          document.getElementById('printbtn').style.display="none";
+          document.getElementById('datap').style.display="none";
         }  
   
      
@@ -57,14 +65,9 @@ export default class fviewstudentelective extends Component {
       })
     }
     constructor(){
-
-        super();
-   
-    
-
-
-
-  }
+      super()
+      document.title="Final elective allotment"
+    }
   
     
     
@@ -112,14 +115,32 @@ export default class fviewstudentelective extends Component {
                              
                           </select>
                           </div>
+                          <div style={{display:"block",paddingLeft:"10%",paddingTop:"2%"}}>
+                      <button  className="btn btn-info btn-lg btn-block k-button" id="printbtn" style={{display:"none"}}
+                        
+                        onClick={() => {
+                        this
+                            .pdfExportComponent
+                            .save();
+                    }}><Download color="white" class="hover:bg-gray-100" size={30}></Download>
+                         &nbsp;
+                        Export PDF
+                    </button>
+                    </div>
                       
-                      
-                      <div style={{display:"block",paddingLeft:"30%",paddingTop:"2%"}}>
+                      <div style={{display:"block",paddingLeft:"5%",paddingTop:"2%"}}>
                       
                       <button  className="btn btn-info btn-lg " type="submit" onClick={this.clickbtn}>View List
                       </button>
+                      
                       </div>
                       </div>
+                      <PDFExport
+                    paperSize="A4"
+                    margin="0.5cm"
+                    ref={(component) => this.pdfExportComponent = component}>
+          <div id="datap"></div>
+          </PDFExport>
           <div id="data"></div>
           </div>
           </div>

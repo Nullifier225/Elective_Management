@@ -11,6 +11,7 @@ import { setMaxListeners } from "process";
 export default class Login extends Component {
     constructor(props){
         super(props);
+        document.title="Login"
         this.state = {
             email: "",
             password: ""

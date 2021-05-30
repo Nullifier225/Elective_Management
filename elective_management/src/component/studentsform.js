@@ -58,7 +58,7 @@ export default class App22 extends Component {
   constructor() {
     
     super();
-    
+    document.title="Elective application form"
     this.state = {
         name: "",
             rollnumber: "",

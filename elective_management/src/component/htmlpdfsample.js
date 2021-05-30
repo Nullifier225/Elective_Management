@@ -21,7 +21,10 @@ const slideImages = [
 
 export default class printpage extends React.Component {
     pdfExportComponent;
-
+    constructor(){
+        super()
+        document.title="About us"
+    }
     render() {
         return (
             <div>
@@ -62,18 +65,20 @@ export default class printpage extends React.Component {
                         hassle free expreience for the student, teacher and the administrator.<br></br>
                         The students can choose the electives from the list provided with the guidance of the ratings by the batch who 
                         attended the course before them. They also get an email or a notification whenever the forms open.<br></br>
-                        The teachers need not worry about getting the list they would received the final copy.<br></br><br></br><br></br>      
-                        <FaHtml5 color='red' size={100}></FaHtml5>
-                        <FaReact color='lightblue' size={100}></FaReact>
-                        <FaBootstrap color='purple' size={100}></FaBootstrap>
-                        <FaCss3Alt color='blue' size={100}></FaCss3Alt>
-                        <FaJenkins size={100}></FaJenkins>
-                        <FaJira color='blue' size={100}></FaJira><span>           </span>
-                        <FaNpm color='red' size={100}></FaNpm><span>           </span>
-                        <FaNode color='green' size={100}></FaNode>
+                        The teachers need not worry about getting the list they would received the final copy.
                         
                         
                     </p>
+                    <br></br><br></br><br></br>     
+                        <FaHtml5 color='red' size={100}></FaHtml5>&nbsp;
+                        <FaCss3Alt color='blue' size={100}></FaCss3Alt>&nbsp;
+                        <FaBootstrap color='purple' size={100}></FaBootstrap>&nbsp;
+                        <FaReact color='#00ffbb' size={100}></FaReact>&nbsp;&nbsp;
+                        <FaNpm color='red' size={100}></FaNpm>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <FaNode color='green' size={100}></FaNode>
+                        <FaJenkins size={100}></FaJenkins>&nbsp;
+                        <FaJira color='blue' size={100}></FaJira>
+                        
                 </div>
             </div>
         );

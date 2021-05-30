@@ -11,7 +11,7 @@ export default class viewstudentelective extends Component {
     constructor(){
 
         super();
-   
+      document.title="Electives Final List"
         
     axios.get('http://localhost:3001/api/getlist3').then(response=>{
     

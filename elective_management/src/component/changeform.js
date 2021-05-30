@@ -22,7 +22,7 @@ export default class ChangeForm extends Component {
     
     constructor() {
         super();
-
+        document.title="Elective Change Form"
         this.state = {
             currentelectivename: "",
             currentcc: "",

@@ -41,7 +41,7 @@ export default class sendemail extends Component {
     }
     constructor() {
         super();
-
+        document.title="Notification Management"
         this.state = {
             currentelectivename: "",
             currentcc: "",

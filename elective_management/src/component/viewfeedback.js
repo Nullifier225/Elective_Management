@@ -83,8 +83,9 @@ export default class viewfeedback extends Component {
             })
     }
     constructor() {
-
+        
         super()
+        document.title="Feedback Report"
         axios
             .get('http://localhost:3001/api/getfeedele1')
             .then(response => {

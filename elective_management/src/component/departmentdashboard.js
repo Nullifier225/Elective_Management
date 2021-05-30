@@ -27,6 +27,15 @@ export default class TD  extends Component{
         event.preventDefault();
         window.location.replace('/finallist');
     };
+    clickBtn0 = (event) => {
+        event.preventDefault();
+        window.open('http://localhost:3000/printpage','_blank')
+    }
+
+    constructor(){
+        super()
+        document.title="Department Dashboard"
+    }
 
     render(){
     
@@ -46,7 +55,7 @@ export default class TD  extends Component{
         <div id="data1" style={{width:"195px",height:"auto",paddingLeft: "30%"}}><h5>Welcome<br/></h5></div>
         <br></br>
         <div class="center" style={{paddingLeft:"45%"}}>
-        <InfoCircle color="#ff8c1a" id="aboutus" size={30}></InfoCircle>
+        <InfoCircle color="#ff8c1a" id="aboutus" onClick={this.clickBtn0} size={30}></InfoCircle>
         <br></br>
         <br></br>
         <DoorOpenFill color="red" id="logout" onClick={this.clickBtn} size={30}></DoorOpenFill>

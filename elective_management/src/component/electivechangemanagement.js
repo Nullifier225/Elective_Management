@@ -60,6 +60,7 @@ export default class changemanagement extends Component {
     constructor() {
 
         super();
+        document.title="Elective Change Management"
 
     }
 

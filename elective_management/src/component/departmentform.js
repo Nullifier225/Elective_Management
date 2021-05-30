@@ -4,6 +4,7 @@ import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 function App1() {
+    document.title="Department elective list"
     const clickBtn = (event) => {
         event.preventDefault();
         

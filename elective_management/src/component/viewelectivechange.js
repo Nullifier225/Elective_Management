@@ -56,7 +56,7 @@ export default class viewelectivechange extends Component {
     constructor(){
 
         super();
-   
+        document.title="Elective change applications"
         
     
 

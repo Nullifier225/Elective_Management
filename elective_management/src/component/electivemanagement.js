@@ -54,7 +54,7 @@ export default class management extends Component {
 
     }
     constructor() {
-
+        document.title="Elective Management"
         super();
 
     }

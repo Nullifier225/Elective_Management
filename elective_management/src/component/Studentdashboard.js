@@ -26,9 +26,10 @@ export default class LoginForm extends Component {
     
     var details = response.data;
     var element;
-    
+    var x=JSON.parse(JSON.stringify(details))+"'s Homepage"
     element=<h5>Welcome<br></br> {JSON.parse(JSON.stringify(details))}!</h5>
     ReactDOM.render(element, document.getElementById('data1'));
+    document.title=x;
     var element1
     let n1 = new Date()
             if((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=15))){
@@ -54,24 +55,24 @@ export default class LoginForm extends Component {
     };
     clickBtn1 = (event) => {
         event.preventDefault();
-        let n1 = new Date()
-        if((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=15)) && ((n1.getMonth()<=4) && (n1.getDate()<11 || (n1.getDate()==11 && n1.getHours()>=15)))){
+        //let n1 = new Date()
+        //if((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=15)) && ((n1.getMonth()<=4) && (n1.getDate()<11 || (n1.getDate()==11 && n1.getHours()>=15)))){
             this.props.history.push('/studentsform');
-        }
-        else{
-            this.props.history.push('/error');
-        }
+        //}
+        //else{
+        //    this.props.history.push('/error');
+        //}
 
     };
     clickBtn2 = (event) => {
         event.preventDefault();
-        let n1 = new Date()
-        if(((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=15)))&&((n1.getMonth()<=4) && (n1.getDate()<12 || (n1.getDate()==12 && n1.getHours()>=15)))){
+        //let n1 = new Date()
+        //if(((n1.getMonth()>=4) && (n1.getDate()>10 || (n1.getDate()==10 && n1.getHours()>=15)))&&((n1.getMonth()<=4) && (n1.getDate()<12 || (n1.getDate()==12 && n1.getHours()>=15)))){
             this.props.history.push('/changeform');
-        }
-        else{
-            this.props.history.push('/error');
-        }
+        //}
+        //else{
+        //    this.props.history.push('/error');
+        //}
     }
     clickBtn3 = (event) => {
         event.preventDefault();
@@ -81,6 +82,10 @@ export default class LoginForm extends Component {
     clickBtn5 = (event) => {
         event.preventDefault();
         this.props.history.push('/tentativelist');
+    }
+    clickBtn0 = (event) => {
+        event.preventDefault();
+        window.open('http://localhost:3000/printpage','_blank')
     }
 
     
@@ -108,7 +113,7 @@ export default class LoginForm extends Component {
         <div id="data1" style={{width:"195px",height:"auto",paddingLeft: "30%"}}></div>
         <br></br>
         <div class="center" style={{paddingLeft:"45%"}}>
-        <InfoCircle color="#ff8c1a" id="aboutus" size={30}></InfoCircle>
+        <InfoCircle color="#ff8c1a" id="aboutus" onClick={this.clickBtn0} size={30}></InfoCircle>
         <br></br>
         <br></br>
         <DoorOpenFill color="red" id="logout" onClick={this.clickBtn} size={30}></DoorOpenFill>

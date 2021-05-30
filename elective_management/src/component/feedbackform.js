@@ -19,6 +19,7 @@ export default class Feedbackform extends Component {
  
   constructor(){
       super()
+      document.title="Elective Feedback Form"
       axios.get('http://localhost:3001/api/getfeedele').then(response=>{
     
     
