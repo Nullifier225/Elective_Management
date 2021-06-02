@@ -3,7 +3,9 @@ import ReactDOM from "react-dom";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import logo from './index.png';
 import axios from 'axios';
-import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
+import sample from './sample1.gif';
+import { ArrowLeftCircleFill ,Book} from 'react-bootstrap-icons';
+
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -44,7 +46,10 @@ export default class App22 extends Component {
       this.xy=array;
       alert("this.xy"+this.xy)
   }
-    
+  togglePopup=(event)=>{
+    event.preventDefault();
+    document.getElementById("popup-11").classList.toggle("active");
+  }
   clickBtn = (event) => {
     event.preventDefault();
    console.log(this.state);
@@ -56,9 +61,11 @@ export default class App22 extends Component {
  
   
   constructor() {
-    
+   
+
     super();
     document.title="Elective application form"
+    
     this.state = {
         name: "",
             rollnumber: "",
@@ -93,17 +100,20 @@ export default class App22 extends Component {
   render() {
     
     return (
+      
       <div>
 <script type = "text/javascript" >
-  {function preventBack() { window.history.forward(); }  }  
+  {function preventBack() { window.history.forward(); } }  
     
     setTimeout("preventBack()", 0);  
-    window.onunload = function () { null };  
+    window.onunload = function () { null };
+      
 </script> 
 
 <div class="out222">
             
 <img class="img12"src="https://image3.mouthshut.com/images/Restaurant/Photo/-73020_62102.jpg"></img>
+
 
            
        
@@ -112,6 +122,18 @@ export default class App22 extends Component {
 <img src={logo} className="rounded mx-auto d-block" id="img1" style={{height:'25%',width:'25%'}}/>
 <br/>
 <br/>
+
+<div class="popup" id="popup-11">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="close-btn" onClick={this.togglePopup}>×</div>
+    <h1 class="center">Filling the form</h1>
+    <p>Drag and drop according to your preference. A sample illustration is given below where<br></br>Preference 1: FODS<br></br>Preference 2: Cryptography<br></br>Preference 3: Cloud Computing</p>
+    <img src={sample} style={{height:'50%',width:'100%'}}></img>
+  </div>
+</div>
+ 
+<Book class="button11" size={40} onClick={this.togglePopup}></Book>
 
 <form onSubmit={(e)=>submit_studentform(e,this.state.items)}>
 
