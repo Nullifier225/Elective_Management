@@ -6,7 +6,7 @@ import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
 export default class errorpage extends Component {
     clickBtn1 = (event) => {
         event.preventDefault();
-        window.location.replace('/loginform');
+        this.props.history.push('/loginform');
       }
 constructor(){
     super();

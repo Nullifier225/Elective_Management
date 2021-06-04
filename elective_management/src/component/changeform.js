@@ -60,9 +60,7 @@ export default class ChangeForm extends Component {
 
     clickBtn1 = (event) => {
         event.preventDefault();
-        window
-            .location
-            .replace('/loginform');
+        this.props.history.push('/loginform');
     }
 
     render() {

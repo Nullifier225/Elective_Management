@@ -5,11 +5,11 @@ import ReactDOM from 'react-dom';
 import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
 import {PDFExport} from '@progress/kendo-react-pdf';
 import {Download} from 'react-bootstrap-icons';
-export default class fviewstudentelective extends Component {
+export default class aviewstudentelective extends Component {
   
    clickBtn1 = (event) => {
     event.preventDefault();
-    this.props.history.push('/deptdashboard');
+    this.props.history.push('/admindashboard');
     }
     clickbtn=(event)=>{
     event.preventDefault()

@@ -17,23 +17,27 @@ export default class AD  extends Component{
     };
     clickbtn1 = (event) => {
         event.preventDefault();
-        window.location.replace('/adminstudentlist');
+        this.props.history.push('/adminstudentlist');
     };
     clickbtn2 = (event) => {
         event.preventDefault();
-        window.location.replace('/viewelectivechange');
+        this.props.history.push('/viewelectivechange');
     };
     clickbtn3 = (event) => {
         event.preventDefault();
-        window.location.replace('/sendmail');
+        this.props.history.push('/sendmail');
     };
     clickbtn4 = (event) => {
         event.preventDefault();
-        window.location.replace('/management');
+        this.props.history.push('/management');
     };
     clickbtn5 = (event) => {
         event.preventDefault();
-        window.location.replace('/electivechangemanagement');
+        this.props.history.push('/electivechangemanagement');
+    };
+    clickBtn6 = (event) => {
+        event.preventDefault();
+        this.props.history.push('/afinallist');
     };
     clickBtn0 = (event) => {
         event.preventDefault();
@@ -71,7 +75,7 @@ export default class AD  extends Component{
         </div>
         </div>
     </div>
-    <div className="out4">
+    <div className="out4" style={{height:"800px"}}>
     
 
     <div >
@@ -89,11 +93,13 @@ export default class AD  extends Component{
     <br></br>
     <button type="submit"  className="btn btn-info btn-lg btn-block text-left" id = "button2" onClick={this.clickbtn2}><CardList color="white" class="hover:bg-gray-100" size={30}></CardList>&nbsp; &nbsp; View elective change students</button>
     <br></br>      
+    <button type="submit"  className="btn btn-info btn-lg btn-block text-left" id="Button6" onClick={this.clickBtn6}><CardList color="white" class="hover:bg-gray-100" size={30}></CardList>&nbsp; &nbsp; View final student list</button>
+    <br></br>
     <button type="submit" id = "button3"  className="btn btn-info btn-lg btn-block text-left" onClick={this.clickbtn3}><Envelope color="white" class="hover:bg-gray-100" size={30}></Envelope> &nbsp; &nbsp; Send Notifications</button>
     <br></br>      
     <button type="submit" id = "button4"  className="btn btn-info btn-lg btn-block text-left" onClick={this.clickbtn4}><Gear color="white" class="hover:bg-gray-100" size={30}></Gear> &nbsp; &nbsp; Manage Elective Application</button>
     <br></br>      
-    <button type="submit" id = "button3"  className="btn btn-info btn-lg btn-block text-left" onClick={this.clickbtn5}><Gear color="white" class="hover:bg-gray-100" size={30}></Gear> &nbsp; &nbsp; Manage Elective Change Application</button>
+    <button type="submit" id = "button5"  className="btn btn-info btn-lg btn-block text-left" onClick={this.clickbtn5}><Gear color="white" class="hover:bg-gray-100" size={30}></Gear> &nbsp; &nbsp; Manage Elective Change Application</button>
                  
 
                   

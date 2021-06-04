@@ -56,7 +56,7 @@ export default class App22 extends Component {
   }
   clickBtn1 = (event) => {
     event.preventDefault();
-    window.location.replace('/loginform');
+    this.props.history.push('/loginform');
   }
  
   
@@ -224,7 +224,7 @@ function submit_studentform(e,items){
     {
       
       alert("response saved")
-      window.location.replace('/loginform');
+      this.props.history.push('/loginform');
      
       
     }
@@ -232,7 +232,7 @@ function submit_studentform(e,items){
     if(details!='valid')
     {
       alert("multiple responses are not accepted")
-      window.location.replace('/loginform');
+      this.props.history.push('/loginform');
       
     }
   })

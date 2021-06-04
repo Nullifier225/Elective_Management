@@ -17,15 +17,15 @@ export default class TD  extends Component{
     };
     clickBtn1 = (event) => {
         event.preventDefault();
-        window.location.replace('/departmentform');
+        this.props.history.push('/departmentform');
     };
     clickBtn2 = (event) => {
         event.preventDefault();
-        window.location.replace('/viewfeedbacks');
+        this.props.history.push('/viewfeedbacks');
     };
     clickBtn3 = (event) => {
         event.preventDefault();
-        window.location.replace('/finallist');
+        this.props.history.push('/finallist');
     };
     clickBtn0 = (event) => {
         event.preventDefault();

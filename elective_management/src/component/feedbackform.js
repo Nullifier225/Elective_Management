@@ -14,7 +14,7 @@ export default class Feedbackform extends Component {
   };
   clickBtn1 = (event) => {
     event.preventDefault();
-    window.location.replace('/loginform');
+    this.props.history.push('/loginform');
   }
  
   constructor(){
@@ -162,12 +162,12 @@ export default class Feedbackform extends Component {
                 
                
                 alert("response saved")
-                window.location.replace('/loginform');
+                this.props.history.push('/loginform');
               }
               else{
                    
                 alert("Multiple responses not accepted")
-                window.location.replace('/loginform');
+                this.props.history.push('/loginform');
               }
              
               

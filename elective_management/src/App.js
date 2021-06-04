@@ -24,6 +24,7 @@ import sendemail from './component/emailtry1';
 import printpage from './component/htmlpdfsample';
 import { PublicRoute } from "./PublicRoute";
 import { StudRoute } from "./StudentRoute";
+import aviewstudentelective from './component/AdminFinal'
 import { DeptRoute } from "./DepartmentRoute";
 import { AdminRoute } from "./AdminRoute";
 import axios from 'axios';
@@ -52,6 +53,7 @@ class App extends Component {
             <AdminRoute path="/management" component={management} exact/>
             <StudRoute path="/tentativelist" component={viewstudentelective} exact/>
             <DeptRoute path="/finallist" component={fviewstudentelective} exact/>
+            <AdminRoute path="/afinallist" component={aviewstudentelective} exact/>
             <AdminRoute path="/electivechangemanagement" component={changemanagement} exact/>
             <AdminRoute path="/sendmail" component={sendemail} exact/>
             <Route path="/printpage" component={printpage} exact/>

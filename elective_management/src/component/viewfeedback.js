@@ -8,9 +8,7 @@ import axios from 'axios';
 export default class viewfeedback extends Component {
     clickBtn1=(event)=>{
         event.preventDefault();
-        window
-            .location
-            .replace('/deptdashboard');
+        this.props.history.push('/deptdashboard');
     }
     clickbtn = (event) => {
         event.preventDefault();

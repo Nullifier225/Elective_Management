@@ -6,7 +6,7 @@ import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
 export default class adminstudentlist extends Component {
    clickBtn1 = (event) => {
     event.preventDefault();
-    window.location.replace('/admindashboard');
+    this.props.history.push('/admindashboard');
     }
     clickbtn=(event)=>{
       event.preventDefault();

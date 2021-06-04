@@ -9,9 +9,7 @@ import {PersonCheck} from 'react-bootstrap-icons';
 export default class changemanagement extends Component {
     clickBtn1 = (event) => {
         event.preventDefault();
-        window
-            .location
-            .replace('/admindashboard');
+        this.props.history.push('/admindashboard');
     }
     clickbtn = (event) => {
         event.preventDefault();
@@ -29,9 +27,7 @@ export default class changemanagement extends Component {
                 var details=response.data
                 if (details=="done"){
                     alert("Allocation done")
-                    window
-            .location
-            .replace('/admindashboard');
+                    this.props.history.push('/admindashboard');
                 }
             })
             // .then(response => {

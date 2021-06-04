@@ -76,7 +76,7 @@ export default class Login extends Component {
         if(!details.emailid)
         {
           var element
-          element = <h5 className="text-center font-weight-bold " style={{color:"#ff5522"}}><i>Email id or password incorrect</i></h5>
+          element = <h5 className="text-center font-weight-bold " id="fail" style={{color:"#ff5522"}}><i>Email id or password incorrect</i></h5>
           ReactDOM.render(element, document.getElementById('data'));
         }
       })

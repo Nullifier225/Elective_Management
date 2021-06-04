@@ -13,9 +13,7 @@ export default class management extends Component {
 
     clickBtn1 = (event) => {
         event.preventDefault();
-        window
-            .location
-            .replace('/admindashboard');
+        this.props.history.push('/admindashboard');
     }
     clickbtn = (event) => {
         event.preventDefault();

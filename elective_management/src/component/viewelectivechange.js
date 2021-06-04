@@ -6,7 +6,7 @@ import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
 export default class viewelectivechange extends Component {
    clickBtn1 = (event) => {
     event.preventDefault();
-    window.location.replace('/admindashboard');
+    this.props.history.push('/admindashboard');
     }
     clickbtn=(event)=>{
       let req={

@@ -3,7 +3,7 @@ import logo from './index.png';
 import { ArrowLeftCircleFill } from 'react-bootstrap-icons'; 
 import axios from 'axios';
 import ReactDOM from 'react-dom';
-function App1() {
+function App1(props) {
     document.title="Department elective list"
     const clickBtn = (event) => {
         event.preventDefault();
@@ -11,7 +11,7 @@ function App1() {
         }
         const clickBtn1 = (event) => {
           event.preventDefault();
-          window.location.replace('/deptdashboard');
+          props.history.push('/deptdashboard');
           }
         
     const [inputList, setInputList] = useState([{ department:"",electivename: "",coursecode:"",electiveyear:"", max: "",min: "", desc:"",cm:"" }]); 

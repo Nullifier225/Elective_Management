@@ -58,9 +58,7 @@ export default class sendemail extends Component {
 
     clickBtn1 = (event) => {
         event.preventDefault();
-        window
-            .location
-            .replace('/admindashboard');
+        this.props.history.push('/admindashboard');
     }
 
     render() {
