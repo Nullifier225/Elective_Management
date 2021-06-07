@@ -1210,7 +1210,7 @@ app.post("/api/signin", (req, res) => {
               return res.json({ emailid, token });
             });
           });
-
-        app.listen(3001, () => {
-            console.log('running on port 3001');
+    const PORT=3001
+        app.listen(process.env.PORT||PORT, () => {
+            console.log(`running on port ${PORT}`);
         })
