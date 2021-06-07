@@ -3,7 +3,7 @@ const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
+
 process.on('uncaughtException', function (error) {
     console.log(error.stack);
 });
@@ -41,7 +41,7 @@ app.use(function (req, res, next) {
 
 app.post("/api/signin", (req, res) => {
     //console.log("1")
-    const salt = bcrypt.genSaltSync(10)    
+      
     tempid = req.body.email;
     const emailid = req.body.email;
 
@@ -53,17 +53,14 @@ app.post("/api/signin", (req, res) => {
                 emailid], function (err, result) {
                 var sent=false
                 if (result.length > 0) {
-                    const hashedpass = bcrypt.hashSync(result[0]["ls_pass"],salt)
-                    if(bcrypt.compareSync(req.body.password,hashedpass)){
-                    //console.log("match")
-                    // generate token
-                    const token = utils.generateToken(emailid);
-                    // get basic user details
-                    //const userObj = utils.getCleanUser(emailid);
-                    // return the token along with user details
-                    //return res.json({ user: userObj, token });
-                    res.send(JSON.stringify({ emailid, token }));
-                    sent=true
+                    var temp=result[0]["ls_pass"]
+                    
+                    if (temp==req.body.password){
+                        res.send("valid")
+                        const token = utils.generateToken(emailid);
+                        sent=true
+                        res.end()
+                        
                     }
             }
                 if (err) {
@@ -71,7 +68,8 @@ app.post("/api/signin", (req, res) => {
                 }
                 if(sent==false) {
                     res.send("mismatch")
-                    res.end()}
+                    }
+                    res.end()
 
             });
 

@@ -45,7 +45,7 @@ export default class Login extends Component {
       .then(resp=>{
         var details = resp.data;
         const {email,password}=this.state;
-        if(details.emailid && details.token)
+        if(details=="valid")
         {
           //alert(sessionStorage.getItem('user'));
           let par1=/^[abclm][abclm].[en][en].[up][3-5][a-z][a-z][a-z][1-9][0-9][0-5][0-9][0-9]@[abclm][abclm].students.amrita.edu$/g;
@@ -73,7 +73,7 @@ export default class Login extends Component {
           
         }
        
-        if(!details.emailid)
+        if(details!="valid")
         {
           var element
           element = <h5 className="text-center font-weight-bold " id="fail" style={{color:"#ff5522"}}><i>Email id or password incorrect</i></h5>
