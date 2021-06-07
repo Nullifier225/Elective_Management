@@ -14,7 +14,7 @@ const utils = require('./utils');
 var url = require('url');
 const {nextTick} = require('process');
 
-const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+const db = mysql.createPool({host:'35.244.41.14', user: "root", password: "1234", database: "electivedb"});
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -120,7 +120,7 @@ app.post("/api/signin", (req, res) => {
 
             })
             app.get("/api/getele", (req, res) => {
-                const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+                const db = mysql.createPool({host: "35.244.41.14", user: "root", password: "1234", database: "electivedb"});
 
                 db.getConnection(function (err) {
                     var x1 = tempid.split("@")[0]
@@ -162,7 +162,7 @@ app.post("/api/signin", (req, res) => {
             })
 
             app.get("/api/getcc", (req, res) => {
-                const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+                const db = mysql.createPool({host: "35.244.41.14", user: "root", password: "1234", database: "electivedb"});
 
                 db.getConnection(function (err) {
 
@@ -197,7 +197,7 @@ app.post("/api/signin", (req, res) => {
             })
 
             app.get("/api/getname", (req, res) => {
-                const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+                const db = mysql.createPool({host: "35.244.41.14", user: "root", password: "1234", database: "electivedb"});
 
                 db.getConnection(function (err) {
                     var x1 = tempid.split("@")[0]
@@ -365,7 +365,7 @@ app.post("/api/signin", (req, res) => {
         });
 
         app.post("/api/getlist1", (req, res) => {
-            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+            const db = mysql.createPool({host: "35.244.41.14", user: "root", password: "1234", database: "electivedb"});
 
             db.getConnection(function (err) {
                 var dept;
@@ -404,7 +404,7 @@ app.post("/api/signin", (req, res) => {
         })
 
         app.post("/api/getlist2", (req, res) => {
-            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+            const db = mysql.createPool({host: "35.244.41.14", user: "root", password: "1234", database: "electivedb"});
 
             db.getConnection(function (err) {
                 var dept;
@@ -443,7 +443,7 @@ app.post("/api/signin", (req, res) => {
         })
 
         app.get("/api/getfeedele", (req, res) => {
-            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+            const db = mysql.createPool({host: "35.244.41.14", user: "root", password: "1234", database: "electivedb"});
 
             db.getConnection(function (err) {
                 var x1 = tempid.split("@")[0]
@@ -480,7 +480,7 @@ app.post("/api/signin", (req, res) => {
         })
 
         app.get("/api/getfeedele1", (req, res) => {
-            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+            const db = mysql.createPool({host:"35.244.41.14", user: "root", password: "1234", database: "electivedb"});
 
             db.getConnection(function (err) {
                 db
@@ -513,7 +513,7 @@ app.post("/api/signin", (req, res) => {
         })
 
         app.post("/api/getreport", (req, res) => {
-            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+            const db = mysql.createPool({host:"35.244.41.14", user: "root", password: "1234", database: "electivedb"});
 
             db.getConnection(function (err) {
                 db
@@ -547,7 +547,7 @@ app.post("/api/signin", (req, res) => {
         })
 
         app.post("/api/getavg", (req, res) => {
-            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+            const db = mysql.createPool({host:"35.244.41.14", user: "root", password: "1234", database: "electivedb"});
 
             db.getConnection(function (err) {
                 db
@@ -580,7 +580,7 @@ app.post("/api/signin", (req, res) => {
 
         })
         app.post("/api/manageelective", (req, res) => {
-            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+            const db = mysql.createPool({host:"35.244.41.14", user: "root", password: "1234", database: "electivedb"});
             var department = req.body.dept;
             var dummy = department.toLowerCase()
             var year0 = parseInt(req.body.year)
@@ -824,7 +824,7 @@ app.post("/api/signin", (req, res) => {
         })
 
         app.get("/api/getlist3", (req, res) => {
-            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+            const db = mysql.createPool({host:"35.244.41.14", user: "root", password: "1234", database: "electivedb"});
 
             db.getConnection(function (err) {
                 var x1 = tempid.split("@")[0]
@@ -862,7 +862,7 @@ app.post("/api/signin", (req, res) => {
         
 
         app.post("/api/manageelectivechange", (req, res) => {
-            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+            const db = mysql.createPool({host:"35.244.41.14", user: "root", password: "1234", database: "electivedb"});
             var department = req.body.dept;
             var year=req.body.year;
             year1=parseInt(year);
@@ -969,7 +969,7 @@ app.post("/api/signin", (req, res) => {
 
         app.post("/api/sendemail", (req, res) => {
 
-            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+            const db = mysql.createPool({host:"35.244.41.14", user: "root", password: "1234", database: "electivedb"});
             var receiver = req.body.receiver;
             var subject = req.body.subject;
             var content = req.body.content;
@@ -1101,7 +1101,7 @@ app.post("/api/signin", (req, res) => {
         })
 
         app.post("/api/getlist33", (req,res) => {
-            const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+            const db = mysql.createPool({host:"35.244.41.14", user: "root", password: "1234", database: "electivedb"});
 
             db.getConnection(function (err) {
                 var dept,yr;
