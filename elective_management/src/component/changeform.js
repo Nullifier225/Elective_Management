@@ -6,7 +6,7 @@ import {ArrowLeftCircleFill} from 'react-bootstrap-icons';
 export default class ChangeForm extends Component {
     handleChange = (event) => {  
         
-        axios.get('https://auems2.herokuapp.com/api/getcc',{
+        axios.get('http://localhost:3001/api/getcc',{
             params:{
                 name: document.getElementById('electivename').value
             }
@@ -31,7 +31,7 @@ export default class ChangeForm extends Component {
 
         }
         axios
-            .get('https://auems2.herokuapp.com/api/getele')
+            .get('http://localhost:3001/api/getele')
             .then(response => {
 
                 var details = response.data;
@@ -127,7 +127,7 @@ export default class ChangeForm extends Component {
                     .value
             }
             axios
-                .post('https://auems2.herokuapp.com/api/changeform', request)
+                .post('http://localhost:3001/api/changeform', request)
                 .then(resp => {
                     var details = resp.data;
 

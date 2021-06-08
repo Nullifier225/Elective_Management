@@ -1,6 +1,5 @@
 {
   "name": "elective_management",
-  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -71,7 +70,7 @@
     "sonarqube-scanner": "^2.8.0"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "login.js",
+  "main": "SignIn.js",
   "author": "",
   "license": "ISC"
 }

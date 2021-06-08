@@ -26,7 +26,7 @@ export default class management extends Component {
                 .value
         }
         axios
-            .post('https://auems2.herokuapp.com/api/manageelective', req)
+            .post('http://localhost:3001/api/manageelective', req)
             .then(response => {
                 var details=response.data
                 var element,element1;

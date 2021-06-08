@@ -17,7 +17,7 @@ export default class aviewstudentelective extends Component {
       dept:document.getElementById("select1").value,
       year:document.getElementById("select2").value
     }
-    axios.post('https://auems2.herokuapp.com/api/getlist33',req).then(response=>{
+    axios.post('http://localhost:3001/api/getlist33',req).then(response=>{
     
     
       var details = response.data;

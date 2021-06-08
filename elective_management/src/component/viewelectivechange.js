@@ -14,7 +14,7 @@ export default class viewelectivechange extends Component {
         year:document.getElementById("select2").value
       }
       
-      axios.post('https://auems2.herokuapp.com/api/getlist2',req).then(response=>{
+      axios.post('http://localhost:3001/api/getlist2',req).then(response=>{
     
     
     var details = response.data;

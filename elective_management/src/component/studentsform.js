@@ -73,7 +73,7 @@ export default class App22 extends Component {
             items:[]
             
     };
-  axios.get('https://auems2.herokuapp.com/api/getele').then(response=>{
+  axios.get('http://localhost:3001/api/getele').then(response=>{
     const xy =response.data
     this.setState({name:"",rollnumber:"",section:"",items:xy})})
     this.onDragEnd = this.onDragEnd.bind(this);
@@ -215,7 +215,7 @@ function submit_studentform(e,items){
       
   }
   console.log("request");
-  axios.post('https://auems2.herokuapp.com/api/studentformcol',request)
+  axios.post('http://localhost:3001/api/studentformcol',request)
   
   .then(resp=>{
     var details = resp.data;

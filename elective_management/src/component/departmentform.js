@@ -131,7 +131,7 @@ function App1(props) {
         
     }
     console.log("request");
-    axios.post('https://auems2.herokuapp.com/api/deptformcol',request)
+    axios.post('http://localhost:3001/api/deptformcol',request)
     
     .then(resp=>{
       var details = resp.data;

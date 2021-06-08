@@ -13,7 +13,7 @@ export default class viewstudentelective extends Component {
         super();
       document.title="Electives Final List"
         
-    axios.get('https://auems2.herokuapp.com/api/getlist3').then(response=>{
+    axios.get('http://localhost:3001/api/getlist3').then(response=>{
     
     
     var details = response.data;

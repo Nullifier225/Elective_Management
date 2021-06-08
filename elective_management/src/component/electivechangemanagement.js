@@ -23,7 +23,7 @@ export default class changemanagement extends Component {
         }
         //document.getElementById('print').style={display:"block"};
         axios
-            .post('https://auems2.herokuapp.com/api/manageelectivechange', req).then(response=>{
+            .post('http://localhost:3001/api/manageelectivechange', req).then(response=>{
                 var details=response.data
                 if (details=="done"){
                     alert("Allocation done")
