@@ -21,7 +21,7 @@ export default class LoginForm extends Component {
            
         
         
-    axios.get('http://localhost:3001/api/getname').then(response=>{
+    axios.get('https://auems2.herokuapp.com/api/getname').then(response=>{
     
     
     var details = response.data;
@@ -50,7 +50,7 @@ export default class LoginForm extends Component {
         event.preventDefault();
         removeUserSession();
         //auth.logout(()=>{});
-        //axios.post('http://localhost:3001/api/logout');
+        //axios.post('https://auems2.herokuapp.com/api/logout');
         this.props.history.push('/');
     };
     clickBtn1 = (event) => {

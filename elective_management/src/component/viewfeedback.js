@@ -19,7 +19,7 @@ export default class viewfeedback extends Component {
         }
 
         axios
-            .post('http://localhost:3001/api/getreport', req)
+            .post('https://auems2.herokuapp.com/api/getreport', req)
             .then(response => {
                 var details = response.data;
                 var element;
@@ -49,7 +49,7 @@ export default class viewfeedback extends Component {
             })
 
         axios
-            .post('http://localhost:3001/api/getavg', req)
+            .post('https://auems2.herokuapp.com/api/getavg', req)
             .then(response => {
                 var details = response.data;
                 var element1,
@@ -85,7 +85,7 @@ export default class viewfeedback extends Component {
         super()
         document.title="Feedback Report"
         axios
-            .get('http://localhost:3001/api/getfeedele1')
+            .get('https://auems2.herokuapp.com/api/getfeedele1')
             .then(response => {
 
                 var details = response.data;

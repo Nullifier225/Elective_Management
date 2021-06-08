@@ -20,7 +20,7 @@ export default class Feedbackform extends Component {
   constructor(){
       super()
       document.title="Elective Feedback Form"
-      axios.get('http://localhost:3001/api/getfeedele').then(response=>{
+      axios.get('https://auems2.herokuapp.com/api/getfeedele').then(response=>{
     
     
     var details = response.data;
@@ -152,7 +152,7 @@ export default class Feedbackform extends Component {
                 
         
             }
-            axios.post('http://localhost:3001/api/submitfeedback',request)
+            axios.post('https://auems2.herokuapp.com/api/submitfeedback',request)
             
             .then(resp=>{
               var details = resp.data;
