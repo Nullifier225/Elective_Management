@@ -35,7 +35,7 @@ class App extends Component {
   }
   render() {
     return (
-<BrowserRouter>
+<HashRouter>
         
             <Switch>
             <PublicRoute path="/" component={Login} exact/>
@@ -61,6 +61,6 @@ class App extends Component {
 
             </Switch>
             
-</BrowserRouter>
+</HashRouter>
     )}}
 export default App;
