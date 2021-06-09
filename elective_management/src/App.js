@@ -20,7 +20,7 @@ import management from './component/electivemanagement';
 import viewstudentelective from './component/studentviewelective';
 import fviewstudentelective from './component/facultyviewelective';
 import changemanagement from './component/electivechangemanagement';
-import sendemail from './component/emailtry1';
+// import sendemail from './component/emailtry1';
 import printpage from './component/htmlpdfsample';
 import { PublicRoute } from "./PublicRoute";
 import { StudRoute } from "./StudentRoute";
