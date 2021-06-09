@@ -6,7 +6,7 @@ import axios from 'axios';
 import {PersonCheck} from 'react-bootstrap-icons';
 
 
-export default class changemanagement extends React.Component {
+export default class changemanagement extends Component {
     clickBtn1 = (event) => {
         event.preventDefault();
         this.props.history.push('/admindashboard');
