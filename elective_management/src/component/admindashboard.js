@@ -1,5 +1,4 @@
-import React ,{Component} from 'react';
-import Card from "react-bootstrap/Card";
+import React from 'react';
 import logo from './index.png';
 import {CardList} from "react-bootstrap-icons"
 import {Envelope} from "react-bootstrap-icons"
@@ -9,7 +8,7 @@ import {InfoCircle} from 'react-bootstrap-icons';
 import { DoorOpenFill } from 'react-bootstrap-icons';
 import { removeUserSession } from './common';
 
-export default class AD  extends Component{
+export default class AD  extends React.Component{
     clickBtn = (event) => {
         event.preventDefault();
         removeUserSession();

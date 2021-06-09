@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import logo from './index.png';
 import {ArrowLeftCircleFill} from 'react-bootstrap-icons';
 import ReactDOM from 'react-dom';
@@ -9,7 +9,7 @@ import {Download} from 'react-bootstrap-icons';
 
 
 
-export default class management extends Component {
+export default class management extends React.Component {
 
     clickBtn1 = (event) => {
         event.preventDefault();

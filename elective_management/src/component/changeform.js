@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React from "react";
 import logo from './index.png';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import {ArrowLeftCircleFill} from 'react-bootstrap-icons';
-export default class ChangeForm extends Component {
+export default class ChangeForm extends React.Component {
     handleChange = (event) => {  
         
         axios.get('http://localhost:3001/api/getcc',{

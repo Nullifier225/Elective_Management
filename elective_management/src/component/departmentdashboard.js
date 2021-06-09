@@ -1,5 +1,4 @@
-import React ,{Component} from 'react';
-import Card from "react-bootstrap/Card";
+import React  from 'react';
 import logo from './index.png';
 import {CardList} from "react-bootstrap-icons";
 import {PencilSquare} from "react-bootstrap-icons";
@@ -7,9 +6,8 @@ import {ClipboardData} from "react-bootstrap-icons";
 import {List,PersonCircle} from 'react-bootstrap-icons';
 import {InfoCircle} from 'react-bootstrap-icons';
 import { DoorOpenFill } from 'react-bootstrap-icons';
-import axios from 'axios';
 import { removeUserSession } from './common';
-export default class TD  extends Component{
+export default class TD  extends React.Component{
     clickBtn = (event) => {
         event.preventDefault();
         removeUserSession();

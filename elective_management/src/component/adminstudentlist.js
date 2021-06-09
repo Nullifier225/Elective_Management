@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import logo from './index.png';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import { ArrowLeftCircleFill } from 'react-bootstrap-icons';
-export default class adminstudentlist extends Component {
+export default class adminstudentlist extends React.Component {
    clickBtn1 = (event) => {
     event.preventDefault();
     this.props.history.push('/admindashboard');

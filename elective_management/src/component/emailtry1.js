@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React from "react";
 import logo from './index.png';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import {ArrowLeftCircleFill} from 'react-bootstrap-icons';
-export default class sendemail extends Component {
+export default class sendemail extends React.Component {
     handleChange = (event) => {
 
         var val1 = document.getElementById("receiver").value

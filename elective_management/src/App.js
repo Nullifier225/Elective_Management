@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -29,7 +29,7 @@ import { DeptRoute } from "./DepartmentRoute";
 import { AdminRoute } from "./AdminRoute";
 import axios from 'axios';
 import { removeUserSession } from './component/common';
-class App extends Component {
+class App extends React.Component {
   constructor(){
     super();
   }

@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import logo from './index.png';
 import {ArrowLeftCircleFill} from 'react-bootstrap-icons';
 import ReactDOM from 'react-dom';
@@ -6,7 +6,7 @@ import axios from 'axios';
 import {PersonCheck} from 'react-bootstrap-icons';
 
 
-export default class changemanagement extends Component {
+export default class changemanagement extends React.Component {
     clickBtn1 = (event) => {
         event.preventDefault();
         this.props.history.push('/admindashboard');

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import logo from './index.png';
 import axios from 'axios';
 import { Rating } from 'material-ui-rating'
 import { IconButton } from '@material-ui/core';
 import ReactDOM from 'react-dom';
 import { ArrowLeftCircleFill } from 'react-bootstrap-icons'; 
-export default class Feedbackform extends Component {
+export default class Feedbackform extends React.Component {
     
     
   clickBtn = (event) => {
