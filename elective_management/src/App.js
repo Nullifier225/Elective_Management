@@ -55,7 +55,7 @@ class App extends Component {
             <DeptRoute path="/finallist" component={fviewstudentelective} exact/>
             <AdminRoute path="/afinallist" component={aviewstudentelective} exact/>
             <AdminRoute path="/electivechangemanagement" component={changemanagement} exact/>
-            <AdminRoute path="/sendmail" component={sendemail} exact/>
+            {/* <AdminRoute path="/sendmail" component={sendemail} exact/> */}
             <Route path="/printpage" component={printpage} exact/>
             <Route path="*" component={()=> "404 NOT FOUND"}/>
 
