@@ -13,6 +13,10 @@ var url = require('url');
 const {nextTick} = require('process');
 
 const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
+<<<<<<< HEAD
+=======
+// app.use(cors());
+>>>>>>> parent of eaadd60 (Revert "cors removed")
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 var tempid = ""
