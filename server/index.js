@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mysql = require('mysql');
-const cors = require('cors');
+
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 process.on('uncaughtException', function (error) {
@@ -982,15 +982,7 @@ app.post("/api/signin", (req, res) => {
             var deptyr=dept1+year;
             }
             
-            let originalString = "amritacb1234";
-  
             
-            let bufferObj = Buffer.from(originalString, "utf8");
-            
-            let base64String = bufferObj.toString("base64");
-            bufferObj = Buffer.from(base64String, "base64");
-  
-            let decodedString = bufferObj.toString("utf8");
             
             if (receiver=="Student") {
             db.getConnection(function (err) {
@@ -1012,7 +1004,7 @@ app.post("/api/signin", (req, res) => {
                                 service: 'gmail',
                                 auth: {
                                     user: 'amritacbelectiveteam@gmail.com',
-                                    pass: decodedString
+                                    pass: "amritacb1234"
                                 }
                             });
 
@@ -1064,7 +1056,7 @@ app.post("/api/signin", (req, res) => {
                                 service: 'gmail',
                                 auth: {
                                     user: 'amritacbelectiveteam@gmail.com',
-                                    pass: decodedString
+                                    pass: "amritacb1234"
                                 }
                             });
 
@@ -1212,7 +1204,8 @@ app.post("/api/signin", (req, res) => {
               return res.json({ emailid, token });
             });
           });
-
-        app.listen(3001, () => {
-            console.log('running on port 3001');
+        const PORT=3001
+        app.listen(process.env.PORT||PORT ,() => {
+            console.log(`running on port ${PORT}`);
         })
+

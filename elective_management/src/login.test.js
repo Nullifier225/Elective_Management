@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Login from './component/login';
 import {mount} from 'enzyme';
+import axios from 'axios';
     describe('Login component tests', ()=> {
         const wrapper = shallow(<Login />);
 
@@ -12,7 +13,7 @@ import {mount} from 'enzyme';
 
 
             //Button should have matching text
-            expect(JSON.parse(JSON.stringify(wrapper.find('button').text()))).toEqual("Sign in");
+            expect(JSON.parse(JSON.stringify(wrapper.find('button').text()))).toEqual("Sign In ");
         });
 
         it('should have the Amrita Logo', ()=> {
@@ -34,25 +35,36 @@ import {mount} from 'enzyme';
             expect(wrapper.state('password')).toEqual('');
         });
 
+        it('simulating value entries',()=>{
+            const credentials={
+                username:"cb.en.u4cse18042@cb.students.amrita.edu",
+                password:"logind"
+            }
+            const usernameInput = wrapper.find('input#email');
+            usernameInput.value = credentials.username;
+            expect(usernameInput.value).toBe('cb.en.u4cse18042@cb.students.amrita.edu');
+
+            const passwordInput = wrapper.find('input#pwd');
+            passwordInput.value = credentials.password;
+            expect(passwordInput.value).toBe('logind');
+            wrapper.find('button#Button').simulate('click');
+            expect(wrapper.find('div#data')).toBeInTheDocument();
+            
+        })
+
+        it('makes axios request', ()=> {
+            axios.get('https://auems2.herokuapp.com/api/getfeedele1')
+            .then(response=>{
+            console.log(response.data)
+            expect(response.data.length).toBeGreaterThan(1);
+        })
+        });
+
+        
+
         //UNIT TESTING 
 
-        test('submitting form is sucessful', async () => {
-            
-            
-            wrapper.find('input[type="password"]').simulate('change', {target: {name: 'password', value: 'login'}});
-            wrapper.find('input[type="email"]').simulate('change', {target: {name: 'email', value: 'cb.en.u4cse18042@cb.students.amrita.edu'}});
-            expect(wrapper.state('password')).toEqual('login');
-            expect(wrapper.state('email')).toEqual('cb.en.u4cse18042@cb.students.amrita.edu');
-            expect(wrapper.find("form").simulate("submit", { preventDefault() {} }))
-
-            //console.log((wrapper.find('form#myForm').simulate('submit')));
-            //wrapper.find('form#myForm').simulate('submit')
-            //expect(submit_signup).toHaveBeenCalledTimes(1);
-               
-            
-
-               
-});
+        
 
 
     ;

@@ -1,0 +1,1056 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component tests should test Header component 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Login />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <img
+          class="img1"
+          src="https://image3.mouthshut.com/images/Restaurant/Photo/-73020_62102.jpg"
+        />,
+        <div
+          class="out"
+          style={
+            Object {
+              "height": "auto",
+            }
+          }
+        >
+          <img
+            className="rounded mx-auto d-block"
+            id="Amrita"
+            src="index.png"
+            style={
+              Object {
+                "height": "25%",
+                "width": "25%",
+              }
+            }
+          />
+          <br />
+          <form
+            id="myForm"
+            onSubmit={[Function]}
+          >
+            <h3
+              class="heading1"
+              className="text-center font-weight-bold font-size:1.5em"
+            >
+              Login
+            </h3>
+            <br />
+            <div
+              className="form-group"
+            >
+              <label>
+                Email ID
+              </label>
+              <input
+                className="form-control"
+                id="email"
+                name="email"
+                onChange={[Function]}
+                placeholder="Enter Email ID"
+                type="email"
+                value=""
+              />
+            </div>
+            <div
+              className="form-group"
+            >
+              <label>
+                Password
+              </label>
+              <input
+                className="form-control"
+                id="pwd"
+                name="password"
+                onChange={[Function]}
+                placeholder="Enter password"
+                type="password"
+                value=""
+              />
+            </div>
+            <button
+              className="btn btn-info btn-lg btn-block"
+              id="Button"
+              type="submit"
+              value="Sign in"
+            >
+              Sign In 
+              <ForwardRef
+                class="hover:bg-gray-100"
+                color="white"
+                size={30}
+              />
+            </button>
+            <br />
+          </form>
+          <br />
+          <div
+            id="data"
+          />
+        </div>,
+      ],
+      "class": "out1",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "class": "img1",
+          "src": "https://image3.mouthshut.com/images/Restaurant/Photo/-73020_62102.jpg",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "img",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <img
+              className="rounded mx-auto d-block"
+              id="Amrita"
+              src="index.png"
+              style={
+                Object {
+                  "height": "25%",
+                  "width": "25%",
+                }
+              }
+            />,
+            <br />,
+            <form
+              id="myForm"
+              onSubmit={[Function]}
+            >
+              <h3
+                class="heading1"
+                className="text-center font-weight-bold font-size:1.5em"
+              >
+                Login
+              </h3>
+              <br />
+              <div
+                className="form-group"
+              >
+                <label>
+                  Email ID
+                </label>
+                <input
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  onChange={[Function]}
+                  placeholder="Enter Email ID"
+                  type="email"
+                  value=""
+                />
+              </div>
+              <div
+                className="form-group"
+              >
+                <label>
+                  Password
+                </label>
+                <input
+                  className="form-control"
+                  id="pwd"
+                  name="password"
+                  onChange={[Function]}
+                  placeholder="Enter password"
+                  type="password"
+                  value=""
+                />
+              </div>
+              <button
+                className="btn btn-info btn-lg btn-block"
+                id="Button"
+                type="submit"
+                value="Sign in"
+              >
+                Sign In 
+                <ForwardRef
+                  class="hover:bg-gray-100"
+                  color="white"
+                  size={30}
+                />
+              </button>
+              <br />
+            </form>,
+            <br />,
+            <div
+              id="data"
+            />,
+          ],
+          "class": "out",
+          "style": Object {
+            "height": "auto",
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "rounded mx-auto d-block",
+              "id": "Amrita",
+              "src": "index.png",
+              "style": Object {
+                "height": "25%",
+                "width": "25%",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <h3
+                  class="heading1"
+                  className="text-center font-weight-bold font-size:1.5em"
+                >
+                  Login
+                </h3>,
+                <br />,
+                <div
+                  className="form-group"
+                >
+                  <label>
+                    Email ID
+                  </label>
+                  <input
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    onChange={[Function]}
+                    placeholder="Enter Email ID"
+                    type="email"
+                    value=""
+                  />
+                </div>,
+                <div
+                  className="form-group"
+                >
+                  <label>
+                    Password
+                  </label>
+                  <input
+                    className="form-control"
+                    id="pwd"
+                    name="password"
+                    onChange={[Function]}
+                    placeholder="Enter password"
+                    type="password"
+                    value=""
+                  />
+                </div>,
+                <button
+                  className="btn btn-info btn-lg btn-block"
+                  id="Button"
+                  type="submit"
+                  value="Sign in"
+                >
+                  Sign In 
+                  <ForwardRef
+                    class="hover:bg-gray-100"
+                    color="white"
+                    size={30}
+                  />
+                </button>,
+                <br />,
+              ],
+              "id": "myForm",
+              "onSubmit": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Login",
+                  "class": "heading1",
+                  "className": "text-center font-weight-bold font-size:1.5em",
+                },
+                "ref": null,
+                "rendered": "Login",
+                "type": "h3",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <label>
+                      Email ID
+                    </label>,
+                    <input
+                      className="form-control"
+                      id="email"
+                      name="email"
+                      onChange={[Function]}
+                      placeholder="Enter Email ID"
+                      type="email"
+                      value=""
+                    />,
+                  ],
+                  "className": "form-group",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Email ID",
+                    },
+                    "ref": null,
+                    "rendered": "Email ID",
+                    "type": "label",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "className": "form-control",
+                      "id": "email",
+                      "name": "email",
+                      "onChange": [Function],
+                      "placeholder": "Enter Email ID",
+                      "type": "email",
+                      "value": "",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "input",
+                  },
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <label>
+                      Password
+                    </label>,
+                    <input
+                      className="form-control"
+                      id="pwd"
+                      name="password"
+                      onChange={[Function]}
+                      placeholder="Enter password"
+                      type="password"
+                      value=""
+                    />,
+                  ],
+                  "className": "form-group",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Password",
+                    },
+                    "ref": null,
+                    "rendered": "Password",
+                    "type": "label",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "className": "form-control",
+                      "id": "pwd",
+                      "name": "password",
+                      "onChange": [Function],
+                      "placeholder": "Enter password",
+                      "type": "password",
+                      "value": "",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "input",
+                  },
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Sign In ",
+                    <ForwardRef
+                      class="hover:bg-gray-100"
+                      color="white"
+                      size={30}
+                    />,
+                  ],
+                  "className": "btn btn-info btn-lg btn-block",
+                  "id": "Button",
+                  "type": "submit",
+                  "value": "Sign in",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Sign In ",
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "class": "hover:bg-gray-100",
+                      "color": "white",
+                      "size": 30,
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "defaultProps": Object {
+                        "color": "currentColor",
+                        "size": "1em",
+                      },
+                      "propTypes": Object {
+                        "color": [Function],
+                        "size": [Function],
+                      },
+                      "render": [Function],
+                    },
+                  },
+                ],
+                "type": "button",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+            ],
+            "type": "form",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "id": "data",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <img
+            class="img1"
+            src="https://image3.mouthshut.com/images/Restaurant/Photo/-73020_62102.jpg"
+          />,
+          <div
+            class="out"
+            style={
+              Object {
+                "height": "auto",
+              }
+            }
+          >
+            <img
+              className="rounded mx-auto d-block"
+              id="Amrita"
+              src="index.png"
+              style={
+                Object {
+                  "height": "25%",
+                  "width": "25%",
+                }
+              }
+            />
+            <br />
+            <form
+              id="myForm"
+              onSubmit={[Function]}
+            >
+              <h3
+                class="heading1"
+                className="text-center font-weight-bold font-size:1.5em"
+              >
+                Login
+              </h3>
+              <br />
+              <div
+                className="form-group"
+              >
+                <label>
+                  Email ID
+                </label>
+                <input
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  onChange={[Function]}
+                  placeholder="Enter Email ID"
+                  type="email"
+                  value=""
+                />
+              </div>
+              <div
+                className="form-group"
+              >
+                <label>
+                  Password
+                </label>
+                <input
+                  className="form-control"
+                  id="pwd"
+                  name="password"
+                  onChange={[Function]}
+                  placeholder="Enter password"
+                  type="password"
+                  value=""
+                />
+              </div>
+              <button
+                className="btn btn-info btn-lg btn-block"
+                id="Button"
+                type="submit"
+                value="Sign in"
+              >
+                Sign In 
+                <ForwardRef
+                  class="hover:bg-gray-100"
+                  color="white"
+                  size={30}
+                />
+              </button>
+              <br />
+            </form>
+            <br />
+            <div
+              id="data"
+            />
+          </div>,
+        ],
+        "class": "out1",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "class": "img1",
+            "src": "https://image3.mouthshut.com/images/Restaurant/Photo/-73020_62102.jpg",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "img",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <img
+                className="rounded mx-auto d-block"
+                id="Amrita"
+                src="index.png"
+                style={
+                  Object {
+                    "height": "25%",
+                    "width": "25%",
+                  }
+                }
+              />,
+              <br />,
+              <form
+                id="myForm"
+                onSubmit={[Function]}
+              >
+                <h3
+                  class="heading1"
+                  className="text-center font-weight-bold font-size:1.5em"
+                >
+                  Login
+                </h3>
+                <br />
+                <div
+                  className="form-group"
+                >
+                  <label>
+                    Email ID
+                  </label>
+                  <input
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    onChange={[Function]}
+                    placeholder="Enter Email ID"
+                    type="email"
+                    value=""
+                  />
+                </div>
+                <div
+                  className="form-group"
+                >
+                  <label>
+                    Password
+                  </label>
+                  <input
+                    className="form-control"
+                    id="pwd"
+                    name="password"
+                    onChange={[Function]}
+                    placeholder="Enter password"
+                    type="password"
+                    value=""
+                  />
+                </div>
+                <button
+                  className="btn btn-info btn-lg btn-block"
+                  id="Button"
+                  type="submit"
+                  value="Sign in"
+                >
+                  Sign In 
+                  <ForwardRef
+                    class="hover:bg-gray-100"
+                    color="white"
+                    size={30}
+                  />
+                </button>
+                <br />
+              </form>,
+              <br />,
+              <div
+                id="data"
+              />,
+            ],
+            "class": "out",
+            "style": Object {
+              "height": "auto",
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "rounded mx-auto d-block",
+                "id": "Amrita",
+                "src": "index.png",
+                "style": Object {
+                  "height": "25%",
+                  "width": "25%",
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <h3
+                    class="heading1"
+                    className="text-center font-weight-bold font-size:1.5em"
+                  >
+                    Login
+                  </h3>,
+                  <br />,
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Email ID
+                    </label>
+                    <input
+                      className="form-control"
+                      id="email"
+                      name="email"
+                      onChange={[Function]}
+                      placeholder="Enter Email ID"
+                      type="email"
+                      value=""
+                    />
+                  </div>,
+                  <div
+                    className="form-group"
+                  >
+                    <label>
+                      Password
+                    </label>
+                    <input
+                      className="form-control"
+                      id="pwd"
+                      name="password"
+                      onChange={[Function]}
+                      placeholder="Enter password"
+                      type="password"
+                      value=""
+                    />
+                  </div>,
+                  <button
+                    className="btn btn-info btn-lg btn-block"
+                    id="Button"
+                    type="submit"
+                    value="Sign in"
+                  >
+                    Sign In 
+                    <ForwardRef
+                      class="hover:bg-gray-100"
+                      color="white"
+                      size={30}
+                    />
+                  </button>,
+                  <br />,
+                ],
+                "id": "myForm",
+                "onSubmit": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Login",
+                    "class": "heading1",
+                    "className": "text-center font-weight-bold font-size:1.5em",
+                  },
+                  "ref": null,
+                  "rendered": "Login",
+                  "type": "h3",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <label>
+                        Email ID
+                      </label>,
+                      <input
+                        className="form-control"
+                        id="email"
+                        name="email"
+                        onChange={[Function]}
+                        placeholder="Enter Email ID"
+                        type="email"
+                        value=""
+                      />,
+                    ],
+                    "className": "form-group",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Email ID",
+                      },
+                      "ref": null,
+                      "rendered": "Email ID",
+                      "type": "label",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "className": "form-control",
+                        "id": "email",
+                        "name": "email",
+                        "onChange": [Function],
+                        "placeholder": "Enter Email ID",
+                        "type": "email",
+                        "value": "",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "input",
+                    },
+                  ],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <label>
+                        Password
+                      </label>,
+                      <input
+                        className="form-control"
+                        id="pwd"
+                        name="password"
+                        onChange={[Function]}
+                        placeholder="Enter password"
+                        type="password"
+                        value=""
+                      />,
+                    ],
+                    "className": "form-group",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Password",
+                      },
+                      "ref": null,
+                      "rendered": "Password",
+                      "type": "label",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "className": "form-control",
+                        "id": "pwd",
+                        "name": "password",
+                        "onChange": [Function],
+                        "placeholder": "Enter password",
+                        "type": "password",
+                        "value": "",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "input",
+                    },
+                  ],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "Sign In ",
+                      <ForwardRef
+                        class="hover:bg-gray-100"
+                        color="white"
+                        size={30}
+                      />,
+                    ],
+                    "className": "btn btn-info btn-lg btn-block",
+                    "id": "Button",
+                    "type": "submit",
+                    "value": "Sign in",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Sign In ",
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "class": "hover:bg-gray-100",
+                        "color": "white",
+                        "size": 30,
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "defaultProps": Object {
+                          "color": "currentColor",
+                          "size": "1em",
+                        },
+                        "propTypes": Object {
+                          "color": [Function],
+                          "size": [Function],
+                        },
+                        "render": [Function],
+                      },
+                    },
+                  ],
+                  "type": "button",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+              ],
+              "type": "form",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "id": "data",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSeventeenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;
