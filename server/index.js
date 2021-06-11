@@ -15,7 +15,7 @@ var url = require('url');
 const {nextTick} = require('process');
 
 const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 var tempid = ""
