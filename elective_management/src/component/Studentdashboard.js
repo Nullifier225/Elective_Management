@@ -113,10 +113,10 @@ export default class LoginForm extends Component {
         <div id="data1" style={{width:"195px",height:"auto",paddingLeft: "30%"}}></div>
         <br></br>
         <div class="center" style={{paddingLeft:"45%"}}>
-        <button class = "btn"><InfoCircle color="#ff8c1a" id="aboutus" onClick={this.clickBtn0} size={30}></InfoCircle><br />About Us</button>
+        <InfoCircle color="#ff8c1a" id="aboutus" onClick={this.clickBtn0} size={30}></InfoCircle>
         <br></br>
         <br></br>
-        <button class = "btn"><DoorOpenFill color="red" id="logout" onClick={this.clickBtn} size={30}></DoorOpenFill>Logout</button>
+        <DoorOpenFill color="red" id="logout" onClick={this.clickBtn} size={30}></DoorOpenFill>
         <br></br>
         <br></br>
 

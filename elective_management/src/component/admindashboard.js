@@ -63,11 +63,11 @@ export default class AD  extends React.Component{
         </div>
         <div id="data1" style={{width:"195px",height:"auto",paddingLeft: "30%"}}><h5>Welcome<br/>Admin!</h5></div>
         <br></br>
-        <div class="center" style={{paddingLeft:"25%"}}>
-        <button class = "btn"><InfoCircle color="#ff8c1a" id="aboutus" onClick={this.clickBtn0} size={30}></InfoCircle><br />About Us</button>
+        <div class="center" style={{paddingLeft:"45%"}}>
+        <InfoCircle color="#ff8c1a" id="aboutus" onClick={this.clickBtn0} size={30}></InfoCircle>
         <br></br>
         <br></br>
-        <button class = "btn" style={{paddingLeft:"12%"}}><DoorOpenFill color="red" id="logout" onClick={this.clickBtn} size={30}></DoorOpenFill><br />Logout</button>
+        <DoorOpenFill color="red" id="logout" onClick={this.clickBtn} size={30}></DoorOpenFill>
         <br></br>
         <br></br>
 
