@@ -2,12 +2,11 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
 process.on('uncaughtException', function (error) {
     console.log(error.stack);
 });
 var router = express.Router()
-
+var cors=require('cors')
 require('dotenv').config();
 const utils = require('./utils');
 var url = require('url');
@@ -17,7 +16,7 @@ const db = mysql.createPool({host: "localhost", user: "root", password: "1234", 
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 var tempid = ""
-
+app.use(cors())
 app.use(function (req, res, next) {
     // check header or url parameters or post parameters for token
     var token = req.headers['authorization'];
@@ -38,29 +37,29 @@ app.use(function (req, res, next) {
   });
 
 app.post("/api/signin", (req, res) => {
-    //console.log("1")
-    const salt = bcrypt.genSaltSync(10)    
+    console.log("1")
+    
     tempid = req.body.email;
     const emailid = req.body.email;
 
     db.getConnection(function (err) {
 
-        //console.log("connected")
+        console.log("connected")
         db
             .query("SELECT ls_pass FROM student_login_details where ls_usern=?", [
                 emailid], function (err, result) {
                 var sent=false
                 if (result.length > 0) {
-                    const hashedpass = bcrypt.hashSync(result[0]["ls_pass"],salt)
-                    if(bcrypt.compareSync(req.body.password,hashedpass)){
+                    const pwd = result[0]["ls_pass"]
+                    if(pwd===req.body.password){
                     //console.log("match")
                     // generate token
-                    const token = utils.generateToken(emailid);
+                    
                     // get basic user details
                     //const userObj = utils.getCleanUser(emailid);
                     // return the token along with user details
                     //return res.json({ user: userObj, token });
-                    res.send(JSON.stringify({ emailid, token }));
+                    res.send("valid");
                     sent=true
                     }
             }

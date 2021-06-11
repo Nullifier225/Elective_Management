@@ -2,7 +2,7 @@ import React from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import { HashRouter, Route,Switch } from 'react-router-dom';    
+import { BrowserRouter, Route,Switch } from 'react-router-dom';    
 import './App.css';
 import Login from './component/login';
 import LoginForm from './component/Studentdashboard';
@@ -35,7 +35,7 @@ class App extends React.Component {
   }
   render() {
     return (
-<HashRouter>
+<BrowserRouter>
         
             <Switch>
             <PublicRoute path="/" component={Login} exact/>
@@ -61,6 +61,6 @@ class App extends React.Component {
 
             </Switch>
             
-</HashRouter>
+</BrowserRouter>
     )}}
 export default App;
