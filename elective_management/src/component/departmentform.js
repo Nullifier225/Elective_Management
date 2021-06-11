@@ -14,7 +14,7 @@ function App1(props) {
           props.history.push('/deptdashboard');
           }
         
-    const [inputList, setInputList] = useState([{ department:"",electivename: "",coursecode:"",electiveyear:"", max: "",min: "", desc:"",cm:"" }]); 
+    const [inputList, setInputList] = useState([{ department:"",electivename: "",coursecode:"",electiveyear:"", max: 0,min: 0, desc:"",cm:"" }]); 
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -30,7 +30,7 @@ function App1(props) {
   };
  
   const handleAddClick = () => {
-    setInputList([...inputList, { department:"",electivename: "",coursecode:"",electiveyear:"", max: "",min: "", desc:"",cm:""}]);
+    setInputList([...inputList, { department:"",electivename: "",coursecode:"",electiveyear:"", max: 0,min: 0, desc:"",cm:""}]);
   };
  
   return (
@@ -76,13 +76,13 @@ function App1(props) {
             <div className="form-group">
                 <label>Maximum no.of students </label>
                 <br/>
-                <input type="number"  required id="max" name="max" min = "0" value={x.max} onChange={e => handleInputChange(e, i)}step="10"></input>
+                <input type="number"  required id="max" name="max" min = {x.min} value={x.max} onChange={e => handleInputChange(e, i)}step="10"></input>
             </div>
 
             <div className="form-group">
                 <label>Minimum no.of students </label>
                 <br/>
-                <input type="number"   required id="min" name="min" min = "0" value={x.min} onChange={e => handleInputChange(e, i)} step="5"></input>
+                <input type="number"   required id="min" name="min" min = "0" max={x.max} value={x.min} onChange={e => handleInputChange(e, i)} step="5"></input>
             </div>
             <div className="form-group">
                 <label>Description</label>

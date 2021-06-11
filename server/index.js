@@ -13,10 +13,6 @@ var url = require('url');
 const {nextTick} = require('process');
 
 const db = mysql.createPool({host: "localhost", user: "root", password: "1234", database: "electivedb"});
-<<<<<<< HEAD
-=======
-// app.use(cors());
->>>>>>> parent of eaadd60 (Revert "cors removed")
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 var tempid = ""
@@ -58,13 +54,15 @@ app.post("/api/signin", (req, res) => {
                     if(pwd===req.body.password){
                     //console.log("match")
                     // generate token
-                    
+                    const token = utils.generateToken(emailid);
                     // get basic user details
-                    //const userObj = utils.getCleanUser(emailid);
-                    // return the token along with user details
-                    //return res.json({ user: userObj, token });
-                    res.send("valid");
+                    const userObj = utils.getCleanUser(emailid);
+                    console.log(emailid)
                     sent=true
+                    // return the token along with user details
+                    res.send(JSON.stringify({ user: emailid, token,status: "valid" }));
+                    //res.send(JSON.stringify({ emailid, token,status:"valid" }));
+                    //res.send("valid");
                     }
             }
                 if (err) {

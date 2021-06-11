@@ -45,7 +45,8 @@ export default class Login extends Component {
       .then(resp=>{
         var details = resp.data;
         const {email,password}=this.state;
-        if(details=="valid")
+        //alert(JSON.parse(JSON.stringify(resp)));
+        if(JSON.parse(JSON.stringify(details.status))==="valid")
         {
           //alert(sessionStorage.getItem('user'));
           let par1=/^[abclm][abclm].[en][en].[up][3-5][a-z][a-z][a-z][1-9][0-9][0-5][0-9][0-9]@[abclm][abclm].students.amrita.edu$/g;
@@ -56,16 +57,16 @@ export default class Login extends Component {
             //alert(auth.authenticated)
             //alert(this.props.isLoggedin)
             //this.handleSuccessfulAuth(resp.data,'/loginform')
-            setUserSession(resp.data.token,resp.data.emailid,"stud");
+            setUserSession(resp.data.token,JSON.stringify(email),"stud");
             this.props.history.push('/loginform');
             
           }
           if (email.match(par2)) {
-            setUserSession(resp.data.token,resp.data.emailid,"dept");
+            setUserSession(resp.data.token,JSON.stringify(email),"dept");
             this.props.history.push('/deptdashboard');
           }
           if (email.match(par3)) {
-            setUserSession(resp.data.token,resp.data.emailid,"admin");
+            setUserSession(resp.data.token,JSON.stringify(email),"admin");
             this.props.history.push('/admindashboard');
           }
           
@@ -73,7 +74,7 @@ export default class Login extends Component {
           
         }
        
-        if(details!="valid")
+        if(JSON.parse(JSON.stringify(details.status))!=="valid")
         {
           var element
           element = <h5 className="text-center font-weight-bold " id="fail" style={{color:"#ff5522"}}><i>Email id or password incorrect</i></h5>
@@ -115,7 +116,6 @@ export default class Login extends Component {
 
                 <button type="submit" id="Button"className="btn btn-info btn-lg btn-block" value="Sign in">Sign In <BoxArrowInRight color="white" class="hover:bg-gray-100" size={30}></BoxArrowInRight>
 </button>
-<br></br>
               
                   
                   
