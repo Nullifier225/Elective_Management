@@ -67,18 +67,20 @@ body {
  
 .button11 {
   position:absolute;
-  
   bottom:86%;
   left:80%;
-  
- 
-  
-  
-  
   text-transform:uppercase;
   font-weight:600;
   }
 
+  .button12 {
+    position:absolute;
+  
+    bottom:92%;
+    left:80%;
+    text-transform:uppercase;
+    font-weight:600;
+    }
 
 
 .out1{

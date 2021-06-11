@@ -133,7 +133,7 @@ export default class App22 extends Component {
   </div>
 </div>
  
-<Book class="button11" size={40} onClick={this.togglePopup}></Book>
+<button className="btn button11 btn-warning" onClick={this.togglePopup}><Book size={40} ></Book><br />Guide</button>
 
 <form onSubmit={(e)=>submit_studentform(e,this.state.items)}>
 
