@@ -56,7 +56,7 @@ export default class TD  extends React.Component{
         <button class = "btn"><InfoCircle color="#ff8c1a" id="aboutus" onClick={this.clickBtn0} size={30}></InfoCircle><br />About Us</button>
         <br></br>
         <br></br>
-        <button class = "btn" style={{paddingLeft:"12%"}}><DoorOpenFill color="red" id="logout" onClick={this.clickBtn} size={30}></DoorOpenFill><br />Logout</button>
+        <button class = "btn" style={{paddingLeft:"13%"}}><DoorOpenFill color="red" id="logout" onClick={this.clickBtn} size={30}></DoorOpenFill><br />Logout</button>
         <br></br>
         <br></br>
 

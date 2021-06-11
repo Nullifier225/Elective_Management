@@ -55,7 +55,7 @@ export default class Feedbackform extends React.Component {
 
             <div class="out" style={{ height:"auto", width:"auto",top:"0%"}}> 
                 
-                <img src={logo} className="rounded mx-auto d-block" style={{height:'auto',width:'auto'}}/>
+                <img src={logo} className="rounded mx-auto d-block" style={{height:'25%',width:'25%'}}/>
                 <br/>
             <form id="myForm" onSubmit={(e)=>submit_feedback(e,this.state.rating)}>
             

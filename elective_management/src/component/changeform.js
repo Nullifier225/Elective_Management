@@ -84,8 +84,8 @@ export default class ChangeForm extends React.Component {
                         src={logo}
                         className="rounded mx-auto d-block"
                         style={{
-                        height: '25%',
-                        width: '25%'
+                        height: '18.5%',
+                        width: '24%'
                     }}/>
                     <br/>
                     <br/>
