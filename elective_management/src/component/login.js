@@ -74,7 +74,7 @@ export default class Login extends Component {
           
         }
        
-        if(JSON.parse(JSON.stringify(details.status))!=="valid")
+        if(JSON.parse(JSON.stringify(details.status))!="valid")
         {
           var element
           element = <h5 className="text-center font-weight-bold " id="fail" style={{color:"#ff5522"}}><i>Email id or password incorrect</i></h5>

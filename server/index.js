@@ -61,17 +61,22 @@ app.post("/api/signin", (req, res) => {
                     sent=true
                     // return the token along with user details
                     res.send(JSON.stringify({ user: emailid, token,status: "valid" }));
+                    res.end()
+
                     //res.send(JSON.stringify({ emailid, token,status:"valid" }));
                     //res.send("valid");
                     }
+                    console.log(sent)
+
+                    if(sent==false) {
+                        res.send(JSON.stringify({status:"mismatch"}))
+                        res.end()
+                        }
             }
                 if (err) {
                     print("retrievel error")
                 }
-                if(sent==false) {
-                    res.send("mismatch")
-                    res.end()}
-
+                
             });
 
         app.post("/api/changeform", (req, res) => {
